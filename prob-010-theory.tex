@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=2in]{geometry}
 \usepackage{graphicx}
 \usepackage[toc,page]{appendix}
 \usepackage{hyperref}
@@ -72,20 +72,35 @@
 % need a better title for this section
 \section{Introduction}
 
-What is probability? It can be hard to put a finger on the whole concept; after all, it is a theory of uncertainty in a world where concrete, certain things tend to happen. Yet, we've all run into scenarios when it comes into play - what is the chance I get a 6 from a die roll? What is the chance of winning the lottery? What is the chance that I live to seventy years old?
+What is probability? It can be hard to put a finger on the whole concept; after all, it is a theory of uncertainty in a world where concrete, certain things tend to happen. Yet, we have all run into scenarios when it comes into play - what is the chance I get a 6 from a die roll? What is the chance of winning the lottery? What is the chance that I live to seventy years old?
 % more here
 
 % stuff here
 
-More importantly, how do we describe probability? 
+This begs a bigger question: How do we describe probability? 
 
-We often intuitively know the chances of events in simple scenarios. If I have a die, with sides labeled 1, 2, 3, 4, 5, and 6, we intuitively know that the probability of rolling a 3 is a 1/6 chance. 
+We often intuitively know the chances of events in simple scenarios. If I have a fair, ordinary die, with sides labeled 1, 2, 3, 4, 5, and 6, we intuitively know that the probability of rolling a 3 is a 1/6 chance. 
+
+If I make my statement more complicated - say, I want to know the chance of rolling a 3 or a 5 - we still have an intuitive feel for our chances. (Here, it is a 2 out of 6 chance, or 2/6). 
+
+Our intuition effectively leads us to "measure out" all of the possible outcomes, then measure out the ones we are interested in, and consider the fraction of the latter against the former. 
+
+% not sure if I should have this section header...
+\subsection{A harder problem}
+
+Let's look at a slightly harder problem. Suppose I now have two dice that I roll simultaneously. I now want to know the probability of rolling at least one 3 among them.
 
 
-\subsection{Meaning of the generating function here}
+\subsection{
+ 
 
 
-\subsection{Further work}
+
+\section{Sets with structure}
+
+A \textbf{set} is simply some collection of things. % more here
+
+Some sets have particularly nice properties. Take the set of all integers $\mathbb{Z}$, for example. It has the obvious, yet curious property that if I take any two integers, (say $a$ and $b$) and I add them together, I get a new number $a + b$ that is also an integer (it is also in $\mathbb{Z}$). 
 
 
 

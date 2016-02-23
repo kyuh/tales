@@ -1,0 +1,198 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage[toc,page]{appendix}
+\usepackage{hyperref}
+\usepackage{amsmath,amsfonts,amssymb,mathrsfs,amsthm}
+\usepackage{multirow}
+\usepackage{placeins}
+\usepackage{subcaption}
+%\usepackage{titlesec}
+
+%\setcounter{secnumdepth}{4}
+
+%\titleformat{\paragraph}
+%{\normalfont\smallsize\bfseries}{\theparagraph}{1em}{}
+%\titlespacing*{\paragraph}
+%{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+\DeclareMathOperator*{\argmin}{arg\,min}  
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+\usepackage{courier}
+
+
+\newcommand*\conj[1]{\overline{#1}}
+\newcommand\floor[1]{\lfloor#1\rfloor}
+\newcommand\ceil[1]{\lceil#1\rceil}
+
+\newcommand\TheSolution{
+  \mbox{}\par\nobreak
+  \noindent
+  \textbf{Solution:}\\
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{case}{Case}
+\newtheorem{lemma}{Lemma}
+
+%\theorempostwork{\setcounter{case}{0}}
+
+\makeatletter
+\@addtoreset{case}{theorem}
+\@addtoreset{case}{lemma}
+\makeatother
+
+% (Don't reset lemmas)
+%\makeatletter
+%\@addtoreset{lemma}{theorem}
+%\makeatother
+
+\setcounter{secnumdepth}{0}
+
+
+\title{ACM 116, Problem Set 2 (Revival)}
+\author{Kevin Yuh}
+
+\begin{document}
+\maketitle
+
+\section{Problem 3 - Solution}
+
+
+
+Recall that we \emph{define} the \textbf{probability generating function} (PGF) as follows: Let $X$ be a discrete random variable, taking value in the nonnegative integers.* Then the PGF is given by 
+
+\begin{align*}
+G(z) = E[z^X] = \sum_{n=0}^{\infty} p(X = n)z^n
+\end{align*}
+
+where $p$ is the probability mass function for $X$. 
+
+For two random variables $X$ and $Y$ defined similarly above, we also define the \textbf{joint probability generating function}
+
+\begin{align*}
+G(s,t) = E[s^X t^Y] = \sum_{m=0}^{\infty} \sum_{n=0}^{\infty} p(X = m, Y = n)s^m t^n
+\end{align*}
+
+
+\subsection{The 1-ant generating function}
+
+Forget about Poisson distributions right now. Let's first just look at one ant. At some point, it will enter the pantry; then at some point, it will enter the sink, and then at some point, it will leave. Let's sum up this behavior with as follows:
+
+\begin{itemize}
+\item Let $p_A(t)$ be the probability that, at time $t$, this ant is in the pantry.
+\item Let $p_B(t)$ be the probability that, at time $t$, this ant is in the sink.
+\item (And then of course, $1 - p_A(t) - p_B(t)$ is the probability that neither of the above are true.)
+\end{itemize}
+
+
+\vspace{10mm}
+
+(As a made-up visual, as $t$ increases, one could imagine $p_A(t)$ rising at first, and then falling as $p_B(t)$ is rising, and then $p_B(t)$ falling.)
+
+Let $A_1(t)$ and $B_1(t)$ be the number of ants in the pantry and sink, respectively. (These are effectively time-dependent random variables.**) So we have, at any given time $t$:
+
+\begin{itemize}
+\item $A_1(t) = 1, B_1(t) = 0$ with probability $p_A(t)$
+\item $A_1(t) = 0, B_1(t) = 1$ with probability $p_B(t)$
+\item $A_1(t) = 0, B_1(t) = 0$ with probability $1 - p_A(t) - p_B(t)$
+\end{itemize}
+
+
+\vspace{10mm}
+
+So, we have a probability generating function of
+
+\begin{align*}
+G_1(x,y) &= E[x^{A_1(t)} y^{B_1(t)}] \\
+&= \sum_{m=0}^{\infty} \sum_{n=0}^{\infty} p(A_1(t) = m, B_1(t) = n)x^m y^n \\
+&= p_A(t) x^1 y^0 + p_B(t) x^0 y^1 + (1 - p_A(t) - p_B(t))x^0 y^0 \\
+&= p_A(t) x + p_B(t) y + (1 - p_A(t) - p_B(t))
+\end{align*}
+
+What have we done here? We simply labeled a bunch of time-dependent probabilities as $p_A(t)$ and $p_B(t)$ for the 1-ant case, and made a generating function for them. Pretty much no fancy concepts or assumptions involved. 
+
+
+\subsection{The $n$-ant generating function}
+
+So let's say we have $n$ ants now. In theory, we want to have a bunch of functions (probability of $k$ ants in the pantry at time $t$, probability of $l$ ants in the sink, etc etc.) that somehow give us meaningful information about the number of ants in the pantry and sink at time $t$. Let $A_n(t)$ and $B_n(t)$ be the time-dependent random variables denoting these respective quantities.
+
+(Note that we are labeling these as $A_n(t)$ and $B_n(t)$ instead of $A(t)$ and $B(t)$, since for each $n$, these are actually different random variables -- they take different values, and with different probabilities. In fact, $A_n(t) = \sum_{i=1}^n A_1(t) = nA_1(t)$, and likewise for $B_n(t)$).
+
+And here's the beauty: as suggested in the previous paragraph, $A_n(t)$ and $B_n(t)$ are simply determined by the sum of what ends up happening to each of the $n$ ants (and each ant will contribute either 0 or 1 to each of these terms, as given by the time-dependent probabilities in the 1-ant scenario). 
+
+Hence, by theorems and thinking about it, the probability generating function $G_n$ for $A_n(t)$ and $B_n(t)$ when we have $n$ ants is simply the product of all of the individual $G_1$s! So
+
+\begin{align*}
+G_n(x,y) &= (G_1(x,y))^n \\
+&= (p_A(t) x + p_B(t) y + (1 - p_A(t) - p_B(t)))^n
+\end{align*}
+
+So what have we done here? If we have $n$ ants under consideration, and want to find $A_n(t)$ and $B_n(t)$, we have the nice generating function $G_n(x,y)$ (which ultimately relies on $G_1$, which ultimately relies on whatever $p_A(t)$ and $p_B(t)$ are for the 1-ant case). 
+
+
+\subsection{Incorporating the Poisson distribution of ant arrivals - Method 1}
+
+So we established a bunch of generating functions $G_n$ given that we have some $n$ ants. In reality, how many ants do we have? Well, $n = N(t)$ is given by a Poisson process of rate $\lambda$, and hence $P(N(t) = n) = \frac{(\lambda)^n}{n!} e^{\lambda}$ \footnote{Important comment on why it's $\frac{(\lambda)^n}{n!} e^{\lambda}$ and not $\frac{(\lambda t)^n}{n!} e^{\lambda t}$: The poisson parameter simply tells us that the expected number of events in any small time interval $dt$ is $\lambda dt$. Also, there's of course no time-dependence here. Basically we have a homogenous Poisson process.}. 
+
+We can finally consider our true generating function, the joint distribution for $A(t)$ and $B(t)$ given that the number $n$ is determined by a Poisson distribution:
+
+\begin{align*}
+G(x,y) &= E[x^{A(t)} y^{B(t)}] \\
+&= \sum_{n=0}^\infty P(N(t) = n) G_n(x, y) \\
+&= \sum_{n=0}^\infty \frac{(\lambda)^n}{n!} e^{\lambda} (p_A(t) x + p_B(t) y + (1 - p_A(t) - p_B(t)))^n \\
+&= e^{\lambda ( (x-1)p_A(t) + (y-1)p_B(t) )}
+\end{align*}
+
+
+\subsection{Incorporating the Poisson distribution of ant arrivals - Method 2***}
+
+We note that $G_n(x,y) = E[x^{A_n(t)} y^{B_n(t)}]$. Another way to think about this is that $G_n$ is the PGF on $A(t)$ and $B(t)$, conditioned on $N(t)$, i.e. $G_n(x,y) = E[x^{A(t)} y^{B(t)} | N(t)]$. 
+
+From the properties of conditional expectation, we have that $E[x^{A(t)} y^{B(t)}] = E[E[x^{A(t)} y^{B(t)} | N(t)]]$. (One way to view the definition of the latter is that the inner term will produce something relying on $N(t)$, or $n$ using our labeling, and the outer expected value is forced to be with respect to $N(t)$.)
+
+So,
+
+\begin{align*}
+G(x,y) &= E[x^{A(t)} y^{B(t)}] \\
+&= E[E[x^{A(t)} y^{B(t)} | N(t)]] \\
+&= E[z^{N(t)}] && \text{where $z = p_A(t) x + p_B(t) y + (1 - p_A(t) - p_B(t))$}\\
+&= e^{\lambda (z-1)} && \text{Generating function for Poisson variable $N$}
+\end{align*}
+
+Substituting for $z$ then gives the correct result.
+
+
+
+$\square$
+
+
+\subsection{Meaning of the generating function here}
+
+
+\subsection{Further work}
+
+
+
+
+
+
+* (Recall that a random variable itself is simply a function $X: \Omega \rightarrow E$, where $\Omega$ is (FILL IN HERE, it's either the probability space or the sample space of a probability space), and $E$ is just some measurable space. FILL IN MORE HERE, but basically here we have that we'll only ever "sample" nonnegative integers from this process (as in e.g. a dice roll). 
+
+** TODO: Justify more rigorously
+
+*** From Piazza
+
+
+\end{document}

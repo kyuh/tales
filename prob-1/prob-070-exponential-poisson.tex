@@ -1,0 +1,124 @@
+\documentclass{article}
+\usepackage[margin=2in]{geometry}
+\usepackage{graphicx}
+\usepackage[toc,page]{appendix}
+\usepackage{hyperref}
+\usepackage{amsmath,amsfonts,amssymb,mathrsfs,amsthm}
+\usepackage{multirow}
+\usepackage{placeins}
+\usepackage{subcaption}
+%\usepackage{titlesec}
+
+%\setcounter{secnumdepth}{4}
+
+%\titleformat{\paragraph}
+%{\normalfont\smallsize\bfseries}{\theparagraph}{1em}{}
+%\titlespacing*{\paragraph}
+%{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+\DeclareMathOperator*{\argmin}{arg\,min}  
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+\usepackage{courier}
+\usepackage[parfill]{parskip}
+
+
+\newcommand*\conj[1]{\overline{#1}}
+\newcommand\floor[1]{\lfloor#1\rfloor}
+\newcommand\ceil[1]{\lceil#1\rceil}
+
+\newcommand\TheSolution{
+  \mbox{}\par\nobreak
+  \noindent
+  \textbf{Solution:}\\
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{case}{Case}
+\newtheorem{lemma}{Lemma}
+\newtheorem{exmp}{Example}
+
+%\theorempostwork{\setcounter{case}{0}}
+
+\makeatletter
+\@addtoreset{case}{theorem}
+\@addtoreset{case}{lemma}
+\makeatother
+
+% (Don't reset lemmas)
+%\makeatletter
+%\@addtoreset{lemma}{theorem}
+%\makeatother
+
+\setcounter{secnumdepth}{0}
+
+
+\title{Tales of Probability, Part 7: Poisson Processes}
+\author{Kevin Yuh}
+
+\begin{document}
+\maketitle
+
+
+% need a better title for this section
+\section{Introduction}
+% subtitle: There's always a chance!
+
+The defining feature of a Poisson process: At any moment, there is always a chance of the event of interest occurring (call it $\lambda$). This $\lambda$ is our expected rate; for any time interval $h$, we expect $\lambda h$ events to occur.
+
+% TODO: Figure out how to indent and space this properly
+\begin{exmp}
+Suppose cars drive past at an average rate of $\lambda = 3 cars/min$. In a time interval of $h = 2 mins$, we expect $\lambda h = 6 cars$ to drive by. 
+\end{exmp}
+
+But let's say we are interested not in the average number of events we see, but the probability of seeing a certain number of them. (For example, what is the chance we see 8 cars?) We intuitively expect the likelihood of seeing way fewer or way more events than the average to be pretty low. But what is the exact function like?
+
+
+% Maybe proceed to derive the definitions, suggest what they are. Then in the formal definitions sections, say we already did 1 -> 2 and 2 -> 3. Then give proofs for lots of other things (explain that not all of these are necessary, but give insight). Some directions have multiple methods of proof that might be interesting. (For example, 1 -> 2 could be slightly tweaked to not use the o(h) notation?)
+
+\section{Definition and Proofs}
+
+\subsection{Preliminary definitions}
+
+\subsection{Defining a Poisson process}
+
+The Poisson process can be defined in any of the following ways.
+
+\begin{enumerate}
+\item 
+\end{enumerate}
+
+
+Definition 1 is perhaps the most "intuitive" physically. 
+
+We show these definitions to be equivalent below. 
+
+
+\section{Interesting results}
+
+% Calculate expected value of Poisson distribution, and discuss how this is intuitively true (the Poisson rate is the average rate). 
+
+\section{Non-time applications}
+% Bring up an example like the distribution that occurs in ACM 116, problem 5-2
+
+
+
+
+
+\end{document}
+
+
+
+% References: (TODO: Format them properly)
+
+% https://www.netlab.tkk.fi/opetus/s383143/kalvot/E_poisson.pdf

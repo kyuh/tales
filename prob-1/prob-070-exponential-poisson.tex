@@ -112,10 +112,16 @@ We will actually first answer another question: What is the distribution of inte
 
 \subsection{Defining a Poisson process}
 
-The Poisson process can be defined in any of the following ways.
+The Poisson process can be defined in any of the following ways:
 
+% from netlab.tkk.fi
 \begin{enumerate}
-\item 
+\item In any small time interval $h$, there will be either 0 or 1 events. The latter occurs with probability $\lambda h$, where $\lambda$ is the average event rate. \footnote{It intuitively makes sense to exclude more than one event happening when the time interval is very small. If we take the occurrence to have the same such probability $\lambda h$ under any circumstance, then they are independent, and the probability of having $n$ events occur in that window (call it $P_n(h)$) is $(\lambda h)^n$. 
+
+Then as $h \rightarrow 0$, we have that $P_n(h) \in o(h)$ if $n > 1$, so it is far too small of a quantity to be meaningful.} 
+\item For $n = 0, 1, 2, ...$, we have $\mathbb{P}[N(t) = n] = \frac{(\lambda t)^n}{n!}e^{-\lambda t}$, where $N(t)$ is the number of arrivals in a given time interval of length $t$. (We call this probability function the Poisson distribution.)
+\item $\mathbb{P}[T > t] = e^{-\lambda t}$, where $T$ is the random variable corresponding to an interarrival time. 
+% clarify #3 better
 \end{enumerate}
 
 

@@ -92,6 +92,8 @@ But can we derive a function that will give us these probabilities?
 
 Just to get some terms straight: For some time interval of length $h$, let $N(h)$ be the random variable corresponding to the number of events we see in that interval. We will ultimately be interested in determining $\mathbb{P}\left[N(h) = n\right]$ for all nonnegative integers $n$. 
 
+If we are considering the number of events between two points in time (say, the time interval $\left(t_1, t_2\right]$), we will denote it $N(t_1, t_2)$. Note that all time intervals will be independent of each other, so this will simply be equal to $N(t_2 - t_1)$. 
+
 The way we will derive it here is a bit long, but hopefully reasonably enlightening. 
 
 In the process, we will actually, answer another question: What is the distribution of interarrival times between my events? In other words, using our example above: Suppose I just saw a car. What is the probability distribution that describes when I will see the next one?
@@ -117,6 +119,87 @@ Then as $h \rightarrow 0$, we have that $P_n(h) \in o(h)$ if $n > 1$, so it is f
 Definition 1 is perhaps the most "intuitive" physically. 
 
 We show these definitions to be equivalent below. Note that technically, we don't need all of the proofs below. (For example, proving $1 \Rightarrow 2$, $2 \Rightarrow 3$, and $3 \Rightarrow 1$ would be sufficient. Proving $3 \Rightarrow 2$, $2 \Rightarrow 1$, and $1 \Rightarrow 3$ would also be sufficient.) 
+
+
+\subsection{Proving $1 \Rightarrow 2$}
+
+% power series are unique, see https://www.math.brown.edu/~pflueger/math1b/Lecture23.pdf
+
+To prove this claim, we will use \textbf{generating functions}. They are essentially a nice way of "hanging coefficients on a clothesline", and allows easy manipulation of lots of related values using the properties of power series (in particular, the fact that series representations of analytic functions are unique - therefore, finding the function means finding all of the correct coefficients).
+% add some references here, maybe have a document on complex analysis and power series? (I sort of started one already)
+
+Here, our generating function will be defined as 
+
+\begin{equation}
+G_t(z) = \sum_{n=0}^\infty \mathbb{P}[N(t) = n] z^n
+\end{equation}
+
+(Note that we'll have a different generating function for every time interval of length $t$.)
+
+Note that, using the very definition of expected value, we can completely validly rewrite the generating function as 
+
+\begin{equation}
+G_t(z) = \mathbb{E}[z^{N(t)}]
+\end{equation}
+
+Equivalently for any values $t_1$ and $t_2$ such that $t_2 - t_1 = t$: \footnote{Remember, this only works because of independence}
+
+\begin{equation}
+G_t(z) = \mathbb{E}[z^{N(t_1, t_2)}]
+\end{equation}
+
+
+Now, suppose I have a very small time interval $h$, and I want to find some information about the probability of arrival in time interval $\left(0, t+h\right]$ \textit{in terms of} that information for the time interval $\left(0, t\right]$. Let's use our generating functions! Using a bit of algebraic manipulation, we see that:
+
+
+% some better explanations needed
+\begin{align*}
+G_{t+h}(z) &= \mathbb{E}[z^{N(0, t+h)}] \\
+&= \mathbb{E}[z^{N(0, t) + N(t, t+h)}] && \text{Intuitively} \\
+&= \mathbb{E}[z^{N(0, t)} z^{N(t, t+h)}] \\
+&= \mathbb{E}[z^{N(0, t)}]  \mathbb{E}[z^{N(t, t+h)}] && \text{Independence} \\
+&= G_t(z) G_h(z)
+\end{align*}
+
+% The above proof would also be a lot shorter just using some standard results.
+
+From statement 1, when $h$ is small, we have $\mathbb{P}[N(h) = 1] = \lambda h$, and $\mathbb{P}[N(h) = 0] = 1 - \lambda h$. 
+
+\begin{equation}
+G_h(z) = (1 - \lambda h) + (\lambda h)z
+\end{equation}
+
+Going back, we then have 
+\begin{align*}
+G_{t+h}(z) &= ((1 - \lambda h) + (\lambda h)z) G_t(z) \\
+&= G_t(z) - \lambda h(1-z) G_t(z)
+\end{align*}
+
+and therefore
+
+\begin{align*}
+\frac{G_{t+h}(z) - G_t(z)}{h} &= \lambda (1-z) G_t(z)
+\end{align*}
+
+and as $h -> 0$, we get the differential equation 
+
+\begin{align*}
+G_t^{\prime}(z) &= \lambda (1-z) G_t(z)
+\end{align*}
+
+Solving this differential equation gives 
+
+\begin{align*}
+G_t(z) &= e^{\lambda(z-1)}
+\end{align*}
+
+% could prove this by starting from the series and show that it evaluates to it, or just derive the coefficients here
+
+
+
+% coefficient calculation: https://en.wikipedia.org/wiki/Power_series#Analytic_functions
+
+
 
 \subsection{Proving $3 \Rightarrow 2$}
 

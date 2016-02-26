@@ -109,15 +109,23 @@ The Poisson process can be defined in any of the following ways:
 
 Then as $h \rightarrow 0$, we have that $P_n(h) \in o(h)$ if $n > 1$, so it is far too small of a quantity to be meaningful.} 
 \item For $n = 0, 1, 2, ...$, we have $\mathbb{P}[N(t) = n] = \frac{(\lambda t)^n}{n!}e^{-\lambda t}$, where $N(t)$ is the number of arrivals in a given time interval of length $t$. (We call this probability function the Poisson distribution.)
-\item $\mathbb{P}[T > t] = e^{-\lambda t}$, where $T$ is the random variable corresponding to an interarrival time. 
+\item $\mathbb{P}[T > t] = e^{-\lambda t}$, where $T$ is the random variable corresponding to an interarrival time. \footnote{Equivalently, $\mathbb{P}[T < t] = 1 - e^{-\lambda t}$. This is a CDF, and the PDF is given by $\frac{d}{dt}(1 - e^{-\lambda t}) = \lambda e^{-\lambda t}$}
 % clarify #3 better
 \end{enumerate}
 
 
 Definition 1 is perhaps the most "intuitive" physically. 
 
-We show these definitions to be equivalent below. Note that technically, we don't need all of the proofs below. (For example, proving $1 \Rightarrow 2$, $2 \Rightarrow 3$, and $3 \Rightarrow 1$ would be sufficient. Proving $3 \Rightarrow 2$, $2 \Rightarrow 1$, and $1 \Rightarrow 3$ would also be sufficient. ) 
+We show these definitions to be equivalent below. Note that technically, we don't need all of the proofs below. (For example, proving $1 \Rightarrow 2$, $2 \Rightarrow 3$, and $3 \Rightarrow 1$ would be sufficient. Proving $3 \Rightarrow 2$, $2 \Rightarrow 1$, and $1 \Rightarrow 3$ would also be sufficient.) 
 
+\subsection{Proving $3 \Rightarrow 2$}
+
+We prove this claim by induction. 
+
+First consider the probability that, in some time interval $\left(0, z\right]$, no events occur.\footnote{Recall that we do not include 0; for a hint at why, see the footnote to Claim 1.} This is equivalent to the probability that, after an event 
+
+TODO
+% needs more rigor
 
 
 

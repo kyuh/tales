@@ -184,16 +184,22 @@ and therefore
 and as $h -> 0$, we get the differential equation 
 
 \begin{align*}
-G_t^{\prime}(z) &= \lambda (1-z) G_t(z)
+\frac{dG_t(z)}{dt} &= \lambda (1-z) G_t(z)
 \end{align*}
+
+% initial values are important here!
 
 Solving this differential equation gives 
 
 \begin{align*}
-G_t(z) &= e^{\lambda(z-1)}
+G_t(z) &= e^{\lambda t (z-1)}
 \end{align*}
 
+% rewrite proof to use t as explicit parameter
+
 % could prove this by starting from the series and show that it evaluates to it, or just derive the coefficients here
+
+So what did we do here? In order to get information about $G_t(z)$, we used a trick to get information about its derivative with respect to time, in order to get a useful differential equation. 
 
 
 

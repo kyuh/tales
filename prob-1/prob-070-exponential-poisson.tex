@@ -154,7 +154,7 @@ Now, suppose I have a very small time interval $h$, and I want to find some info
 
 % some better explanations needed
 \begin{align*}
-G_(t+h,z) &= \mathbb{E}[z^{N(0, t+h)}] \\
+G(t+h,z) &= \mathbb{E}[z^{N(0, t+h)}] \\
 &= \mathbb{E}[z^{N(0, t) + N(t, t+h)}] && \text{Intuitively} \\
 &= \mathbb{E}[z^{N(0, t)} z^{N(t, t+h)}] \\
 &= \mathbb{E}[z^{N(0, t)}]  \mathbb{E}[z^{N(t, t+h)}] && \text{Independence} \\
@@ -202,10 +202,16 @@ G(t,z) &= e^{\lambda t (z-1)}
 
 So what did we do here? In order to get information about $G(t,z)$, we used a trick to get information about its derivative with respect to time, in order to get a useful differential equation. 
 
-
-
 % coefficient calculation: https://en.wikipedia.org/wiki/Power_series#Analytic_functions
+So now what? We figure out the coefficients in the power of series of this function. Note that our original power series setup was centered around $z_0 = 0$. Hence, the coefficient for each $z^n$ term is given by
 
+\begin{align*}
+a_n &= \left.\frac{1}{n!} \frac{d^n G(t, z)}{dz^n}\right\vert_{z=0} \\
+&= \left.\frac{1}{n!} \left((\lambda t)^n e^{\lambda t (z-1)}\right) \right\vert_{z=0} \\
+&= \frac{(\lambda t)^n}{n!}e^{-\lambda t}
+\end{align*}
+
+$\square$
 
 
 \subsection{Proving $3 \Rightarrow 2$}

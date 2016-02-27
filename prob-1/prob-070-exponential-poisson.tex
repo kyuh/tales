@@ -134,18 +134,18 @@ Here, our generating function will be defined as
 G_t(z) = \sum_{n=0}^\infty \mathbb{P}[N(t) = n] z^n
 \end{equation}
 
-(Note that we'll have a different generating function for every time interval of length $t$.)
+Note that we'll have a different generating function for every time interval of length $t$. In fact, we'll write $G(t, z)$ instead of $G_t(z)$; it'll be important later.
 
 Note that, using the very definition of expected value, we can completely validly rewrite the generating function as 
 
 \begin{equation}
-G_t(z) = \mathbb{E}[z^{N(t)}]
+G(t, z) = \mathbb{E}[z^{N(t)}]
 \end{equation}
 
 Equivalently for any values $t_1$ and $t_2$ such that $t_2 - t_1 = t$: \footnote{Remember, this only works because of independence}
 
 \begin{equation}
-G_t(z) = \mathbb{E}[z^{N(t_1, t_2)}]
+G(t, z) = \mathbb{E}[z^{N(t_1, t_2)}]
 \end{equation}
 
 
@@ -154,11 +154,11 @@ Now, suppose I have a very small time interval $h$, and I want to find some info
 
 % some better explanations needed
 \begin{align*}
-G_{t+h}(z) &= \mathbb{E}[z^{N(0, t+h)}] \\
+G_(t+h,z) &= \mathbb{E}[z^{N(0, t+h)}] \\
 &= \mathbb{E}[z^{N(0, t) + N(t, t+h)}] && \text{Intuitively} \\
 &= \mathbb{E}[z^{N(0, t)} z^{N(t, t+h)}] \\
 &= \mathbb{E}[z^{N(0, t)}]  \mathbb{E}[z^{N(t, t+h)}] && \text{Independence} \\
-&= G_t(z) G_h(z)
+&= G(t,z) G(h,z)
 \end{align*}
 
 % The above proof would also be a lot shorter just using some standard results.
@@ -166,40 +166,41 @@ G_{t+h}(z) &= \mathbb{E}[z^{N(0, t+h)}] \\
 From statement 1, when $h$ is small, we have $\mathbb{P}[N(h) = 1] = \lambda h$, and $\mathbb{P}[N(h) = 0] = 1 - \lambda h$. 
 
 \begin{equation}
-G_h(z) = (1 - \lambda h) + (\lambda h)z
+G(h,z) = (1 - \lambda h) + (\lambda h)z
 \end{equation}
 
+% TODO: these parentheses are hard to read, fix
 Going back, we then have 
 \begin{align*}
-G_{t+h}(z) &= ((1 - \lambda h) + (\lambda h)z) G_t(z) \\
-&= G_t(z) - \lambda h(1-z) G_t(z)
+G(t+h,z) &= ((1 - \lambda h) + (\lambda h)z) G_t(z) \\
+&= G(t,z) - \lambda h(1-z) G(t,z)
 \end{align*}
 
 and therefore
 
 \begin{align*}
-\frac{G_{t+h}(z) - G_t(z)}{h} &= \lambda (1-z) G_t(z)
+\frac{G(t+h,z) - G(t,z)}{h} &= \lambda (1-z) G(t,z)
 \end{align*}
 
 and as $h -> 0$, we get the differential equation 
 
 \begin{align*}
-\frac{dG_t(z)}{dt} &= \lambda (1-z) G_t(z)
+\frac{dG(t,z)}{dt} &= \lambda (1-z) G(t,z)
 \end{align*}
 
 % initial values are important here!
 
-Solving this differential equation gives 
+Solving this ODE gives 
 
 \begin{align*}
-G_t(z) &= e^{\lambda t (z-1)}
+G(t,z) &= e^{\lambda t (z-1)}
 \end{align*}
 
 % rewrite proof to use t as explicit parameter
 
 % could prove this by starting from the series and show that it evaluates to it, or just derive the coefficients here
 
-So what did we do here? In order to get information about $G_t(z)$, we used a trick to get information about its derivative with respect to time, in order to get a useful differential equation. 
+So what did we do here? In order to get information about $G(t,z)$, we used a trick to get information about its derivative with respect to time, in order to get a useful differential equation. 
 
 
 

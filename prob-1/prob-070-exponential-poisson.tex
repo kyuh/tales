@@ -142,6 +142,8 @@ Note that, using the very definition of expected value, we can completely validl
 G(t, z) = \mathbb{E}[z^{N(t)}]
 \end{equation}
 
+and importantly for later, the properties of the expected value will apply. 
+
 Equivalently for any values $t_1$ and $t_2$ such that $t_2 - t_1 = t$: \footnote{Remember, this only works because of independence}
 
 \begin{equation}
@@ -182,15 +184,15 @@ and therefore
 \frac{G(t+h,z) - G(t,z)}{h} &= \lambda (1-z) G(t,z)
 \end{align*}
 
-and as $h -> 0$, we get the differential equation 
+and as $h \rightarrow 0$, we get the differential equation 
 
 \begin{align*}
-\frac{dG(t,z)}{dt} &= \lambda (1-z) G(t,z)
+\frac{\partial G(t,z)}{\partial t} &= \lambda (1-z) G(t,z)
 \end{align*}
 
 % initial values are important here!
 
-Solving this ODE gives 
+Solving gives 
 
 \begin{align*}
 G(t,z) &= e^{\lambda t (z-1)}
@@ -206,7 +208,7 @@ So what did we do here? In order to get information about $G(t,z)$, we used a tr
 So now what? We figure out the coefficients in the power of series of this function. Note that our original power series setup was centered around $z_0 = 0$. Hence, the coefficient for each $z^n$ term is given by
 
 \begin{align*}
-a_n &= \left.\frac{1}{n!} \frac{d^n G(t, z)}{dz^n}\right\vert_{z=0} \\
+a_n &= \left.\frac{1}{n!} \frac{\partial^n G(t, z)}{\partial z^n}\right\vert_{z=0} \\
 &= \left.\frac{1}{n!} \left((\lambda t)^n e^{\lambda t (z-1)}\right) \right\vert_{z=0} \\
 &= \frac{(\lambda t)^n}{n!}e^{-\lambda t}
 \end{align*}

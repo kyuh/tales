@@ -1,7 +1,7 @@
 % old-style writing from months/years ago
 
 \documentclass{article}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1.5in]{geometry}
 \usepackage{graphicx}
 \usepackage[toc,page]{appendix}
 \usepackage{hyperref}
@@ -24,6 +24,7 @@
 
 \usepackage{listings}
 \usepackage{courier}
+\usepackage[parfill]{parskip}
 
 
 \newcommand*\conj[1]{\overline{#1}}
@@ -141,7 +142,7 @@ Why this function is non-differentiable is visually difficult to see on a graph 
 
 \section{The Cauchy-Riemann Equations}
 
-Let's try to generalize our example a bit more. Suppose we have the complex function $f: \mathbb{C} \rightarrow \mathbb{C}$. If we approach along the real axis, we require that $f'(z_0)$ be equivalent to
+Let's try to generalize what actually \textit{does} make a complex function differentiable. Suppose we have the complex function $f: \mathbb{C} \rightarrow \mathbb{C}$. If we approach along the real axis, we require that $f'(z_0)$ be equivalent to
 
 
 \begin{equation}

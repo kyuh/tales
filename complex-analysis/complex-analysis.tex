@@ -1,0 +1,271 @@
+% old-style writing from months/years ago
+
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage[toc,page]{appendix}
+\usepackage{hyperref}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{multirow}
+\usepackage{placeins}
+\usepackage{subcaption}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+\DeclareMathOperator*{\argmin}{arg\,min}  
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+\usepackage{courier}
+
+
+\newcommand*\conj[1]{\overline{#1}}
+
+
+% "tales of the imaginary"
+\title{Complex Analysis}
+\author{Kevin Yuh}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+
+\section{Complex Numbers: A vector space with unusual multiplication}
+
+\section{Plotting complex numbers visually, why it makes sense...}
+
+\section{Differentiability}
+
+
+We say that a function $f: \mathbb{C} \rightarrow \mathbb{C}$ is differentiable at $z_0$ if the following limit exists:
+
+\begin{equation}
+\lim_{z \to z_0}\frac{f(z)-f(z_0)}{z-z_0}
+\end{equation}
+
+At first glance, this looks a lot like the definition of differentiability for an ordinary, real-valued function $f: \mathbb{R} \rightarrow \mathbb{R}$. But this derivative (and in fact, this limit itself) is deceptive, and is in fact much closer to the 2-dimensional realization of a limit. In the 1-dimensional real-line limit $L = \lim_{x \to x_0}g(x)$, we can only approach $x_0$ in two directions - from the left and from the right. But with a a complex-number limit (as with a multi-dimensional limit), we can approach in a multitude of directions - and we must make sure that each path of approach converges to the same value. (Otherwise the limit doesn't exist!)
+
+As an example, consider the function $f(z) = \conj{z}$ at any point $z_0$. 
+\begin{itemize}
+	\item First, let's approach $z_0$ from the real axis. Then our approach path will be $z = z_0 + h$, $h \in \mathbb{R}$, as $h \rightarrow 0$. Then, our derivative $f'(z_0)$, given by (the equation above, repeated here for reference),
+	%% Read how to reference equations...
+	
+\begin{equation}
+\lim_{z \to z_0}\frac{f(z)-f(z_0)}{z-z_0}
+\end{equation}
+
+
+must, by necessity, be equal to the "real-valued" limit
+% Put a footnote here or something
+% "By real-valued limit, the limiting parameter is real. (i.e. h)
+
+%% MAYBE FIXED
+% This statement isn't "quite correct" because we're showing the limit doesn't really exist.
+% Something like "if this limit were to exist, then it would have to be equivalent to (the real valued limit). (And then this is true for the next section.) But the two real-valued limits are different, so contradiction, the complex limit cannot exist.
+% Note that this is now a *real-valued* limit, using the *real-valued* definition. Note this somewhere.
+\begin{equation}
+= \lim_{h \to 0}\frac{f(z_0 + h)-f(z_0)}{h}
+\end{equation}
+
+% This looks stupid.
+\begin{equation}
+= \lim_{h \to 0}\frac{\conj{z_0 + h}-\conj{z_0}}{h}
+\end{equation}
+
+\begin{equation}
+= \lim_{h \to 0}\frac{\conj{h}}{h}
+\end{equation}
+
+\begin{equation}
+= \lim_{h \to 0}\frac{h}{h}
+\end{equation}
+
+\begin{equation}
+= 1
+\end{equation}
+
+
+	\item Now, let's approach $z_0$ from the imaginary axis. Now, our approach path is $z = z_0 + ih$, $h \in \mathbb{R}$, as $h \rightarrow 0$. Then, the same $f'(z_0)$ must, by necessity, be equivalent to the real limit
+
+%% MAYBE FIXED
+% This statement isn't "quite correct" because we're showing the limit doesn't really exist.
+% Note that this is now a *real-valued* limit, using the *real-valued* definition. Note this somewhere.
+% (See my notes above for the similar section.)
+\begin{equation}
+= \lim_{h \to 0}\frac{f(z_0 + ih)-f(z_0)}{ih}
+\end{equation}
+
+\begin{equation}
+= \lim_{h \to 0}\frac{f(z_0 + ih)-f(z_0)}{ih}
+\end{equation}
+
+\begin{equation}
+= \lim_{h \to 0}\frac{\conj{z_0 + ih}-\conj{z_0}}{ih}
+\end{equation}
+
+\begin{equation}
+= \lim_{h \to 0}\frac{\conj{ih}}{ih}
+\end{equation}
+
+\begin{equation}
+= \lim_{h \to 0}\frac{-ih}{ih}
+\end{equation}
+
+\begin{equation}
+= -1
+\end{equation}
+
+% Just to rub it in, try another example with a weirdly oblique line or something.
+
+
+
+\end{itemize}
+
+The two approach paths result in two different "limiting values", and hence the complex limit doesn't exist. Therefore, $f(z) = \conj{z}$ is not differentiable anywhere!
+
+
+Why this function is non-differentiable is visually difficult to see on a graph (unlike the real case, where we can say "it looks smooth"). 
+%% (One way to see this is blah blah.)
+
+
+\section{The Cauchy-Riemann Equations}
+
+Let's try to generalize our example a bit more. Suppose we have the complex function $f: \mathbb{C} \rightarrow \mathbb{C}$. If we approach along the real axis, we require that $f'(z_0)$ be equivalent to
+
+
+\begin{equation}
+= \lim_{h \to 0}\frac{f(z_0 + h)-f(z_0)}{h}
+\end{equation}
+
+
+
+
+
+A preliminary fact: for a complex function $f: \mathbb{C} \rightarrow \mathbb{C}$, with $w = f(z)$, we can write $z = x + iy$, where $x, y \in \mathbb{R}$. In other words, we can consider z in terms of a separate real and imaginary portion. 
+
+% Prove that can always do these rearrangements?
+
+Likewise, we can do the same for the function that gives us our "output": write $w = \tilde{u}(z) + i\tilde{v}(z)$, with $\tilde{u}, \tilde{v}: \mathbb{C} \rightarrow \mathbb{R}$. Even further, we can take a slight re-definition of $\tilde{u}$ and $\tilde{v}$ using our first fact, and instead write $w = u(x,y) + iv(x,y)$, with $u, v: \mathbb{R}^2 \rightarrow \mathbb{R}$. With this definition, $u$ and $v$ map 2-dimensional real space to the real numbers, which will come in handy later.
+
+We'll generalize our example above. Let's approach along the real line. If $f$ is differentiable at $z_0 = x_0 + iy_0$, then $f'(z_0)$ exists, and is equal to the real limit
+
+\begin{equation}
+\lim_{h \to 0}\frac{f(z_0 + h)-f(z_0)}{h}
+\end{equation}
+
+\begin{equation}
+= \lim_{h \to 0}\frac{\tilde{u}(z_0 + h) + i\tilde{v}(z_0 + h) - \tilde{u}(z_0) - i\tilde{v}(z_0)}{h}
+\end{equation}
+
+\begin{equation}
+= \lim_{h \to 0}\frac{u(x_0 + h, y_0) + iv(x_0 + h, y_0) - u(x_0, y_0) - iv(x_0, y_0)}{h}
+\end{equation}
+
+\begin{equation}
+= \lim_{h \to 0}\frac{u(x_0+h, y_0) - u(x_0)}{h} + i\lim_{h \to 0}\frac{v(x_0+h, y_0)-v(x_0, y_0)}{h}
+\end{equation}
+
+% Should probably prove a previous lemma that if f is differentiable in complex, then u and v must be differentiable as real functions
+
+Then these limits must exist, and simply give
+
+\begin{equation}
+\label{eq:deriv_f_real_line}
+f'(z_0) = \frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x}
+\end{equation}
+
+
+Likewise, if we approach on the imaginary line, we see that $f'(z_0)$ must also equal the real limit
+
+\begin{equation}
+\lim_{h \to 0}\frac{f(z_0 + ih)-f(z_0)}{ih}
+\end{equation}
+
+
+\begin{equation}
+= \lim_{h \to 0}\frac{\tilde{u}(z_0 + ih) + i\tilde{v}(z_0 + ih) - \tilde{u}(z_0) - i\tilde{v}(z_0)}{ih}
+\end{equation}
+
+
+\begin{equation}
+= \lim_{h \to 0}\frac{u(x_0, y_0 + h) + iv(x_0, y_0 + h) - u(x_0, y_0) - iv(x_0, y_0)}{ih}
+\end{equation}
+
+
+\begin{equation}
+= \lim_{h \to 0}\frac{u(x_0, y_0+h) - u(x_0)}{ih} + i\lim_{h \to 0}\frac{v(x_0, y_0+h)-v(x_0, y_0)}{ih}
+\end{equation}
+
+
+\begin{equation}
+= -i\lim_{h \to 0}\frac{u(x_0, y_0+h) - u(x_0)}{h} + \lim_{h \to 0}\frac{v(x_0, y_0+h)-v(x_0, y_0)}{h}
+\end{equation}
+
+
+Then these limits must exist, and simply give
+
+\begin{equation}
+\label{eq:deriv_f_im_line}
+f'(z_0) = -i\frac{\partial u}{\partial y} + \frac{\partial v}{\partial y}
+\end{equation}
+
+Equating the two expressions \eqref{eq:deriv_f_real_line} and \eqref{eq:deriv_f_im_line} for $f'(z_0)$ then gives
+
+% Do we really need this part?
+\begin{equation}
+\frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x} = -i\frac{\partial u}{\partial y} + \frac{\partial v}{\partial y}
+\end{equation}
+
+and hence,
+
+\begin{equation}
+\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}
+\end{equation}
+
+\begin{equation}
+\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}
+\end{equation}
+
+These are known as the Cauchy-Riemann equations. % Insert more stuff here
+
+% Give some intuition
+
+\subsection{Conformal Mapping - Intuition}
+
+% Lead up with how complex numbers are vectors with the weird multiplication rule
+
+We hinted earlier at the fact that complex numbers form a vector space with a "weird" multiplication rule. Using our previous ... $w = f(z_0)$, we could write, in "vector" form:
+
+\[ \left( \begin{array}{ccc}
+a & b & c \\
+d & e & f \\
+g & h & i \end{array} \right)\] 
+
+
+\[ \left( \begin{array}{ccc}
+a & b & c \\
+d & e & f \\
+g & h & i \end{array} \right)\] \begin{equation} = 3 \end{equation}
+
+
+
+\newpage
+\begin{thebibliography}{1}
+
+\bibitem{ref:capacity} Clearpoint Strategy. ``Occupancy Rates of Public Parking Facilities''. 2014. \\ \url{https://app.clearpointstrategy.com/publish/direct.cfm?linkID=Goal5&view=drill&scorecardID=683&object=measure&objectID=76201}
+
+\bibitem{ref:management} Kittelson \& Associates, Inc. ``Fundamental Principles for Parking Management''. December, 2008. \\ \url{https://www.mwcog.org/transportation/activities/tlc/pdf/DDOT-report.pdf}
+
+\end{thebibliography}
+
+
+\end{document}

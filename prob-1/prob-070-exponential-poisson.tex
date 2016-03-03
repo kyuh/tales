@@ -96,7 +96,7 @@ If we are considering the number of events between two points in time (say, the 
 
 The way we will derive it here is a bit long, but hopefully reasonably enlightening. 
 
-In the process, we will actually, answer another question: What is the distribution of interarrival times between my events? In other words, using our example above: Suppose I just saw a car. What is the probability distribution that describes when I will see the next one?
+(In the process, we will actually, answer another question: What is the distribution of interarrival times between my events? In other words, using our example above: Suppose I just saw a car. What is the probability distribution that describes when I will see the next one?)
 
 
 \section{Definition and Proofs}
@@ -108,6 +108,7 @@ The Poisson process can be defined in any of the following ways:
 % from netlab.tkk.fi
 \begin{enumerate}
 \item In any small time interval $h$, there will be either 0 or 1 events. The latter occurs with probability $\lambda h$, where $\lambda$ is the average event rate. \footnote{It intuitively makes sense to exclude more than one event happening when the time interval is very small. If we take the occurrence to have the same such probability $\lambda h$ under any circumstance, then they are independent, and the probability of having $n$ events occur in that window (call it $P_n(h)$) is $(\lambda h)^n$. 
+% TODO: Explain in footnote how this is o(h)
 
 Then as $h \rightarrow 0$, we have that $P_n(h) \in o(h)$ if $n > 1$, so it is far too small of a quantity to be meaningful.} 
 \item For $n = 0, 1, 2, ...$, we have $\mathbb{P}[N(t) = n] = \frac{(\lambda t)^n}{n!}e^{-\lambda t}$, where $N(t)$ is the number of arrivals in a given time interval of length $t$. (We call this probability function the Poisson distribution.)
@@ -208,6 +209,7 @@ G(t,z) &= e^{\lambda t (z-1)}
 So what did we do here? In order to get information about $G(t,z)$, we used a trick to get information about its derivative with respect to time, in order to get a useful differential equation. 
 
 % coefficient calculation: https://en.wikipedia.org/wiki/Power_series#Analytic_functions
+% TODO: Could go into more detail about why G(t,z) being analytic is important here?
 So now what? We figure out the coefficients in the power of series of this function. Note that our original power series setup was centered around $z_0 = 0$. Hence, the coefficient for each $z^n$ term is given by
 
 \begin{align*}

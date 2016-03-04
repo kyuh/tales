@@ -169,7 +169,7 @@ G(t+h,z) &= \mathbb{E}[z^{N(0, t+h)}] \\
 
 % The above proof would also be a lot shorter just using some standard results.
 
-From statement 1, when $h$ is small, we have $\mathbb{P}[N(h) = 1] = \lambda h$, and $\mathbb{P}[N(h) = 0] = 1 - \lambda h$. 
+From statement 1, when $h$ is small, we have $\mathbb{P}[N(h) = 1] = \lambda h$, and $\mathbb{P}[N(h) = 0] = 1 - \lambda h$. Therefore, 
 
 \begin{equation}
 G(h,z) = (1 - \lambda h) + (\lambda h)z
@@ -178,7 +178,7 @@ G(h,z) = (1 - \lambda h) + (\lambda h)z
 % TODO: these parentheses are hard to read, fix
 Going back, we then have 
 \begin{align*}
-G(t+h,z) &= ((1 - \lambda h) + (\lambda h)z) G_t(z) \\
+G(t+h,z) &= ((1 - \lambda h) + (\lambda h)z) G(t,z) \\
 &= G(t,z) - \lambda h(1-z) G(t,z)
 \end{align*}
 

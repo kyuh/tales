@@ -215,7 +215,7 @@ Does this sum look familiar? Hopefully it does, from the last chapter!\footnote{
 \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}
 \end{align*}
 
-That now being known, let's continue with our previous work!
+That now being known, let's continue with our previous work:
 
 
 \begin{align*}
@@ -224,6 +224,25 @@ E_n &= \frac{1}{n^3} \sum_{i=1}^n i^2 \\
 &= \frac{1}{n^3} \left( \frac{n^3}{3} + \frac{n^2}{2} + \frac{n}{6} \right) \\
 &= \frac{1}{3} + \frac{1}{2n} + \frac{1}{6n^2}
 \end{align*}
+
+So what have we done here? We've generalized our previous examples - we now know that, if we use $n$ rectangles to estimate the area of our weird, curvy shape, this is the answer we'll get.
+
+
+\section{What happens at infinity?}
+
+Let's just restate and admire our handiwork again, shall we?
+
+% TODO: might want to separate out the 1/n and 1/n^2 parts as separate factors in above and below work
+
+\begin{align*}
+E_n &= \frac{1}{3} + \frac{1}{2n} + \frac{1}{6n^2}
+\end{align*}
+
+Let's look at the quantity $1/n$ for a moment. As $n$ gets bigger, $1/n$ gets smaller. In fact, we can make $1/n$ as small (i.e. as close to 0) as we would like, simply by making $n$ big enough! \footnote{More rigorously, I can choose any small number $\epsilon$, and no matter what I choose, I can always make $1/n$ smaller than $\epsilon$ as long as $n$ is big enough. (In fact, I specifically need to have $n > 1/\epsilon$.)}
+
+% SCRAP: (in fact, 1/n^2 goes to 0 even "faster" than 1/n)
+
+
 
 
 % TODO: After limiting process, acknowledge how a lot of the terms are canceled out? (Just for peace of mind for the reader, it's good to acknowledge what they might be explicitly or implicitly thinking)

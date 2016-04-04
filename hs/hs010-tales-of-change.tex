@@ -209,16 +209,27 @@ E_n &= R_1 + R_2 + ... + R_n \\
 &= \frac{b}{n^2} \sum_{i=1}^n i^2 \\
 \end{align*}
 
-Does this sum look familiar? Hopefully it does, from the last chapter!\footnote{If you haven't yet read the last chapter, just believe it for now.} Recall how we found and proved, using induction, that $\sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}$
+Does this sum look familiar? Hopefully it does, from the last chapter!\footnote{If you haven't yet read the last chapter, just believe it for now.} Recall how we found and proved, using induction, that 
+
+\begin{align*}
+\sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}
+\end{align*}
+
+That now being known, let's continue with our previous work!
 
 
+\begin{align*}
+E_n &= \frac{b}{n^2} \sum_{i=1}^n i^2 \\
+&= \frac{b}{n^2} \frac{n(n+1)(2n+1)}{6} \\
+&= \frac{b}{n^2} \left( \frac{n^3}{3} + \frac{n^2}{2} + \frac{n}{6} \right)
+\end{align*}
 
 
-
-
+% TODO: After limiting process, acknowledge how a lot of the terms are canceled out? (Just for peace of mind for the reader, it's good to acknowledge what they might be explicitly or implicitly thinking)
 
 
 % TODO: Exercise for way later: Riemann sum on shape with f(x) = x^3, will rely on another thing proved in previous chapter.
+
 
 
 %%%%%% Below is the old stuff

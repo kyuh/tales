@@ -231,7 +231,9 @@ E_n &= \frac{1}{n^3} \sum_{i=1}^n i^2 \\
 
 So what have we done here? We've generalized our previous examples - we now know that, if we use $n$ rectangles to estimate the area of our weird, curvy shape, this is the answer we'll get.
 
-% TODO: Exercise: Do a quick check of our formula by checking that we get $E_2$ and $E_4$ again (i.e. the answers from our previous examples) by substituting 2 and 4 for n, respectively. 
+\begin{exercise}
+Do a quick check of our formula by making sure that we get $E_2$ and $E_4$ again (i.e. the answers from our previous examples) by substituting 2 and 4 for n, respectively.
+\end{exercise}
 
 
 \section{What happens at infinity?}
@@ -273,7 +275,23 @@ This is the answer! After all that work and a few jumps, the area of this shape 
 
 % TODO: Insert the shape again
 
+\begin{exercise}
+We mentioned earlier that the area of a right triangle with side lengths $a$ and $b$ (not including the hypotenuse) is $\frac{1}{2}ab$. (Then if both sides had the same length - call it $c$ - then the triangle's area would be $\frac{1}{2}c^2$.)
 
+Let's try to verify it using the same "rectangle-approximation" method that we used above (see the figure below for what this looks like). The differences now are that:
+
+\begin{itemize}
+\item The function on the upper side of our "shape" is now $f(x) = x$.
+\item Instead of the bottom of the shape going from $x = 0$ to $x = 1$, it goes to $x = c$, where $c$ is the length of the triangle's bottom edge.
+\end{itemize}
+
+(First, convince yourself that the right side edge must be of length $c$.)
+
+Obtain a rectangle-sum approximation for $n$ rectangles, like we did earlier, and use it to verify that the area of the triangle is indeed $\frac{1}{2}c^2$.
+
+\end{exercise}
+
+% TODO: Insert exercise figure (bounded between [0, c] by x-axis below, and f(x) = x above)
 
 
 

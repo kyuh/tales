@@ -178,6 +178,36 @@ This is better! We seem to have shaved off a lot of the error (i.e. the area out
 
 % TODO: As an optional exercise, ask them to estimate with 8 rectangles.
 
+\section{Generalizing the approximation}
+
+Let's go even further - instead of asking what happens with 2, 4, or 8 rectangles specifically, let's find our estimated area when we use any number of rectangles (call this number $n$). 
+
+Our estimate will ultimately be a sum of the areas $R_1$, $R_2$, ..., all the way through $R_n$. Each of them will now have a base of length $1/n$. 
+
+Let's consider each particular rectangle's height. The 1st rectangle will now have height $f(1/n)$, the 2nd will have $f(2/n)$, all the way through the last ($n$-th) rectangle, which will have height $f(n/n)$, i.e. $f(1)$. More generally, the $i$-th rectangle will have height $f(i/n)$. 
+
+% TODO: The above might need more explaining, and probably needs more retroactive "oh yeah" realizations inserted in.
+
+% SCRAP: We saw in our previous examples that the height of each rectangle is given by its relative position in the interval  
+
+Why do we care so much about a particular label $i$? Well, now we can easily use our sum notation from the previous chapter! 
+
+(To make things easier for later, we'll use another variable - let $E_n$ be the area of our total estimate using $n$ rectangles. Using this notation, we note that in the previous examples, we calculated $E_2$ and $E_4$, and $E_8$ in the homework problem.)
+
+Let's write down our area estimate: \footnote{A brief exercise: Think about why each step works, especially with regard to the properties we found in the previous chapter.}
+
+% TODO: Split this up and philosophize about it a bit.
+
+\begin{align*}
+E_n &= R_1 + R_2 + ... + R_n \\
+&= \sum_{i=1}^n R_i \\
+&= \sum_{i=1}^n b h_i \\
+&= b \sum_{i=1}^n h_i \\
+&= b \sum_{i=1}^n f(\frac{i}{n}) \\
+&= b \sum_{i=1}^n \left(\frac{i}{n}\right)^2 \\
+&= b \sum_{i=1}^n \frac{i^2}{n^2} \\
+&= \frac{b}{n^2} \sum_{i=1}^n i^2 \\
+\end{align*}
 
 
 
@@ -188,10 +218,7 @@ This is better! We seem to have shaved off a lot of the error (i.e. the area out
 
 
 
-
-
-
-
+% TODO: Exercise for way later: Riemann sum on shape with f(x) = x^3, will rely on another thing proved in previous chapter.
 
 
 %%%%%% Below is the old stuff

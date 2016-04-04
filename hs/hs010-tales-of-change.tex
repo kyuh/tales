@@ -227,6 +227,8 @@ E_n &= \frac{1}{n^3} \sum_{i=1}^n i^2 \\
 
 So what have we done here? We've generalized our previous examples - we now know that, if we use $n$ rectangles to estimate the area of our weird, curvy shape, this is the answer we'll get.
 
+% TODO: Exercise: Do a quick check of our formula by checking that we get $E_2$ and $E_4$ again (i.e. the answers from our previous examples) by substituting 2 and 4 for n, respectively. 
+
 
 \section{What happens at infinity?}
 
@@ -238,11 +240,35 @@ Let's just restate and admire our handiwork again, shall we?
 E_n &= \frac{1}{3} + \frac{1}{2n} + \frac{1}{6n^2}
 \end{align*}
 
-Let's look at the quantity $1/n$ for a moment. As $n$ gets bigger, $1/n$ gets smaller. In fact, we can make $1/n$ as small (i.e. as close to 0) as we would like, simply by making $n$ big enough! \footnote{More rigorously, I can choose any small number $\epsilon$, and no matter what I choose, I can always make $1/n$ smaller than $\epsilon$ as long as $n$ is big enough. (In fact, I specifically need to have $n > 1/\epsilon$.)}
+Let's look at the quantity $1/n$ for a moment. As $n$ gets bigger, $1/n$ gets smaller. (You can pretty easily see this for yourself, e.g. $4 > 2$, and hence $1/2 < 1/4$.) 
+
+In fact, we can make $1/n$ as small (i.e. as close to 0) as we would like, simply by making $n$ big enough!\footnote{More rigorously, I can choose any small number $\epsilon$, and no matter what I choose, I can always make $1/n$ smaller than $\epsilon$ as long as $n$ is big enough. (In fact, I specifically need to have $n > 1/\epsilon$.)} Intuitively, this seems to hold true - $1/10^8 = 0.00000001$ is a pretty small number, for example.
+
+We often call the existence of such a phenomenon a \textbf{limit}. Here, we would say that the limit of $1/n$, as $n$ approaches infinity, is 0. 
+
+We can actually say the same thing about $1/n^2$ - we can make $1/n^2$ as small as we like by making $n$ big enough.\footnote{In fact, it "approaches" 0 even faster than 1/n - check it out!} Therefore, we'd also say that the limit of $1/n^2$ is 0 as $n$ approaches infinity.
+
+Why is this important?
+
+% TODO: Insert the shape again, for emphatic effect, and probably the Riemann sum too. (Maybe the Riemann sum figure -> pointing to -> the shape figure.)
+
+Remember, $n$ is the number of rectangles we want to use to estimate the area. Intuitively, we'd want to say that if we were allowed to use "infinity" rectangles, then we would get a "perfect approximation" to the area of our weird shape - in other words, we'd have the exact answer. 
+
+So, here's the beauty: Let's do exactly that! As $n$ goes to infinity, $1/n$ and $1/n^2$ go to 0. 
+
+
+
+
+\begin{align*}
+E_n &= \frac{1}{3} + \frac{1}{2n} + \frac{1}{6n^2}
+\end{align*}
+
+
+
 
 % SCRAP: (in fact, 1/n^2 goes to 0 even "faster" than 1/n)
 
-
+% TODO: Give actual delta-epsilon/N-epsilon problems?
 
 
 % TODO: After limiting process, acknowledge how a lot of the terms are canceled out? (Just for peace of mind for the reader, it's good to acknowledge what they might be explicitly or implicitly thinking)

@@ -150,7 +150,7 @@ Then,
 &= b h_1 + b h_2 \\
 &= b (h_1 + h_2) \\
 &= \frac{1}{2} \left( \frac{1}{4} + 1 \right) \\
-&= \frac{5}{8}
+&= \frac{5}{8} = 0.625
 \end{align*}
 
 Cool, we estimated the area of our shape! It's not a very good estimate - there is a lot of "stuff" in the rectangles that isn't in the shape itself.
@@ -167,10 +167,16 @@ Then,
 \text{Better area estimate} &= R_1 + R_2 + R_3 + R_4 \\
 &= b h_1 + b h_2 + b h_3 + b h_4 \\
 &= b (h_1 + h_2 + h_3 + h_4) \\
-&= \frac{1}{4} \left( f(1/4) + f(2/4) + f(3/4) + f(4/4) \right) \\
-&= \frac{5}{8}
+&= \frac{1}{4} \left( f(\frac{1}{4}) + f(\frac{2}{4}) + f(\frac{3}{4}) + f(\frac{4}{4}) \right) \\
+&= \frac{1}{4} \left( \frac{1}{16} + \frac{4}{16} + \frac{9}{16} + \frac{16}{16} \right) \\
+&= \frac{15}{32} = 0.46875
 \end{align*}
 
+% TODO: Some footnote about leaving fractions unsimplified?
+
+This is better! We seem to have shaved off a lot of the error (i.e. the area outside of the original shape) in our estimate. 
+
+% TODO: As an optional exercise, ask them to estimate with 8 rectangles.
 
 
 

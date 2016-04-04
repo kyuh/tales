@@ -59,6 +59,7 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{case}{Case}
 \newtheorem{lemma}{Lemma}
+\newtheorem{exercise}{\\ \bf Exercise}
 
 %\theorempostwork{\setcounter{case}{0}}
 
@@ -176,11 +177,14 @@ Then,
 
 This is better! We seem to have shaved off a lot of the error (i.e. the area outside of the original shape) in our estimate. 
 
-% TODO: As an optional exercise, ask them to estimate with 8 rectangles.
+\begin{exercise}
+Perform similar area estimates as above, using 6 rectangles.
+\end{exercise}
+
 
 \section{Generalizing the approximation}
 
-Let's go even further - instead of asking what happens with 2, 4, or 8 rectangles specifically, let's find our estimated area when we use any number of rectangles (call this number $n$). 
+Let's go even further - instead of asking what happens with 2, 4, or 6 rectangles specifically, let's find our estimated area when we use any number of rectangles (call this number $n$). 
 
 Our estimate will ultimately be a sum of the areas $R_1$, $R_2$, ..., all the way through $R_n$. Each of them will now have a base of length $1/n$. 
 
@@ -192,7 +196,7 @@ Let's consider each particular rectangle's height. The 1st rectangle will now ha
 
 Why do we care so much about a particular label $i$? Well, now we can easily use our sum notation from the previous chapter! 
 
-(To make things easier for later, we'll use another variable - let $E_n$ be the area of our total estimate using $n$ rectangles. Using this notation, we note that in the previous examples, we calculated $E_2$ and $E_4$, and $E_8$ in the homework problem.)
+(To make things easier for later, we'll use another variable - let $E_n$ be the area of our total estimate using $n$ rectangles. Using this notation, we note that in the previous examples, we calculated $E_2$ and $E_4$, and $E_6$ in the homework problem.)
 
 Let's write down our area estimate: \footnote{A brief exercise: Think about why each step works, especially with regard to the properties we found in the previous chapter.}
 

@@ -117,13 +117,37 @@ What about the area of a triangle? Suppose for now it is a right triangle\footno
 
 How could we have figured this out from our previous information? Consider that, if I made a copy of the triangle, and flipped it around and placed it as in the figure below,  I would have the same rectangle that I had previously! Therefore, a triangle of this form is quite literally "half" of our old rectangle, and the area is halved accordingly.
 
+% TODO: Possibly explain areas of parallelogram, non-right triangle, circle
 
 
+\section{Approximating new areas}
+
+So let's return to the question we had at the beginning.
+
+We form a strange "shape", colored in the figure below. The bottom and right edges are straight lines, but part of our shape's edge is a \textit{curve} formed by the function $f(x) = x^2$. What is our "shape"'s area?
+
+% TODO: Insert title figure
 
 
+Let's say I didn't actually care about the exact answer - I just wanted an approximation. We can use the shapes that we know! Suppose we lined up a bunch of rectangles, as in the figure below. If we add up the area of all of those rectangles, we wouldn't have the exact area we're looking for - but we'd be pretty close!
+
+% TODO: Insert Riemann sum figure
 
 
+What if we used a different number of rectangles to estimate our area? From the figure below, you can guess what happens. As we jam more and more rectangles around our shape, it looks as though, if we were to add up the area of those rectangles, we'd get a closer and closer estimate of the area of our shape!
 
+% TODO: Insert figure with progressively better Riemann approximations (2, 4, 8, 32)
+
+Let's actually try it. First, let's start with using two rectangles, like in the first figure above. Each rectangle has a "base" of length $1/2$. The first rectangle has a height of $f(1/2) = (1/2)^2 = 1/4$, while the second rectangle has a height of $f(1) = 1^2 = 1$. 
+
+Let's start making up some variable names.
+
+Therefore, 
+
+\begin{align*}
+\text{Area estimate} &= \text{Area of rectangle 1} + \text{Area of rectangle 2} \\
+&= 
+\end{align*}
 
 
 

@@ -203,10 +203,10 @@ E_n &= R_1 + R_2 + ... + R_n \\
 &= \sum_{i=1}^n R_i \\
 &= \sum_{i=1}^n b h_i \\
 &= b \sum_{i=1}^n h_i \\
-&= b \sum_{i=1}^n f(\frac{i}{n}) \\
-&= b \sum_{i=1}^n \left(\frac{i}{n}\right)^2 \\
-&= b \sum_{i=1}^n \frac{i^2}{n^2} \\
-&= \frac{b}{n^2} \sum_{i=1}^n i^2 \\
+&= \frac{1}{n} \sum_{i=1}^n f(\frac{i}{n}) \\
+&= \frac{1}{n} \sum_{i=1}^n \left(\frac{i}{n}\right)^2 \\
+&= \frac{1}{n} \sum_{i=1}^n \frac{i^2}{n^2} \\
+&= \frac{1}{n^3} \sum_{i=1}^n i^2 \\
 \end{align*}
 
 Does this sum look familiar? Hopefully it does, from the last chapter!\footnote{If you haven't yet read the last chapter, just believe it for now.} Recall how we found and proved, using induction, that 
@@ -219,13 +219,16 @@ That now being known, let's continue with our previous work!
 
 
 \begin{align*}
-E_n &= \frac{b}{n^2} \sum_{i=1}^n i^2 \\
-&= \frac{b}{n^2} \frac{n(n+1)(2n+1)}{6} \\
-&= \frac{b}{n^2} \left( \frac{n^3}{3} + \frac{n^2}{2} + \frac{n}{6} \right)
+E_n &= \frac{1}{n^3} \sum_{i=1}^n i^2 \\
+&= \frac{1}{n^3} \frac{n(n+1)(2n+1)}{6} \\
+&= \frac{1}{n^3} \left( \frac{n^3}{3} + \frac{n^2}{2} + \frac{n}{6} \right) \\
+&= \frac{1}{3} + \frac{1}{2n} + \frac{1}{6n^2}
 \end{align*}
 
 
 % TODO: After limiting process, acknowledge how a lot of the terms are canceled out? (Just for peace of mind for the reader, it's good to acknowledge what they might be explicitly or implicitly thinking)
+
+% TODO: Later, when you (or the reader, when doing it as a problem) does Riemann sum for non-0 and 1 bounds, don't use a and b - we've already used b too much.
 
 
 % TODO: Exercise for way later: Riemann sum on shape with f(x) = x^3, will rely on another thing proved in previous chapter.

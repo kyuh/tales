@@ -140,14 +140,16 @@ What if we used a different number of rectangles to estimate our area? From the 
 
 Let's actually try it. First, let's start with using two rectangles, like in the first figure above. Each rectangle has a "base" of length $1/2$. The first rectangle has a height of $f(1/2) = (1/2)^2 = 1/4$, while the second rectangle has a height of $f(1) = 1^2 = 1$. 
 
-Let's start making up some variable names for us to use. (These will be important later on.) Let $A_{i}$ be the area of the $i$-th rectangle. Let $b_{i}$ and $h_{i}$ be the length of the $i$-th rectangle's base and height, respectively. 
+Let's start making up some variable names for us to use. (These will be important later on.) Let $R_{i}$ be the area of the $i$-th rectangle. Let $h_{i}$ be the length of the $i$-th rectangle's height. Let $b$ be the length of each rectangle's base - it's the same for both rectangles.
 
 Then,  
 
 \begin{align*}
-\text{Area estimate} &= A_1 + A_2 \\
-&= b_1 h_1 + b_2 h_2
-&= (1/2)
+\text{Area estimate} &= R_1 + R_2 \\
+&= b h_1 + b h_2 \\
+&= b (h_1 + h_2) \\
+&= \frac{1}{2} \left( \frac{1}{4} + 1 \right) \\
+&= \frac{5}{8}
 \end{align*}
 
 

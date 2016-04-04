@@ -132,13 +132,14 @@ We form a strange "shape", colored in the figure below. The bottom and right edg
 Let's say I didn't actually care about the exact answer - I just wanted an approximation. We can use the shapes that we know! Suppose we lined up a bunch of rectangles, as in the figure below. If we add up the area of all of those rectangles, we wouldn't have the exact area we're looking for - but we'd be pretty close!
 
 % TODO: Insert Riemann sum figure
+% Note: we'll be doing right-hand Riemann sums throughout these examples
 
 
 What if we used a different number of rectangles to estimate our area? From the figure below, you can guess what happens. As we jam more and more rectangles around our shape, it looks as though, if we were to add up the area of those rectangles, we'd get a closer and closer estimate of the area of our shape!
 
 % TODO: Insert figure with progressively better Riemann approximations (2, 4, 8, 32)
 
-Let's actually try it. First, let's start with using two rectangles, like in the first figure above. Each rectangle has a "base" of length $1/2$. The first rectangle has a height of $f(1/2) = (1/2)^2 = 1/4$, while the second rectangle has a height of $f(1) = 1^2 = 1$. 
+Let's actually try it. First, let's start with using two rectangles, like in the first picture in the figure above. Each rectangle has a "base" of length $1/2$. The first rectangle has a height of $f(1/2) = (1/2)^2 = 1/4$, while the second rectangle has a height of $f(1) = 1^2 = 1$. 
 
 Let's start making up some variable names for us to use. (These will be important later on.) Let $R_{i}$ be the area of the $i$-th rectangle. Let $h_{i}$ be the length of the $i$-th rectangle's height. Let $b$ be the length of each rectangle's base - it's the same for both rectangles.
 
@@ -152,9 +153,23 @@ Then,
 &= \frac{5}{8}
 \end{align*}
 
+Cool, we estimated the area of our shape! It's not a very good estimate - there is a lot of "stuff" in the rectangles that isn't in the shape itself.
 
+Let's make a better approximation, and use 4 rectangles this time, like in the second picture of our previous figure. This time, each rectangle will have a base of length $1/4$, and the 1st, 2nd, 3rd, and 4th rectangles will have respective heights of $f(1/4)$, $f(2/4)$, $f(3/4)$, and $f(4/4)$. 
 
+%To make things easier for later, let's have a variable denote the area of our "estimate" when we use 
 
+Estimating again, we have
+
+Then,  
+
+\begin{align*}
+\text{Better area estimate} &= R_1 + R_2 + R_3 + R_4 \\
+&= b h_1 + b h_2 + b h_3 + b h_4 \\
+&= b (h_1 + h_2 + h_3 + h_4) \\
+&= \frac{1}{4} \left( f(1/4) + f(2/4) + f(3/4) + f(4/4) \right) \\
+&= \frac{5}{8}
+\end{align*}
 
 
 

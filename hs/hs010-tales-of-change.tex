@@ -254,14 +254,22 @@ Why is this important?
 
 Remember, $n$ is the number of rectangles we want to use to estimate the area. Intuitively, we'd want to say that if we were allowed to use "infinity" rectangles, then we would get a "perfect approximation" to the area of our weird shape - in other words, we'd have the exact answer. 
 
-So, here's the beauty: Let's do exactly that! As $n$ goes to infinity, $1/n$ and $1/n^2$ go to 0. 
-
-
-
+So, here's the beauty: Let's do exactly that! As $n$ goes to infinity, $1/n$ and $1/n^2$ go to 0. Therefore, 
 
 \begin{align*}
-E_n &= \frac{1}{3} + \frac{1}{2n} + \frac{1}{6n^2}
+E_n &= \frac{1}{3} + \frac{1}{2n} + \frac{1}{6n^2} \\
+&= \frac{1}{3} + \frac{1}{2} \cdot \frac{1}{n} + \frac{1}{6} \cdot \frac{1}{n^2} \\
+\xrightarrow[n \to \infty]{} \frac{1}{3} + \frac{1}{2} \cdot 0 + \frac{1}{6} \cdot 0 \\
+= \frac{1}{3}
 \end{align*}
+
+% TODO: Fix this formatting
+
+This is the answer! After all that work and a few jumps, the area of this shape is 1/3 - we did it!
+
+% TODO: Insert the shape again
+
+
 
 
 

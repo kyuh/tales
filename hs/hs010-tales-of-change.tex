@@ -276,6 +276,7 @@ This is the answer! After all that work and a few jumps, the area of this shape 
 % TODO: Insert the shape again
 
 \begin{exercise}
+\label{riemann-triangle}
 We mentioned earlier that the area of a right triangle with side lengths $a$ and $b$ (not including the hypotenuse) is $\frac{1}{2}ab$. (Then if both sides had the same length - call it $c$ - then the triangle's area would be $\frac{1}{2}c^2$.)
 
 Let's try to verify it using the same "rectangle-approximation" method that we used above (see the figure below for what this looks like). The differences now are that:
@@ -366,6 +367,38 @@ The speed is essentially "rate of change information" for position. The name of 
 
 % insert stuff here...
 
+
+\section{Terms and References}
+
+\section{Solutions}
+
+\subsection{Exercise \ref{riemann-triangle}}
+
+Let's use $E_n$ to denote our area estimate, and $R_i$ for the area of each $i$-th rectangle, as before. 
+
+Since the interval over which we place our $n$ rectangles is now from $x = 0$ to $x = c$ (instead of to $x = 1$), each rectangle now has a base of length $c/n$. Evenly spacing the points at which we draw our heights, the 1st rectangle has a height of $f(c/n)$, the second has a height of $f(2c/n)$, and so on - the $i$-th rectangle has a height of $f(ic/n)$. 
+
+We then make our area estimate. (We skip a few steps that are the same as in the example.)
+
+\begin{align*}
+E_n &= \sum_{i=1}^n R_i \\
+&= b \sum_{i=1}^n h_i \\
+&= \frac{c}{n} \sum_{i=1}^n f(\frac{ic}{n}) \\
+&= \frac{c}{n} \sum_{i=1}^n \frac{ic}{n} \\
+&= \frac{c^2}{n^2} \sum_{i=1}^n i \\
+&= \frac{c^2}{n^2} \frac{n(n+1)}{2} && \text{(Remember this from the previous chapter?)} \\
+&= \frac{c^2}{n^2} \left( \frac{n^2}{2} + \frac{n}{2} \right) \\
+&= \frac{c^2}{2} \left( 1 + \frac{1}{n} \right) \\
+\end{align*}
+
+To make our "estimate" exact, we again consider what happens as $n$ approaches infinity. Like before, $1/n$ approaches 0. Hence,
+
+\begin{align*}
+E_n &\xrightarrow[n \to \infty]{} \frac{c^2}{2} \left( 1 + 0 \right)  \\
+= \frac{c^2}{2}
+\end{align*}
+
+which is exactly what we wanted!
 
 
 

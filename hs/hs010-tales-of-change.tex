@@ -292,12 +292,22 @@ Obtain a rectangle-sum approximation for $n$ rectangles, like we did earlier, an
 
 \end{exercise}
 
-% TODO: Insert exercise figure (bounded between [0, c] by x-axis below, and f(x) = x above)
+
+\begin{exercise}
+\label{left-hand-riemann}
+
+In each of the above exercises, we used the right side of the rectangle to set its height, in some sense. (More precisely, if our shape lies over $x = 0$ to $x = 1$ on the x-axis, then the $i$-th rectangle, which lies over the interval $x = \frac{i-1}{n}$ to $x = \frac{i}{n}$, has a height of $f\left(\frac{i}{n}\right)$). 
+
+We could have instead tried to use the height on the "left" side. (The $i$-th rectangle would then have a height of $f\left(\frac{i-1}{n}\right)$). 
+
+Try re-calculating the area of our shape using this "left-handed" sum. Do you get the same answer? (Think about what will happen before you try!)
+
+% TODO: Insert left-handed sum vs right-handed sum figure
+
+\end{exercise}
 
 
 
-
-% SCRAP: (in fact, 1/n^2 goes to 0 even "faster" than 1/n)
 
 % TODO: Give actual delta-epsilon/N-epsilon problems?
 
@@ -305,9 +315,6 @@ Obtain a rectangle-sum approximation for $n$ rectangles, like we did earlier, an
 % TODO: After limiting process, acknowledge how a lot of the terms are canceled out? (Just for peace of mind for the reader, it's good to acknowledge what they might be explicitly or implicitly thinking)
 
 % TODO: Later, when you (or the reader, when doing it as a problem) does Riemann sum for non-0 and 1 bounds, don't use a and b - we've already used b too much.
-
-
-% TODO: Exercise for way later: Riemann sum on shape with f(x) = x^3, will rely on another thing proved in previous chapter.
 
 
 

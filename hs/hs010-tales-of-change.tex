@@ -408,6 +408,74 @@ E_n &\xrightarrow[n \to \infty]{} \frac{c^2}{2} \left( 1 + 0 \right)  \\
 which is exactly what we wanted!
 
 
+\subsection{Exercise \ref{left-hand-riemann}}
+
+Intuitively, we should get the same answer that we got when doing the "right-handed" sum (in which we found that the area was $1/3$) -- in our "limit behavior" as $n$ goes to infinity, it seems as though any such minor differences should be "crushed away" into having zero effect. 
+
+% TODO: Explain this better
+
+
+Here, let $L_n$ be the area of our total estimate using $n$ rectangles in our "left-handed sum". We get the following. (We skip a few steps that are the same as in the example.)
+
+\begin{align*}
+L_n &= \sum_{i=1}^n R_i \\
+&= b \sum_{i=1}^n h_i \\
+&= \frac{1}{n} \sum_{i=1}^n f(\frac{i-1}{n}) \\
+&= \frac{1}{n} \sum_{i=1}^n \frac{(i-1)^2}{n^2} \\
+&= \frac{1}{n^3} \sum_{i=1}^n (i-1)^2 \\
+\end{align*}
+
+This looks almost like the sum that we want, but not quite. Let's manipulate it a bit. Continuing on: 
+
+
+\begin{align*}
+L_n &= \frac{1}{n^3} \sum_{i=1}^n (i-1)^2 \\
+&= \frac{1}{n^3} \sum_{i=0}^{n-1} i^2 && \text{(convince yourself from sum properties that this is true)} \\
+&= \frac{1}{n^3} \sum_{i=1}^{n-1} i^2 && \text{($0^2 = 0$)} \\
+\end{align*}
+
+We recall that:
+
+\begin{align*}
+\sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}
+\end{align*}
+
+What is the answer for $n-1$? Substitute it in!
+
+\begin{align*}
+\sum_{i=1}^{n-1} i^2 &= \frac{(n-1)((n-1)+1)(2(n-1)+1)}{6} \\
+&= \frac{(n-1)n(2n-1)}{6} \\
+\end{align*}
+
+
+That now being known, let's continue with our previous work:
+
+\begin{align*}
+L_n &= \frac{1}{n^3} \sum_{i=1}^{n-1} i^2 \\
+&= \frac{1}{n^3} \frac{(n-1)n(2n-1)}{6} \\
+&= \frac{1}{n^3} \left( \frac{n^3}{3} - \frac{n^2}{2} + \frac{n}{6} \right) \\
+&= \frac{1}{3} - \frac{1}{2n} + \frac{1}{6n^2}
+\end{align*}
+
+Remember that our "right-handed sum" estimate was:
+
+\begin{align*}
+E_n &= \frac{1}{3} + \frac{1}{2n} + \frac{1}{6n^2}
+\end{align*}
+
+The left-handed sum looks very similar; the only difference is the $- \frac{1}{2n}$ int he left-handed sum versus $+ \frac{1}{2n}$ term in the right-handed sum. But we recall that the $1/n$ term tends to 0 as $n$ approaches infinity. Therefore, this term vanishes as well, as we can see below: 
+
+\begin{align*}
+L_n &= \frac{1}{3} - \frac{1}{2n} + \frac{1}{6n^2} \\
+&= \frac{1}{3} - \frac{1}{2} \cdot \frac{1}{n} + \frac{1}{6} \cdot \frac{1}{n^2} \\
+&\xrightarrow[n \to \infty]{} \frac{1}{3} - \frac{1}{2} \cdot 0 + \frac{1}{6} \cdot 0 \\
+= \frac{1}{3}
+\end{align*}
+
+In other words, the term that was different went to 0 anyway, and we get the same answer! 
+
+
+
 % Sort of scrap
 \subsection{Potential exercise w/rectangle}
 

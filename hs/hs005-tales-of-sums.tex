@@ -92,6 +92,47 @@
 
 \section{Problems}
 % This section is kind of just an agglomeration of them for now
+% Keep in mind - not all of science. Just enough to keep things interesting and somewhat rigorous (for the purpose of being interesting). 
+
+% TODO: Have a few problems on changing indices
+% (Maybe as part of the problem below, before the whole i vs n-i thing)
+
+
+\begin{exercise}
+\label{defining-sigma}
+
+% This maybe should just be part of the text. 
+% (Actually nvm, define it in the text but leave the exercise here.)
+% (Or move the exercise up when it's ready. Or some hybrid of these.)
+% (Wording of the question, esp. the intro, may need to change)
+
+We've seen that the sigma-notation is a helpful way to write down an extended sum. If we have some sequence (essentially some "thing" dependent on an index $i$ ranging from 1 through $n$)\footnote{Note that the sum doesn't necessarily have to have an $a_2$ term or terms beyond that -- for example, $\sum_{i=1}^1 a_i$ is simply equal to $a_1$.}:
+
+\begin{align*}
+\sum_{i=1}^n a_i := a_1 + a_2 + ... + a_n 
+\end{align*}
+
+% TODO depending on context: "For example, ..."
+
+We can actually define this notation as a mathematical quantity more rigorously. We'll define it recursively, as follows:
+
+% TODO: Use := notation here?
+
+\begin{align*}
+\sum_{i=1}^1 a_i &= a_1 \\
+\sum_{i=1}^n a_i &= \left(\sum_{i=1}^{n-1} a_i\right) + a_n & n > 1
+\end{align*}
+
+% TODO: Correct this statement based on context
+We can now rigorously inspect and prove some properties that we've taken for granted before. For the following problems, let $\{a_i\}$ be any sequence. 
+
+\begin{enumerate}
+\item Prove that $\sum_{i=1}^{n-1} a_i = \sum_{i=1}^{n-1} a_{n-i}$ for integer $n \geq 1$. (Think about why this is true first.)
+\end{enumerate}
+
+
+\end{exercise}
+
 
 \begin{exercise}
 \label{power-2-sum}

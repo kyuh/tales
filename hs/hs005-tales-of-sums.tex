@@ -164,7 +164,7 @@ Essentially, by summing up a bunch of powers of 2 in sequence (starting from 1),
 
 % SCRAP: Essentially, by summing up a bunch of powers of 2 in sequence (starting from 1), one just *almost* reaches the next one!
 
-Let's prove it. Prove that this pattern does exist for all integer powers of 2 -- in other words, prove that $1 + \sum_{i=0}^{n-1} 2^i = 2^n$, for all integers $n \geq 1$.
+Let's prove it. Prove that this pattern exists for all integer powers of 2 -- in other words, prove that $1 + \sum_{i=0}^{n-1} 2^i = 2^n$, for all integers $n \geq 1$.
 
 \end{exercise}
 
@@ -201,7 +201,7 @@ We prove this claim using induction.
 
 The base case at $n = 2$ is clearly true, since $\sum_{i=1}^{2-1} a_i = a_1$, and $\sum_{i=1}^{2-1} a_{n-i} = a_1$ as well. 
 
-Let's do the inductive step. We assume the statement is true at $n = k$, i.e. we assume $\sum_{i=1}^{k-1} a_i = \sum_{i=1}^{k-1} a_{k-i}$, and show that the statement is true at $n = k + 1$, i.e. we show that $\sum_{i=1}^{(k+1)-1} a_i = \sum_{i=1}^{(k+1)-1} a_{(k+1)-i}$.
+Let's do the inductive step. We assume the statement is true at $n = k$, i.e. we assume $\sum_{i=1}^{k-1} a_i = \sum_{i=1}^{k-1} a_{k-i}$ -- and show that the statement is true at $n = k + 1$, i.e. we show that $\sum_{i=1}^{(k+1)-1} a_i = \sum_{i=1}^{(k+1)-1} a_{(k+1)-i}$.
 
 We do this as follows:
 
@@ -217,7 +217,8 @@ We do this as follows:
 
 Hence, the inductive step holds, and therefore the claim holds for all integers $n \geq 2$. 
 
-% TODO: Maybe easier to see starting from right-hand side?
+% TODO: For the "combining i = 1 term" step, need to show another property of sigma notation first. 
+% (In fact, maybe this problem doesn't belong in the "rigorously defining sigma" stage...)
 
 
 \subsection{Exercise \ref{power-2-sum}}
@@ -226,7 +227,9 @@ We prove this claim using induction.
 
 The base case at $n = 1$ is true -- clearly, $1 + 2^0 = 2^1$. 
 
-Let's do the inductive step. We assume the statement is true at $n = k$, i.e. we assume $1 + \sum_{i=0}^{k-1} 2^i = 2^k$, and show that the statement is true at $n = k + 1$, i.e. we show that $1 + \sum_{i=0}^{k} 2^i = 2^{k+1}$, as follows: 
+Let's do the inductive step. We assume the statement is true at $n = k$, i.e. we assume $1 + \sum_{i=0}^{k-1} 2^i = 2^k$ -- and show that the statement is true at $n = k + 1$, i.e. we show that $1 + \sum_{i=0}^{k} 2^i = 2^{k+1}$.
+
+We do this as follows: 
 
 % TODO: Maybe I'm being a bit overly explicit here
 

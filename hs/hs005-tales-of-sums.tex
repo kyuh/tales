@@ -90,6 +90,44 @@
 
 \section{Terms and References}
 
+\section{Problems}
+% This section is kind of just an agglomeration of them for now
+
+\begin{exercise}
+\label{power-2-sum}
+% TODO: Give lead-up
+
+Consider the following pattern:
+
+\begin{align*}
+1 + 1 &= 2 \\
+1 + 1 + 2 &= 4 \\
+1 + 1 + 2 + 4 &= 8 \\
+1 + 1 + 2 + 4 + 8 &= 16 \\
+...
+\end{align*}
+
+
+Another way of looking at it:
+
+\begin{align*}
+1 + 2^0 &= 2^1 \\
+1 + 2^0 + 2^1 &= 2^2 \\
+1 + 2^0 + 2^1 + 2^2 &= 2^3 \\
+1 + 2^0 + 2^1 + 2^2 + 2^3 &= 2^4 \\
+...
+\end{align*}
+
+
+Essentially, by summing up a bunch of powers of 2 in sequence (starting from 1), one just *almost* reaches the next power -- all we need is to add an extra 1!
+
+% SCRAP: Essentially, by summing up a bunch of powers of 2 in sequence (starting from 1), one just *almost* reaches the next one!
+
+Let's prove it. Prove that this pattern does exist for all integer powers of 2 -- in other words, prove that $1 + \sum_{i=0}^{n-1} 2^i = 2^n$, for all integers $n \geq 1$.
+
+\end{exercise}
+
+
 \section{Solutions}
 
 

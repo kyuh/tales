@@ -174,8 +174,19 @@ Let's prove it. Prove that this pattern exists for all integer powers of 2 -- in
 Here's a bit of an odd sequence: Let the sequence $\{a_i\}$ be defined by
 
 \begin{align*}
-a_1 = 1 \\
-a_{n} = \sum_{i=1}^{n-1} a_i
+a_1 &= 1 \\
+a_{n} &= \sum_{i=1}^{n-1} a_i
+\end{align*}
+
+In other words,
+
+\begin{align*}
+a_1 &= 1 \\
+a_2 &= a_1 \\
+a_3 &= a_1 + a_2 \\
+a_4 &= a_1 + a_2 + a_3 \\
+a_5 &= a_1 + a_2 + a_3 + a_4 \\
+...
 \end{align*}
 
 Note that each term in the sequence is defined recursively on *all* the terms before it!

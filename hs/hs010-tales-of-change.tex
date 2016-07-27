@@ -362,7 +362,29 @@ Let's consider the graph of our velocity over time. Ideally, the distance travel
 
 % TODO: Constant-increasing velocity over time graph. (Label axes, etc)
 
-What is the area of this triangle? The bottom side is of length $t$ seconds, and the right side is of length $v_{max}$ miles per hour. Therefore, the area is given by $(1/2) v_{max} t$
+What is the area of this triangle? The bottom side is of length $t$ seconds, and the right side is of length $v_{max}$ miles per hour. Therefore, the area is given by 
+
+\begin{equation}
+A = \frac{1}{2} v_{max} t
+\end{equation}
+
+
+\begin{exercise}
+\label{const-velocity-numerical}
+Using the numerical values for $v_{max}$ and $t$ above, find the "area of our triangle" (i.e. the distance traveled). Be careful with units!
+\end{exercise}
+
+In fact, $v_{max}$ is simply given by our acceleration, multiplied by the time over which we accelerate -- in other words, $v_max = at$. Substituting into the above equation gives us:
+
+\begin{align*}
+A &= \frac{1}{2} v_{max} t \\
+&= \frac{1}{2} (a t) t \\
+&= \frac{1}{2} a t^2
+\end{align*}
+
+% TODO: how to explain that this is the standard accel formula?
+
+
 
 
 

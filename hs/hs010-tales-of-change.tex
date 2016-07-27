@@ -60,6 +60,7 @@
 \newtheorem{case}{Case}
 \newtheorem{lemma}{Lemma}
 \newtheorem{exercise}{\\ \bf Exercise}
+\newtheorem{claim}{\\ \bf Claim}
 
 %\theorempostwork{\setcounter{case}{0}}
 
@@ -348,8 +349,33 @@ And in Exercise \ref{riemann-triangle}, we showed that:
 \end{equation}
 
 
+%%%%%%%%%%% Unofficial subsection?
+
+\subsection{Properties}
 
 
+Let's take a moment to see what interesting properties the "integral" might have.
+
+% First: integral from a to b, plus integral from b to c, equals from a to c
+
+Suppose we have a function $f$ defined from $a$ through $c$ (where $a < c$). I claim that, for any value $b$ between $a$ and $c$:
+
+\begin{equation}
+\int_{a}^{b} f + \int_{b}^{c} f = \int_{a}^{c} f
+\end{equation}
+
+
+
+
+
+% TODO: Make this proof an exercise
+
+
+
+
+%%%%%%%%%%% Unofficial subsection?
+
+\subsection{Negative area?}
 
 Of course, our "notion of area" so far assumes that $f(x)$ is positive over our region of interest. What if $f(x)$ is negative, as in the graph below? 
 

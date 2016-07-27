@@ -97,7 +97,7 @@ It's a well-defined question too. If I needed to paint the inside of this shape,
 In this second chapter, we'll do a few things. 
 
 \begin{itemize}
-\item We'll first think about how we find the area of "standard" shape. (rectangles, triangles, circles, etc.)
+\item We'll first think about how we find the area of "standard" shapes, like rectangles, triangles, and circles.
 \item Using that foundation, we'll come up with a clever approximation to the area under a curved surface. 
 \item We'll then show that our "approximation" can be fixed to remove any doubt - it actually will give us the correct answer!
 \item Finally, we'll show that the core idea of this problem goes far beyond area, and impacts an enormous number of areas in science and engineering.
@@ -106,13 +106,13 @@ In this second chapter, we'll do a few things.
 
 \section{Areas we know and love}
 
-What is the area of a rectangle? You might have heard it before. If one pair of sides is each of length $a$, and the other pair of sides is each of length $b$, then the area is given by their product, $ab$. \footnote{Sometimes, when looking at the piece of paper, the rectangle is standing upright. We then call the horizontal size the "base" (often labeled $b$), and the "height" (often labeled $h$).}
+What is the area of a rectangle? You might have heard a "formula" for it before. If one pair of sides is each of length $a$, and the other pair of sides is each of length $b$, then the area is given by their product, $ab$. \footnote{Sometimes, when looking at the piece of paper, the rectangle is standing upright. We then call the horizontal size the "base" (often labeled $b$), and the "height" (often labeled $h$).}
 
 % TODO: Insert standard rectangle area figure
 
 % TODO: Mention something about units? Or at least a footnote that explains the issue, and asks us not to worry about them for now.
 
-What about the area of a triangle? Suppose for now it is a right triangle\footnote{TODO: Explain right triangles, right angles, etc}, as in the figure below. If one of the "short" sides has length $a$, and the other has length $b$, then its area is given by $\frac{1}{2}ab$. 
+What about the area of a triangle? Suppose for now it is a right triangle\footnote{TODO: Explain right triangles, right angles, etc}, as in the figure below. If one of the "short" sides\footnote{TODO: explain yourself} has length $a$, and the other has length $b$, then its area is given by $\frac{1}{2}ab$. 
 
 % TODO: Insert standard right triangle figure area
 
@@ -160,9 +160,7 @@ Let's make a better approximation, and use 4 rectangles this time, like in the s
 
 %To make things easier for later, let's have a variable denote the area of our "estimate" when we use 
 
-Estimating again, we have
-
-Then,  
+Therefore, we have:  
 
 \begin{align*}
 \text{Better area estimate} &= R_1 + R_2 + R_3 + R_4 \\
@@ -279,7 +277,7 @@ This is the answer! After all that work and a few jumps, the area of this shape 
 \label{riemann-triangle}
 We mentioned earlier that the area of a right triangle with side lengths $a$ and $b$ (not including the hypotenuse) is $\frac{1}{2}ab$. (Then if both sides had the same length - call it $c$ - then the triangle's area would be $\frac{1}{2}c^2$.)
 
-Let's try to verify it using the same "rectangle-approximation" method that we used above (see the figure below for what this looks like). The differences now are that:
+Let's try to verify this using the same "rectangle-approximation" method that we used above (see the figure below for what this looks like). The differences now are that:
 
 \begin{itemize}
 \item The function on the upper side of our "shape" is now $f(x) = x$.

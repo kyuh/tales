@@ -319,10 +319,17 @@ To do this, we'll need to reconsider where our "rectangles" lie now. Earlier, we
 We now need to divide the interval from $a$ to $b$ instead (again, using $n$ rectangles). This gives the right edge of each rectangle at
 
 \begin{equation}
+\label{arbitrary-riemann-division}
 x_i = a + (b-a)\frac{i}{n}
 \end{equation}
 
 Then the height of our $i$-th rectangle is given by $f(x_i)$, which is now $f(a + (b-a)(i/n))$. In this particular example, this equals $(a + (b-a)(i/n))^2$.
+
+\begin{enumerate}
+\item Briefly convince yourself that Equation \ref{arbitrary-riemann-division} is true. In particular, try substituting values like $i = n/2$ and $i = n$. Do you get what you expect?
+\item Use the technique from our previous example to find the area of our new "shape" from $a$ to $b$. 
+\item Substitute $x = 0$ for $a$, and $x = 1$ for $b$. Do you get the answer from our previous example?
+\end{enumerate}
 
 \end{exercise}
 

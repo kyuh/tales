@@ -697,15 +697,15 @@ E_n &= \sum_{i=1}^n R_i \\
 &= \left(\frac{b-a}{n}\right) \sum_{i=1}^n \left(a^2 + 2a(b-a)\frac{i}{n} + \left((b-a)\frac{i}{n}\right)^2\right) \\
 &= \left(\frac{b-a}{n}\right) \sum_{i=1}^n a^2 + \left(\frac{b-a}{n}\right) \sum_{i=1}^n 2a(b-a)\frac{i}{n} + \left(\frac{b-a}{n}\right) \sum_{i=1}^n \left((b-a)\frac{i}{n}\right)^2 \\
 &= \left(\frac{b-a}{n}\right) n a^2 + \left(\frac{b-a}{n}\right) \sum_{i=1}^n 2a(b-a)\frac{i}{n} + \left(\frac{b-a}{n}\right) \sum_{i=1}^n \left((b-a)\frac{i}{n}\right)^2 \\
+\end{align*}
+
+\begin{align*}
 &= a^2(b-a)  + \left(\frac{b-a}{n}\right) \sum_{i=1}^n 2a(b-a)\frac{i}{n} + \left(\frac{b-a}{n}\right) \sum_{i=1}^n \left((b-a)\frac{i}{n}\right)^2 \\
 &= a^2(b-a) + 2a \frac{(b-a)^2}{n^2} \sum_{i=1}^n i + \left(\frac{b-a}{n}\right) \sum_{i=1}^n \left((b-a)\frac{i}{n}\right)^2 \\
 &= a^2(b-a) + 2a \frac{(b-a)^2}{n^2} \sum_{i=1}^n i + \frac{(b-a)^3}{n^3} \sum_{i=1}^n i^2 \\
 &= a^2(b-a) + 2a \frac{(b-a)^2}{n^2} \frac{n(n+1)}{2} + \frac{(b-a)^3}{n^3} \frac{n(n+1)(2n+1)}{6} \\
 &= a^2(b-a) + a \frac{(b-a)^2}{n^2} (n^2 + n) + \frac{(b-a)^3}{n^3} \frac{n(n+1)(2n+1)}{6} \\
 &= a^2(b-a) + a(b-a)^2 \left(1 + \frac{1}{n}\right) + \frac{(b-a)^3}{n^3} \frac{n(n+1)(2n+1)}{6} \\
-\end{align*}
-
-\begin{align*}
 &= a^2(b-a) + a(b-a)^2 \left(1 + \frac{1}{n}\right) + \frac{(b-a)^3}{n^3} \left( \frac{n^3}{3} + \frac{n^2}{2} + \frac{n}{6} \right) \\
 &= a^2(b-a) + a(b-a)^2 \left(1 + \frac{1}{n}\right) + (b-a)^3 \left( \frac{1}{3} + \frac{1}{2n} + \frac{1}{6n^2} \right) \\
 \end{align*}

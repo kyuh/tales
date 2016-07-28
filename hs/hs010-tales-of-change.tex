@@ -20,6 +20,7 @@
 \usepackage{multirow}
 \usepackage{placeins}
 \usepackage{subcaption}
+\usepackage{mathtools}
 %\usepackage{titlesec}
 
 %\setcounter{secnumdepth}{4}
@@ -55,6 +56,8 @@
   \noindent
   \textbf{Solution:}\\
 }
+
+\newcommand{\defeq}{\vcentcolon=}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{case}{Case}
@@ -411,7 +414,7 @@ To get our "exact" answer, we need the \emph{limit} of $E_n$, our area estimate,
 
 With that, we'll \emph{define} the integral of a function $f$ from $x = a$ through $x = b$ as follows:
 \begin{align*}
-\int_{a}^{b} f(x)\, dx :&= \lim_{n \rightarrow \infty} E_n \\
+\int_{a}^{b} f(x)\, dx &\defeq \lim_{n \rightarrow \infty} E_n \\
 &= \lim_{n \rightarrow \infty} \left(\frac{b-a}{n}\right) \sum_{i=1}^n f\left(a + (b-a)\frac{i}{n}\right)
 \end{align*}
 

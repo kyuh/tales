@@ -305,6 +305,30 @@ Try re-calculating the area of our shape using this "left-handed" sum. Do you ge
 
 \end{exercise}
 
+\begin{exercise}
+\label{riemann-general-bounds}
+
+In our previous example, we found the area sandwiched between the function $f(x) = x^2$ and $x$-axis between $x = 0$ and $x = 1$.
+
+Now, let's try to generalize our $x$-bounds. More specifically, we want to now find the area under that same function, but from $x = a$ to $x = b$, for arbitrary values $a$ and $b$, where $a < b$. 
+
+% TODO: Insert some figure about this.
+
+To do this, we'll need to reconsider where our "rectangles" lie now. Earlier, we divided the interval from 0 to 1 evenly in $n$ rectangles, which meant the right edge of the $i$-th rectangle was at $x_i = i/n$. The height of our rectangle was then given by the function evaluated at that point, i.e. $f(x_i)$, which here is $f(1/n)$.
+
+We now need to divide the interval from $a$ to $b$ instead (again, using $n$ rectangles). This gives the right edge of each rectangle at
+
+\begin{equation}
+x_i = a + (b-a)\frac{i}{n}
+\end{equation}
+
+Then the height of our $i$-th rectangle is given by $f(x_i)$, which is now $f(a + (b-a)(i/n))$. In this particular example, this equals $(a + (b-a)(i/n))^2$.
+
+\end{exercise}
+
+% TODO: Can we extend this exercise to b < a? (And hint at reversing signs of integral, which we should get into below?)
+
+
 
 
 
@@ -370,7 +394,7 @@ Why would this be true?
 
 % TODO: Insert figure for this. Basically dividing line at b between shape spanning x = a through x = c. Pretty standard.
 
-
+Essentially, if we line up two shapes together, we simply add their areas!
 
 
 

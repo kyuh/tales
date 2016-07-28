@@ -390,10 +390,19 @@ And in Exercise \ref{riemann-triangle}, we showed that:
 
 Let's try to generalize our previous examples, and attempt to formally "define" the integral for a function $f$, defined over the range from $x = a$ through $x = b$. (For now, we'll assume that $f$ is positive.) 
 
-To do so, we'll "approximate" the area under $f$ using $n$ rectangles, and consider what happens when $n$ heads to infinity. As in our previous major example, we'll use the "right-handed" rectangle approximation, using (as before) rectangles of equal width.\footnote{It turns out that we can also use rectangles of varying widths as well, as well as non-rectangular shapes! We'll explore this in future problems.}
+To do so, we'll "approximate" the area under $f$ using $n$ rectangles, and consider what happens when $n$ heads to infinity. As in our previous major example, we'll use the "right-handed" rectangle approximation, using (as before) rectangles of equal width.\footnote{It turns out that we can also use rectangles of varying widths, as well as non-rectangular shapes! We'll explore this in future problems.}
 
 % Possible TODO: Reminder figure? (Approximating arbitrary f(x) with n rectangles)
 
+We discussed in Exercise \ref{riemann-general-bounds} that, if we divide the region from $x = a$ through $x = b$ in $n$ rectangles, the right edge of the $i$-th rectangle will be at $x_i = a + (b-a)(i/n)$, and the height of each rectangle is then $f(x_i)$. In addition, the width of each rectangle will then be $(b - a)/n$. 
+
+With that, our $n$-rectangle area estimate is:
+
+\begin{align*}
+E_n &= \sum_{i=1}^n R_i \\
+&= (\text{base}) \cdot \sum_{i=1}^n h_i \\
+&= \left(\frac{b-a}{n}\right) \sum_{i=1}^n f\left(a + (b-a)\frac{i}{n}\right) \\
+\end{align*}
 
 
 

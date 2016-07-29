@@ -766,6 +766,18 @@ Then as $n$ heads to infinity, we have:
 
 A footnote to this problem: Very few integrals will require the algebraic mess we have just done. In the next chapter, we'll see a much easier way to handle many common cases. Don't despair!
 
+Bonus section -- Alternate approach to the algebra for the latter steps:
+\begin{align*}
+\text{Area} &= a^2(b-a) + a(b-a)^2 + \frac{(b-a)^3}{3} \\
+&= a^2(b-a) + a(b-a)^2 + \frac{b^3 - 3ab^2 + 3a^2b - a^3}{3} \\
+&= a^2(b-a) + a(b-a)^2 + a^2b - ab^2  + \frac{b^3}{3} - \frac{a^3}{3} \\
+&= a^2(b-a) + a(b-a)^2 + ab(a-b)  + \frac{b^3}{3} - \frac{a^3}{3} \\
+&= a^2(b-a) + a(b-a)^2 - ab(b-a)  + \frac{b^3}{3} - \frac{a^3}{3} \\
+&= (b-a) \left[a^2 + a(b-a) - ab\right]  + \frac{b^3}{3} - \frac{a^3}{3} \\
+&= (b-a) \left[a(a-b) + a(b-a)\right]  + \frac{b^3}{3} - \frac{a^3}{3} \\
+&= \frac{b^3}{3} - \frac{a^3}{3} \\
+\end{align*}
+
 \subsection{Potential exercise (integral under scalar multiplication)}
 
 (Relies on the fact that constants go through limits)

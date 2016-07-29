@@ -89,28 +89,27 @@
 
 % Central question: What is the area under this curve?
 % (Insert figure of area under parabola x^2)
+%	Possibly without graph lines?
 
 \section{Introduction}
 
-What an odd question, after all. The question, on the outset, seems as un-mysterious as can be. What is the area of this "shape"? 
+It's not a rectangle, circle, or triangle -- and there might seem to be no obvious "formula" for finding it. But this shape, as weirdly curved as it is, takes up space on this paper. What is its area? 
 
-It's a well-defined question too. If I needed to paint the inside of this shape, and I need a certain amount of paint per unit area, it makes perfect sense to ask (and get an answer for) how much paint I will need.
+% TODO: More explanation and motivation?
 
-% More stuff here? (Maybe not)
-
-In this second chapter, we'll do a few things. 
+In this chapter, we'll do a few things. 
 
 \begin{itemize}
 \item We'll first think about how we find the area of "standard" shapes, like rectangles, triangles, and circles.
 \item Using that foundation, we'll come up with a clever approximation to the area under a curved surface. 
 \item We'll then show that our "approximation" can be fixed to remove any doubt - it actually will give us the correct answer!
-\item Finally, we'll show that the core idea of this problem goes far beyond area, and impacts an enormous number of areas in science and engineering.
+\item Finally, we'll show that the core idea of this problem goes far beyond the areas of shapes, and impacts an enormous number of phemonena in science and engineering.
 \end{itemize}
 
 
 \section{Areas we know and love}
 
-What is the area of a rectangle? You might have heard a "formula" for it before. If one pair of sides is each of length $a$, and the other pair of sides is each of length $b$, then the area is given by their product, $ab$. \footnote{Sometimes, when looking at the piece of paper, the rectangle is standing upright. We then call the horizontal size the "base" (often labeled $b$), and the "height" (often labeled $h$).}
+What is the area of a rectangle? As the oft-recited "formula" goes: If one pair of sides is each of length $a$, and the other pair of sides is each of length $b$, then the area is given by their product, $ab$. \footnote{Sometimes, when looking at the piece of paper, the rectangle is standing upright. We then call the horizontal size the "base" (often labeled $b$), and the "height" (often labeled $h$).}
 
 % TODO: Insert standard rectangle area figure
 
@@ -120,7 +119,7 @@ What about the area of a triangle? Suppose for now it is a right triangle\footno
 
 % TODO: Insert standard right triangle figure area
 
-How could we have figured this out from our previous information? Consider that, if I made a copy of the triangle, and flipped it around and placed it as in the figure below,  I would have the same rectangle that I had previously! Therefore, a triangle of this form is quite literally "half" of our old rectangle, and the area is halved accordingly.
+(How could we have figured this out from our previous information? Consider that, if I made a copy of the triangle, and flipped it around and placed it as in the figure below,  I would have the same rectangle that I had previously! Therefore, a triangle of this form is quite literally "half" of our old rectangle, and the area is halved accordingly.)
 
 % TODO: Possibly explain areas of parallelogram, non-right triangle, circle
 
@@ -158,7 +157,7 @@ Then,
 &= \frac{5}{8} = 0.625
 \end{align*}
 
-Cool, we estimated the area of our shape! It's not a very good estimate - there is a lot of "stuff" in the rectangles that isn't in the shape itself.
+Great, we estimated the area of our shape! It's not a very good estimate -- there is a lot of "stuff" in the rectangles that isn't in the shape itself.
 
 Let's make a better approximation, and use 4 rectangles this time, like in the second picture of our previous figure. This time, each rectangle will have a base of length $1/4$, and the 1st, 2nd, 3rd, and 4th rectangles will have respective heights of $f(1/4)$, $f(2/4)$, $f(3/4)$, and $f(4/4)$. 
 
@@ -180,7 +179,7 @@ Therefore, we have:
 This is better! We seem to have shaved off a lot of the error (i.e. the area outside of the original shape) in our new estimate. 
 
 \begin{exercise}
-Perform similar area estimates as above, using 6 rectangles.
+Now try using 6 rectangles.
 \end{exercise}
 
 
@@ -215,7 +214,7 @@ E_n &= R_1 + R_2 + ... + R_n \\
 &= \frac{1}{n^3} \sum_{i=1}^n i^2 \\
 \end{align*}
 
-Does this sum look familiar? Hopefully it does, from the last chapter!\footnote{If you haven't yet read the last chapter, just believe it for now.} Recall how we found and proved, using induction, that 
+Does this sum look familiar? Hopefully it does, from the last chapter! Recall how we found and proved, using induction, that 
 
 \begin{align*}
 \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}

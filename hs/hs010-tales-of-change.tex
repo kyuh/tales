@@ -766,6 +766,22 @@ Then as $n$ heads to infinity, we have:
 
 A footnote to this problem: Very few integrals will require the algebraic mess we have just done. In the next chapter, we'll see a much easier way to handle many common cases. Don't despair!
 
+\subsection{Potential exercise (integral under scalar multiplication)}
+
+(Relies on the fact that constants go through limits)
+
+Prove:
+\begin{equation}
+\int_{a}^{b} cf(x) = c\int_{a}^{b} f(x)
+\end{equation}
+
+\begin{align*}
+\int_{a}^{b} cf(x)\, dx &= \lim_{n \rightarrow \infty} \left(\frac{b-a}{n}\right) \sum_{i=1}^n cf\left(a + (b-a)\frac{i}{n}\right) \\
+&= \lim_{n \rightarrow \infty} c\left(\frac{b-a}{n}\right) \sum_{i=1}^n f\left(a + (b-a)\frac{i}{n}\right) \\
+&= c \lim_{n \rightarrow \infty} \left(\frac{b-a}{n}\right) \sum_{i=1}^n f\left(a + (b-a)\frac{i}{n}\right) \\
+&= c\int_{a}^{b} f(x)\, dx 
+\end{align*}
+
 
 % Sort of scrap
 \subsection{Potential exercise w/rectangle}

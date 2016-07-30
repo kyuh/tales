@@ -90,7 +90,65 @@
 % (numbers, functions,)
 \chapter{The Small, Large, and Infinite}
 
+\section{Introduction}
 
+
+
+\section{Solutions}
+
+\subsection{(Exercise involving sum of $i^2$)}
+
+% Note: This will be one of the first major exercises. Make sure the solution is detailed.
+
+We're hoping to prove that:
+\begin{align*}
+\sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6}
+\end{align*}
+
+First, let's see whether this statement is true at $n = 1$. On the left side, we see that:
+\begin{align*}
+\sum_{i=1}^{1} i^2 = 1^2 = 1
+\end{align*}
+
+And on the right side, we see that:
+\begin{align*}
+\frac{1(1+1)(2 \cdot 1+1)}{6} = \frac{1 \cdot 2 \cdot 3}{6} = \frac{6}{6} = 1
+\end{align*}
+
+So the statement holds at $n = 1$. Great!
+
+
+Now for our "inductive step". Suppose the statement were true at $n = k$. In other words, suppose we knew that:
+\begin{align*}
+\sum_{i=1}^{k} i^2 = \frac{k(k+1)(2k+1)}{6}
+\end{align*}
+
+Let's try to now prove that the statement is true at $n = k + 1$. In other words, we wish to prove that:
+\begin{align*}
+\sum_{i=1}^{k+1} i^2 = \frac{(k+1)((k+1)+1)(2(k+1)+1)}{6}
+\end{align*}
+
+(Simplify)
+
+\begin{align*}
+\sum_{i=1}^{k+1} i^2 = \frac{(k+1)(k+2)(2k+3)}{6}
+\end{align*}
+
+(Work)
+
+\begin{align*}
+\sum_{i=1}^{k+1} i^2 &= \sum_{i=1}^{k} i^2 + (k+1)^2 \\
+&= \frac{k(k+1)(2k+1)}{6} + (k+1)^2 && \text{(Using our "inductive assumption" that the statement is true at $n = k$)} \\
+&= \frac{k(k+1)(2k+1) + 6(k+1)^2}{6} && \text{(Combine fractions)} \\
+&= \frac{(k+1)\left[k(2k+1) + 6(k+1)\right]}{6} && \text{(Factor out $k+1$)} \\
+&= \frac{(k+1)(2k^2 + k + 6k + 6)}{6} && \text{(Expand terms)} \\
+&= \frac{(k+1)(2k^2 + 7k + 6)}{6} && \text{(Combine terms)} \\
+&= \frac{(k+1)(k+2)(2k+3)}{6} && \text{(Factor)} \\
+\end{align*}
+
+Great! If the statement is true at $n = k$, then it is also true when $n = k + 1$. 
+
+So "by induction", our statement is true when $n$ is any of the counting numbers. $\square$
 
 
 % Central question: What is the area under this curve?

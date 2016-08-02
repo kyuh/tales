@@ -223,17 +223,34 @@ What about the sum $8 + 11 + 14 + 17 + 20 + 23 + 26$?
 
 We'll start our first real mathematical tale by looking at numbers themselves. 
 
-Here, we'll focus in particular on the \textbf{counting numbers}: 1, 2, 3, 4, ... and so on. Practically, they're used to describe the quantity of things that can't really be divided into parts (for example, you can have 1.42 liters of water, but you can't have 1.42 balls in a jar). 
+Here, we'll focus on the \textbf{counting numbers}: 1, 2, 3, 4, ... and so on. Practically, they're used to describe the quantity of things that can't really be divided into parts (for example, you can have 1.42 liters of water, but you can't have 1.42 balls in a jar). 
+
+\subsection{Definition}
+
+How can we \emph{define} what we mean by counting numbers? ("Numbers for counting balls" doesn't quite cut it.)
+
+We know that the numbers should be 1, 2, 3, 4, ... and so on. How do we know what the "and so on" should be?
+
+One way is to consider the "order" of the numbers. We know that, in some sense, 7 comes after 6, which comes after 5, which comes after 4, ... 
+
+More precisely, if we have some number $k$, we know that $k+1$ comes after it. 
+
+There's also a number that doesn't "come after" anyone else: The number 1.
+
+Using these facts, let's define the counting numbers as the set (or collection) of numbers which has the following properties:
+
+\begin{itemize}
+\item 1 is in the collection.
+\item If $k$ is in the collection, then $k+1$ is as well. 
+\end{itemize}
+
+\begin{exercise}
+The numbers 2, 4, 6, 8, ... are often called the \textbf{even numbers}. Can you define these similarly?
+\end{exercise}
+% TODO: Present solutions in two ways! the 2*n method, and the one similar to above.
 
 
-
-% Counting numbers
-%	- Count discrete things with them
-% (Define)
-
-% Induction: Why did we go through that trouble? (We'll see very shortly.)
-
-\subsection{(Induction/Pattern)}
+\subsection{The Principle of Mathematical Induction}
 
 Consider the following sums:
 \begin{align*}

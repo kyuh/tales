@@ -495,7 +495,7 @@ N(n) = \sum_{k=1}^{n} N_k(n)
 Two key observations let us simplify this a bit:
 
 \begin{itemize}
-\item We won't see a 3 in any composition of length $n$, because the only such composition is (1, 1, 1, ..., 1). Therefore, $N_n(n)$ = 0. 
+\item We won't see a 3 in any composition of length $n$, because the only such composition is (1, 1, 1, ..., 1). Therefore, $N_n(n)$ = 0.\footnote{Technically, we don't need this fact for the rest of the proof, but it's interesting nonetheless. Bonus question: Do you see why?}
 \item If $n \geq 4$, then we won't see a 3 in any composition of length $1$, because the only such composition consists of $n$ itself -- and if $n \geq 4$, then $n \neq 3$. Therefore, $N_1(n)$ = 0. 
 \end{itemize}
 
@@ -512,6 +512,20 @@ and therefore, for $n \geq 4$,
 N(n) = \sum_{k=2}^{n-1} N_k(n)
 \end{equation}
 
+\subsubsection{Recurrence on $N_k(n)$}
+
+Instead of constructing a recurrence relation for $N(n)$ immediately, we'll first construct a recurrence relation for $N_k(n)$. 
+
+Here's how we'll start our counting, in a brute, English way: (We'll use the rough abbreviation "Notws3k" for "Number of times we see 3 in compositions of length k")
+
+\begin{align*}
+(\text{Notws3k}) &= (\text{Notws3k in compositions that start with a 3}) \\
+&+ (\text{Notws3k in compositions that don't start with a 3})
+\end{align*}
+
+Let's consider the first case. Suppose we have a composition $(x_1, ..., x_k)$ of $n$, where $x_1 = 3$. Then the sequence $(x_2, ..., x_k)$ is a composition of $n-3$ of length $k-1$. 
+
+How many of these are there? Recall from part (b) that the number of compositions of $n$ of length $k$ is $\binom{n-1}{k-1}$. Therefore, substituting our actual values gives $\binom{(n-3)-1}{(k-1)-1} = \binom{n-4}{k-2}$ such compositions. 
 
 
 

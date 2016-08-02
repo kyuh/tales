@@ -265,12 +265,80 @@ Do you see the pattern? Better yet, can you see a "formula" for getting the sum 
 I claim that:
 
 \begin{equation}
+\label{sum-i}
 \sum_{i=1}^n i = \frac{n(n+1)}{2}
 \end{equation}
 
-for any counting number $n$. 
+I'd like to prove that this equation is true when $n$ is any counting number. How can I do it? 
 
+Remember how we defined the counting numbers? Well, let's say I instead consider the "collection of numbers for which Equation \ref{sum-i} is true". 
 
+Then suppose I show that Equation \ref{sum-i} is true when $n = 1$ -- in other words, 1 is in this "collection of numbers". Then let's show that, as long as we assume Equation \ref{sum-i} is true when $n = k$ for some value $k$, we can then prove that Equation \ref{sum-i} is true when $n = k + 1$. In other words, if $k$ is in our collection, then $k+1$ is as well.
+
+Do you see where we're going with this? If we show the above true things, then we've shown that the "collection of numbers for which Equation \ref{sum-i} is true" is in fact the counting numbers. In other words, Equation \ref{sum-i} is then true whenever $n$ is a counting number!
+
+\begin{exercise}
+Before we go any further, try out Equation \ref{sum-i} for yourself. Plug in 1 through 7 for $n$, and see if you get the answers you expect. 
+\end{exercise}
+
+\subsubsection{Proof}
+
+Let's do exactly what we just said.
+
+First, let's see whether our formula is true when $n=1$. On the left side of Equation \ref{sum-i}, we see that 
+
+\begin{align*}
+\sum_{i=1}^{1} i = 1
+\end{align*}
+
+And on the right side, we see that:
+\begin{align*}
+\frac{1(1+1)}{2} = \frac{1 \cdot 2}{2} = \frac{2}{2} = 1
+\end{align*}
+
+So the statement holds at $n = 1$. Great!
+
+Now for the second part. (We often call this part the \textbf{inductive step}.) Suppose the statement were true at $n = k$. In other words, suppose we knew that, at some value $k$:
+
+\begin{equation*}
+\label{sum-i}
+\sum_{i=1}^k i = \frac{k(k+1)}{2}
+\end{equation*}
+
+Let's try to now prove that the statement is true at $n = k + 1$. In other words, we wish to prove that:
+\begin{align*}
+\sum_{i=1}^{k+1} i = \frac{(k+1)((k+1)+1)}{2}
+\end{align*}
+
+Or, simplifying a bit, we want to prove:
+\begin{align*}
+\sum_{i=1}^{k+1} i = \frac{(k+1)(k+2)}{2}
+\end{align*}
+
+Let's try it! Starting from the left side, we see that:
+\begin{align*}
+\sum_{i=1}^{k+1} i &= \sum_{i=1}^{k} i + (k+1) && \text{(I'm splitting a term from our sigma-expression. See why it works?)} \\
+&= \frac{k(k+1)}{2} + (k+1) && \text{(We're assuming the statement is true at $n=k$, so substitute it in.)} \\
+&= \frac{k(k+1)}{2} + \frac{2(k+1)}{2} \\
+&= \frac{k(k+1) + 2(k+1)}{2} \\
+&= \frac{(k+1)(k+2)}{2} && \text{(Factor out k+1)}\\
+\end{align*}
+
+We've done it -- we've shown that, if we assume Equation \ref{sum-i} is true when $n=k$, we've shown that, as a consequence, it must be true for $n = k+1$. 
+
+% TODO: Need some philosophical pondering here / more on why this is exciting
+% Also note that this is the "principle of mathematical induction"
+
+\begin{exercise}
+\label{sum-i2}
+I claim that there is also a nice formula for the sum of $i^2$ from 1 through $n$. Namely:
+
+\begin{align*}
+\sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6}
+\end{align*}
+
+Prove that this statement is true whenever $n$ is a counting number, using induction.
+\end{exercise}
 
 
 \newpage
@@ -278,7 +346,7 @@ for any counting number $n$.
 
 \section{Solutions}
 
-\subsection{(Exercise involving sum of $i^2$)}
+\subsection{Exercise \ref{sum-i2}}
 
 % Note: This will be one of the first major exercises. Make sure the solution is detailed.
 

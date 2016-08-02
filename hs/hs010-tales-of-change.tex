@@ -532,19 +532,13 @@ We now count the former, i.e. the number of 3s we see in the $x_1$s. (This occur
 
 Now the number of such compositions $(x_1, x_2, ..., x_k)$, where $x_1 = 3$, is simply given by the number of compositions $(x_2, ..., x_k)$ of $(n-3)$ (and as before, of length $(k-1)$). 
 
+How many of these are there? From part (b), the number of compositions of $n$ of length $k$ is $\binom{n-1}{k-1}$. Therefore, substituting our actual values gives $\binom{(n-3)-1}{(k-1)-1} = \binom{n-4}{k-2}$ such compositions. Since each of these compositions will give us one 3 in the $x_1$ term, we'll gain $\binom{n-4}{k-2}$ 3s.
 
-
-
-Here's how we'll start our counting, in a brute, English way: (We'll use the rough abbreviation "Notws3k" for "Number of times we see 3 in compositions of length k")
+Combining all of this information gives us a recurrence relation:
 
 \begin{align*}
-(\text{Notws3k}) &= (\text{Notws3k in compositions that start with a 3}) \\
-&+ (\text{Notws3k in compositions that don't start with a 3})
+N_k(n) &= \binom{n-4}{k-2} + \sum_{i=1}^{n-1} N_{k-1}(n-i)
 \end{align*}
-
-Let's consider the first case. Suppose we have a composition $(x_1, ..., x_k)$ of $n$, where $x_1 = 3$. Then the sequence $(x_2, ..., x_k)$ is a composition of $n-3$ of length $k-1$. 
-
-How many of these are there? Recall from part (b) that the number of compositions of $n$ of length $k$ is $\binom{n-1}{k-1}$. Therefore, substituting our actual values gives $\binom{(n-3)-1}{(k-1)-1} = \binom{n-4}{k-2}$ such compositions. 
 
 
 

@@ -514,7 +514,26 @@ N(n) = \sum_{k=2}^{n-1} N_k(n)
 
 \subsubsection{Recurrence on $N_k(n)$}
 
-Instead of constructing a recurrence relation for $N(n)$ immediately, we'll first construct a recurrence relation for $N_k(n)$. 
+Instead of constructing a recurrence relation for $N(n)$ immediately, we'll first construct a recurrence relation for $N_k(n)$. Therefore, we'll be looking at sequences of the form $(x_1, x_2, ..., x_k)$ whose terms sum to $n$.
+
+For this part, we'll assume that $k \geq 2$, since $N_1(n) = 0$ for $n \geq 4$, as mentioned above. 
+
+We'll split up our counting into two parts:
+\begin{enumerate}
+\item How many 3s we see among the first terms (i.e. all the $x_1$s of our compositions)
+\item How many 3s there are in the compositions of the form $(x_2, ..., x_k)$ -- in other words, the compositions from before, with the first terms chopped off.
+\end{enumerate}
+
+We'll count the latter first. In each composition of $n$, the first term $x_1$ could be any value of $i$ from 1 through $n$. However, since $k \geq 2$, we cannot have $x_1 = n$ (since $x_2, ..., x_k$ would then all have to be 0, and we are only using positive numbers in our composition). 
+
+So $x_1$ could be any value of $i$ from 1 through $(n-1)$. In each such case, the sequence $(x_2, ..., x_k)$ would now be a composition of $(n-i)$, of length $(k-1)$. The number of 3s seen collectively among these compositions would be $N_{k-1}(n-i)$, and we sum over all $i$ to get their total contribution.
+
+We now count the former, i.e. the number of 3s we see in the $x_1$s. (This occurs when $i = 3$ in the above case.) We now know that we'll gain one 3 from each of these compositions. 
+
+Now the number of such compositions $(x_1, x_2, ..., x_k)$, where $x_1 = 3$, is simply given by the number of compositions $(x_2, ..., x_k)$ of $(n-3)$ (and as before, of length $(k-1)$). 
+
+
+
 
 Here's how we'll start our counting, in a brute, English way: (We'll use the rough abbreviation "Notws3k" for "Number of times we see 3 in compositions of length k")
 

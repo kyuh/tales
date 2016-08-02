@@ -65,6 +65,21 @@
 \newtheorem{exercise}{\\ \bf Exercise}
 \newtheorem{claim}{\\ \bf Claim}
 
+% (general guide to theorem styles)
+\newtheoremstyle{problemstyle}  % <name>
+        {3pt}					% <space above>
+        {3pt}					% <space below>
+        {\normalfont}			% <body font>
+        {}						% <indent amount>
+        {\bfseries\itshape}		% <theorem head font>
+        {\normalfont\bfseries.}	% <punctuation after theorem head>
+        {.5em}					% <space after theorem head>
+        {}						% <theorem head spec>
+\theoremstyle{problemstyle}
+\newtheorem{problem}{}
+
+
+
 %\theorempostwork{\setcounter{case}{0}}
 
 \makeatletter
@@ -355,6 +370,12 @@ I claim that there is also a nice formula for the sum of $i^2$ from 1 through $n
 
 Prove that this statement is true whenever $n$ is a counting number, using induction.
 \end{exercise}
+
+\section{Problems}
+
+\begin{problem}
+Prove blah.
+\end{problem}
 
 
 \newpage

@@ -21,6 +21,7 @@
 \usepackage{placeins}
 \usepackage{subcaption}
 \usepackage{mathtools}
+\usepackage{enumerate}
 %\usepackage{titlesec}
 
 %\setcounter{secnumdepth}{4}
@@ -373,14 +374,54 @@ Prove that this statement is true whenever $n$ is a counting number, using induc
 
 \section{Problems}
 
+% This will be our "pierce the heavens" problem: a challenge that ideally incorporates a lot of what we've talked about. 
+% 
+% Things used in this problem:
+%	- Recurrence/recursion
+%	- Counting permutations with things in btwn (the "balls" exercise)
+%	- Summation index shifting, term peeling, (various rules)
+%	- Sum of row of pascal's triangle
+%	- Commutativity of addition
+%	- (Sum of i*2^i)
+%	- Replacing n-i with i in sum
 \begin{problem}
-Prove blah.
+\label{composition-num-3s}
+
+We'll call the sequence $(x_1, x_2, ..., x_k)$ a \textbf{composition} of $n$ (where $n$ is a counting number) if the numbers in the sequence sum to $n$ -- in other words, if:
+
+\begin{equation*}
+\sum_{i=1}^k x_i = n
+\end{equation*}
+
+For example, $(1,3,1)$ would be a composition of 5.
+
+\begin{enumerate}[(a)]
+\item How many compositions of $n$ of length $k$ are there, if we can only use nonnegative numbers? % Hint: Balls
+\item How many compositions of $n$ of length $k$ are there, if we can only use positive numbers? % Hint: Consider (x_i - 1) for all i
+\item How many compositions of $n$ are there in total, using positive numbers? % Hint: Pascal's triangle
+\end{enumerate}
+
+Here's a weird question: If I look at all of the compositions of $n$, how many times will I see the number 3? (Let's call this count $N(n)$.)
+
+\begin{enumerate}[(a)]
+\setcounter{enumi}{3}
+\item What are $N(1)$, $N(2)$, and $N(3)$?
+\item I claim that, if $n \geq 4$, then $N(n) = n2^{n-5}$. Prove this claim. 
+\end{enumerate}
+
+% I claim that, if I take $n \geq 4$, and look at every composition of $n$, I will see the number 3 exactly $n2^{n-5}$ times.
+
+
+
 \end{problem}
 
 
 \newpage
 \section{Terms and References}
 
+\section{Hints}
+
+\newpage
 \section{Solutions}
 
 \subsection{Exercise \ref{sum-i2}}

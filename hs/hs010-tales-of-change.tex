@@ -600,10 +600,21 @@ N(n) &= 2^{n-4} + \sum_{i=1}^{n-1} N(i) \\
 
 We now proceed to the final part of our proof. A reminder of what we want to prove: if $n \geq 4$, then $N(n) = n2^{n-5}$.
 
-We'll use strong induction. For our base case at $n = 4$, we simply go through all compositions. One then sees that only $(3, 1)$ and $(1, 3)$ are compositions of 4 and have terms with 3s. This gives us 2 3s. We then see that, at $n = 4$,
+We'll use strong induction. For our base case at $n = 4$, we simply go through all compositions. They are:
+\begin{gather*}
+(1, 1, 1, 1) \\
+(2, 1, 1) \\
+(1, 2, 1) \\
+(1, 1, 2) \\
+(2, 2) \\
+(1, 3) \\
+(3, 1) \\
+(4)
+\end{gather*}
 
+This gives us 2 3s. And at $n = 4$,
 \begin{equation*}
-4 \cdot 2^{4-5} = 4 \cdot 2^{-1} = 2
+n2^{n-5} = 4 \cdot 2^{4-5} = 4 \cdot 2^{-1} = 2
 \end{equation*}
 
 So the base case is true.

@@ -514,7 +514,7 @@ N(n) = \sum_{k=1}^{n} N_k(n)
 Two key observations let us simplify this a bit:
 
 \begin{itemize}
-\item We won't see a 3 in any composition of length $n$, because the only such composition is (1, 1, 1, ..., 1). Therefore, $N_n(n)$ = 0.\footnote{Technically, we don't need this fact for the rest of the proof, but it's interesting nonetheless. Bonus question: Do you see why?}
+\item We won't see a 3 in any composition of length $n$, because the only such composition is (1, 1, 1, ..., 1). Therefore, $N_n(n) = 0$ for all counting numbers $n$.
 \item If $n \geq 4$, then we won't see a 3 in any composition of length $1$, because the only such composition consists of $n$ itself -- and if $n \geq 4$, then $n \neq 3$. Therefore, $N_1(n)$ = 0. 
 \end{itemize}
 
@@ -578,6 +578,9 @@ N(n) &= \sum_{k=2}^{n-1} N_k(n) \\
 &= 2^{n-4} + \binom{n-4}{n-3} + \sum_{k=2}^{n-1} \sum_{i=1}^{n-1} N_{k-1}(i) && \text{(Sum of row in Pascal's triangle)} \\
 &= 2^{n-4} + \sum_{k=2}^{n-1} \sum_{i=1}^{n-1} N_{k-1}(i) && \text{(Binomial coefficient defn -- term is 0)} \\
 &= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=2}^{n-1} N_{k-1}(i) && \text{(Commutativity of addition!)} \\
+&= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Shift index)} \\
+&= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=2}^{n-2} N_{k}(i) && \text{($N_1(i) = 0$ for all $i$)} \\
+&= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=2}^{n-1} N_{k}(i) && \text{($N_{n-1}(i) = 0$ for all $i \leq n-1$)} \\
 &= 2^{n-4} + \sum_{i=1}^{n-1} N(i) && \text{(Equation \ref{composition-num-3s-n-nk} again!)} \\
 \end{align*}
 

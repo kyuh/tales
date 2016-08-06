@@ -1,0 +1,117 @@
+% Notes to authors:
+%
+% - Don't be afraid to just start writing, you'll probably
+% 	have to rewrite most of it anyway.
+% 
+% - We can't introduce all of science in this book, and it's
+% 	meant to give a taste of thinking like a scientist.
+% 	Know what to leave out. 
+
+
+% Thoughts on style:
+% - Use shorter paragraphs, when possible. They're easier to read.
+
+\documentclass{book}
+\usepackage[margin=2in]{geometry}
+\usepackage{graphicx}
+\usepackage[toc,page]{appendix}
+\usepackage{hyperref}
+\usepackage{amsmath,amsfonts,amssymb,mathrsfs,amsthm}
+\usepackage{multirow}
+\usepackage{placeins}
+\usepackage{subcaption}
+\usepackage{mathtools}
+\usepackage{enumerate}
+%\usepackage{titlesec}
+
+%\setcounter{secnumdepth}{4}
+
+%\titleformat{\paragraph}
+%{\normalfont\smallsize\bfseries}{\theparagraph}{1em}{}
+%\titlespacing*{\paragraph}
+%{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+\DeclareMathOperator*{\argmin}{arg\,min}  
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+\usepackage{courier}
+\usepackage[parfill]{parskip}
+
+
+\newcommand*\conj[1]{\overline{#1}}
+\newcommand\floor[1]{\lfloor#1\rfloor}
+\newcommand\ceil[1]{\lceil#1\rceil}
+
+\newcommand\TheSolution{
+  \mbox{}\par\nobreak
+  \noindent
+  \textbf{Solution:}\\
+}
+
+\newcommand{\defeq}{\vcentcolon=}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{case}{Case}
+\newtheorem{lemma}{Lemma}
+\newtheorem{exercise}{\\ \bf Exercise}
+\newtheorem{claim}{\\ \bf Claim}
+
+% (general guide to theorem styles)
+\newtheoremstyle{problemstyle}  % <name>
+        {3pt}					% <space above>
+        {3pt}					% <space below>
+        {\normalfont}			% <body font>
+        {}						% <indent amount>
+        {\bfseries\itshape}		% <theorem head font>
+        {\normalfont\bfseries.}	% <punctuation after theorem head>
+        {.5em}					% <space after theorem head>
+        {}						% <theorem head spec>
+\theoremstyle{problemstyle}
+\newtheorem{problem}{}
+
+
+
+%\theorempostwork{\setcounter{case}{0}}
+
+\makeatletter
+\@addtoreset{case}{theorem}
+\@addtoreset{case}{lemma}
+\makeatother
+
+% (Don't reset lemmas)
+%\makeatletter
+%\@addtoreset{lemma}{theorem}
+%\makeatother
+
+%\setcounter{secnumdepth}{0}
+
+
+\title{(AoS Ma/As/Ph)}
+\date{\vspace{-5ex}}
+
+\begin{document}
+\maketitle
+
+\part{(Tales of Mathematics)}
+
+% This is gonna be really bad, revise later
+We begin the "Tales of Science" with the tales of mathematics. 
+
+Almost everything you'll see in science can be quantified somehow, and we'll use the math we discuss here to help explain scientific phenomena in their full glory. 
+
+But we'll also see that math has several tales of its own. Hopefully you'll find them a worthwhile read. 
+
+\include{hs010-tales-of-change}
+
+
+\end{document}

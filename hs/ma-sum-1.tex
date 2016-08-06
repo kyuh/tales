@@ -429,11 +429,11 @@ Instead of constructing a recurrence relation for $N(n)$ immediately, we'll firs
 We'll establish this relation for $k \geq 2$ and $n \geq 4$. The base cases (some of which have been discussed directly or indirectly) are:
 
 \begin{align*}
-N_k(n) &= 0 \quad \text{for } n \leq 2 \\
-N_1(n) &= 0 \quad \text{for } n \geq 4 \\
+N_k(n) &= 0 \quad \text{for all $k$, when } n \leq 2 \\
+N_1(n) &= 0 \quad \text{when } n \geq 4 \\
 N_1(3) &= 1 \\
 N_2(3) &= 0 \\
-N_k(n) &= 0 \quad \text{for } k \geq n \\
+N_k(n) &= 0 \quad \text{when } k \geq n \\
 \end{align*}
 
 We'll split up our counting into two parts:
@@ -476,22 +476,25 @@ N(n) &= \sum_{k=2}^{n-1} N_k(n) \\
 &= 2^{n-4} + \binom{n-4}{n-3} + \sum_{k=2}^{n-1} \sum_{i=1}^{n-1} N_{k-1}(i) && \text{(Sum of row in Pascal's triangle)} \\
 &= 2^{n-4} + \sum_{k=2}^{n-1} \sum_{i=1}^{n-1} N_{k-1}(i) && \text{(Binomial coefficient defn -- term is 0)} \\
 &= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=2}^{n-1} N_{k-1}(i) && \text{(Commutativity of addition!)} \\
-&= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Shift index)} \\
-&= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=2}^{n-2} N_{k}(i) && \text{($N_1(i) = 0$ for all $i$)} \\
-&= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=2}^{n-1} N_{k}(i) && \text{($N_{n-1}(i) = 0$ for all $i \leq n-1$)} \\
-&= 2^{n-4} + \sum_{i=1}^{n-1} N(i) && \text{(Equation \ref{composition-num-3s-n-nk} again!)} \\
+&= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Shift index)}
 \end{align*}
 
-This is promising! We now have a recurrence relation for $N(n)$ itself! (In fact, it looks sort of like that from Exercise \ref{TODO-strong-induction-sequence}. 
+% TODO: Possible philosophizing on the commutativity trick
 
-We'll do one last simplification. Using part (d), we have:
+At this point, we want to make sure we handle our base cases correctly, since there's a lot going on. Continuing, we have:
 
 \begin{align*}
-N(n) &= 2^{n-4} + \sum_{i=1}^{n-1} N(i) \\
-&= 2^{n-4} + N(1) + N(2) + N(3) + \sum_{i=4}^{n-1} N(i) \\
-&= 2^{n-4} + 0 + 0 + 1 + \sum_{i=4}^{n-1} N(i) \\
-&= 2^{n-4} + 1 + \sum_{i=4}^{n-1} N(i) \\
+N(n) &= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Shift index)} \\
+&= 2^{n-4} + \sum_{k=1}^{n-2} N_{k}(1) + \sum_{k=1}^{n-2} N_{k}(2) + \sum_{k=1}^{n-2} N_{k}(3) + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Split off $i = 1,2,3$ terms)} \\
+&= 2^{n-4} + 0 + 0 + \sum_{k=1}^{n-2} N_{k}(3) + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Base case for $n \leq 2$)} \\
+&= 2^{n-4} + \sum_{k=1}^{n-2} N_{k}(3) + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) \\
+&= 2^{n-4} + 1 + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Last 3 base cases)} \\
+&= 2^{n-4} + 1 + \sum_{i=4}^{n-1} \sum_{k=2}^{n-2} N_{k}(i) && \text{($N_1(i) = 0$ for  $i \geq 4$)} \\
+&= 2^{n-4} + 1 + \sum_{i=4}^{n-1} \sum_{k=2}^{n-2} N_{k}(i) && \text{($N_{n-1}(i) = 0$ for  $i \leq n-1$)} \\
+&= 2^{n-4} + 1 + \sum_{i=4}^{n-1} N(i) && \text{(Equation \ref{composition-num-3s-n-nk} again!)} \\
 \end{align*}
+
+This is promising -- we now have a recurrence relation for $N(n)$ itself! (In fact, it looks sort of like that from Exercise \ref{TODO-strong-induction-sequence}. 
 
 
 \subsubsection{Induction}

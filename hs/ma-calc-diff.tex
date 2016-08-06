@@ -1,0 +1,24 @@
+\chapter{(Calc - Differentiation)}
+
+% Central question: What is the slope of this line?
+% (Insert figure of tangent at x^2 for some positive val)
+%	(Include the graph lines in this one?, but point to/highlight the tangent somehow)
+
+
+
+\newpage
+\section{Terms and References}
+
+\section{Solutions}
+
+\subsection{Potential exercise (derivative of $x^n$ for integer $n$)}
+
+\begin{align*}
+\frac{d}{dx}x^n &= \lim_{h \rightarrow 0} \frac{(x+h)^n - x^n}{h} \\
+&= \lim_{h \rightarrow 0} \frac{\sum_{k=0}^n \binom{n}{k}h^k x^{n-k} - x^n}{h} && \text{(Binomial expansion -- see chapter)} \\
+&= \lim_{h \rightarrow 0} \frac{\binom{n}{0}x^n + \binom{n}{1}hx^{n-1} + \sum_{k=2}^n \binom{n}{k}h^k x^{n-k} - x^n}{h} && \text{(Separate $k=0$ and $k=1$ terms)} \\
+&= \lim_{h \rightarrow 0} \frac{x^n + nhx^{n-1} + \sum_{k=2}^n \binom{n}{k}h^k x^{n-k} - x^n}{h} \\
+&= \lim_{h \rightarrow 0} \frac{nhx^{n-1} + \sum_{k=2}^n \binom{n}{k}h^k x^{n-k}}{h} \\
+&= \lim_{h \rightarrow 0} \left[nx^{n-1} + \sum_{k=2}^n \binom{n}{k}h^{k-1} x^{n-k}\right] \\
+&= nx^{n-1} + 0 && \text{($k-1$ is positive at all terms, so all $h^{k-1}$ terms approach 0)}\\
+\end{align*}

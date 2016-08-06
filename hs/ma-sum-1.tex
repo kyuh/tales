@@ -426,7 +426,15 @@ N(n) = \sum_{k=2}^{n-1} N_k(n)
 
 Instead of constructing a recurrence relation for $N(n)$ immediately, we'll first construct a recurrence relation for $N_k(n)$. Therefore, we'll be looking at sequences of the form $(x_1, x_2, ..., x_k)$ whose terms sum to $n$.
 
-For this part, we'll assume that $k \geq 2$, since $N_1(n) = 0$ for $n \geq 4$, as mentioned above. 
+We'll establish this relation for $k \geq 2$ and $n \geq 4$. The base cases (some of which have been discussed directly or indirectly) are:
+
+\begin{align*}
+N_k(n) &= 0 \quad \text{for } n \leq 2 \\
+N_1(n) &= 0 \quad \text{for } n \geq 4 \\
+N_1(3) &= 1 \\
+N_2(3) &= 0 \\
+N_k(n) &= 0 \quad \text{for } k \geq n \\
+\end{align*}
 
 We'll split up our counting into two parts:
 \begin{enumerate}

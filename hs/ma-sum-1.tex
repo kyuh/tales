@@ -488,8 +488,11 @@ N(n) &= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) \\
 &= 2^{n-4} + \sum_{k=1}^{n-2} N_{k}(1) + \sum_{k=1}^{n-2} N_{k}(2) + \sum_{k=1}^{n-2} N_{k}(3) + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Split off $i = 1,2,3$ terms)} \\
 &= 2^{n-4} + 0 + 0 + \sum_{k=1}^{n-2} N_{k}(3) + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Base case for $n \leq 2$)} \\
 &= 2^{n-4} + \sum_{k=1}^{n-2} N_{k}(3) + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) \\
-&= 2^{n-4} + 1 + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Last 3 base cases)} \\
+&= 2^{n-4} + N_1(3) + N_2(3) + N_3(3) + \sum_{k=4}^{n-2} N_{k}(3) + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) \\
+&= 2^{n-4} + 1 + 0 + 0 + 0 + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Last 3 base cases)} \\
+&= 2^{n-4} + 1 + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) \\
 &= 2^{n-4} + 1 + \sum_{i=4}^{n-1} \sum_{k=2}^{n-2} N_{k}(i) && \text{($N_1(i) = 0$ for  $i \geq 4$)} \\
+&= 2^{n-4} + 1 + \sum_{i=4}^{n-1} \left( \sum_{k=2}^{i-1} N_{k}(i) + \sum_{k=i}^{n-2} N_{k}(i) \right) && \text{(Split sum)} \\
 &= 2^{n-4} + 1 + \sum_{i=4}^{n-1} \sum_{k=2}^{i-1} N_{k}(i) && \text{($N_{k}(i) = 0$ for  $k \geq i$)} \\
 &= 2^{n-4} + 1 + \sum_{i=4}^{n-1} N(i) && \text{(Equation \ref{composition-num-3s-n-nk} again!)} \\
 \end{align*}

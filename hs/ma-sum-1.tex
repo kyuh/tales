@@ -264,8 +264,119 @@ Prove that this statement is true whenever $n$ is a counting number, using induc
 
 %This leads us into our second tale of the chapter.
 
-% TODO: Explain perms/combs
-% Briefly incorporate "sequence" vocal (don't need to formally define it yet)
+% OLD? TODO: Explain perms/combs
+% OLD? Briefly incorporate "sequence" vocal (don't need to formally define it yet)
+
+
+% maybe should be an "official" subsection?
+\subsection{Arranging things}
+
+
+How many ways can I arrange the letters $a$, $b$, $c$, and $d$?
+
+% Possible TODO: brief lead-in here? (even if it's only half a sentence)
+Let's write them out:
+
+\begin{gather*}
+(a, b, c, d) \\
+(a, b, d, c) \\
+(a, c, b, d) \\
+(a, c, d, b) \\
+(a, d, b, c) \\
+(a, d, c, b) \\
+(b, a, c, d) \\
+(b, a, d, c) \\
+(b, c, a, d) \\
+(b, c, d, a) \\
+(b, d, a, c) \\
+(b, d, c, a) \\
+(c, a, b, d) \\
+(c, a, d, b) \\
+(c, b, a, d) \\
+(c, b, d, a) \\
+(c, d, a, b) \\
+(c, d, b, a) \\
+(d, a, b, c) \\
+(d, a, c, b) \\
+(d, b, a, c) \\
+(d, b, c, a) \\
+(d, c, a, b) \\
+(d, c, b, a) \\
+\end{gather*}
+
+In case you feel like counting, there are 24 of them.
+
+But writing out all our possibilities is slightly annoying, even with only four letters. (Imagine using more!) We might even have missed some! How could we have figured out how many we have otherwise, perhaps with more confidence? % (more rigorously) 
+
+Hopefully the order in which we wrote the above permutations is a bit revealing. Delving a little deeper, we can divide our arrangements into 4 possibilities:
+
+\begin{enumerate}
+\item Those that start with $a$
+\item Those that start with $b$
+\item Those that start with $c$
+\item Those that start with $d$
+\end{enumerate}
+
+Let's look at the ones that start with the letter $a$. In each such arrangement, the only letters that can be used for the last three spaces are $b$, $c$, and $d$. 
+
+Similar things happen in the other cases. If we take one of the letters and use it as our first, the last three characters must be taken from the three characters you haven't used yet. (For example, if we use $b$ as our first character, then our last three characters must be an ordering using the letters $a$, $c$, and $d$ in some order.) % Explain better?
+
+This leads us to a really important observation. We have a problem of finding the "number of arrangements of 4 things". We can divide it into 4 separate scenarios (the 4 cases), each of which has a smaller, but very similar problem -- the "number of arrangements of 3 things". 
+
+Let's come up with some better notation. Let $p_n$ denote the "number of arrangements of $n$ things". Our observation is that:
+
+\begin{equation*}
+p_4 = 4 \cdot p_3
+\end{equation*}
+
+% TODO: need some sort of break here? (maybe just space)
+
+Let's try reducing part of our problem even more. Remember all those arrangements that started with the letter $a$?
+
+\begin{gather*}
+(a, b, c, d) \\
+(a, b, d, c) \\
+(a, c, b, d) \\
+(a, c, d, b) \\
+(a, d, b, c) \\
+(a, d, c, b) \\
+\end{gather*}
+
+As we mentioned, they all consist of the letter $a$, followed by each possible ordering using the letters $b$, $c$, and $d$. We list those here:
+
+\begin{gather*}
+(b, c, d) \\
+(b, d, c) \\
+(c, b, d) \\
+(c, d, b) \\
+(d, b, c) \\
+(d, c, b) \\
+\end{gather*}
+
+We can now do something very similar to before. Now, there are 3 cases (starting with $b$, $c$, or $d$ -- and in each case, using the remaining 2 letters to form orderings of length 2). Hopefully you agree with the observation that:
+
+\begin{equation*}
+p_3 = 3 \cdot p_2
+\end{equation*}
+
+% TODO: space/break?
+
+In fact, hopefully you agree with a more general statement: For counting numbers $n$,
+
+\begin{equation*}
+p_n = n \cdot p_{n-1}
+\end{equation*}
+
+In other words, the number of ways to arrange $n$ distinct letters (or other things) is given by $n$ times the same problem, but for $(n-1)$. 
+
+There's a little bit of nuance to consider here. What if $n$ is 1? Then $(n-1)$ is 0, and we haven't considered 0 a counting number. In other words, we need to stop subtracting 1 somewhere.
+
+Similar to our induction, let's consider some sort of "base case". What is $p_1$? If we only have 1 thing, there's really only 1 way to arrange it. Hence, $p_1 = 1$. 
+
+% TODO: Maybe need to revise the original induction section to start at 0, and for any of those inductive relations that involve starting at some number, discuss the process as being equivalent to all integers above (that starting number). 
+
+
+
 
 \subsection{(Balls in urns problem)}
 

@@ -444,7 +444,7 @@ q_{n,1} = n
 (more explicitly)
 
 \begin{equation*}
-q_{n,k} = \prod_{i=k+1}^n
+q_{n,k} = \prod_{i=n-(k-1)}^n = \prod_{i=n-k+1}^n
 \end{equation*}
 
 % TODO: Show the work? (split the product term, cancel, etc)
@@ -452,17 +452,68 @@ q_{n,k} = \prod_{i=k+1}^n
 which we can also write, using our "factorial notation", as:
 
 \begin{equation}
-q_{n,k} = \frac{n!}{k!}
+\label{eq:perms-n-k}
+q_{n,k} = \frac{n!}{(n-k)!}
 \end{equation}
 
-
-
-
-
+% TODO: Some sort of philosophical wrap-up (maybe about extending problems? too cheesy?)
 
 
 \subsection{Collecting things}
 
+Finally, let's add another twist to the problem. Again, I'll select from the letters $a$, $b$, $c$, $d$ -- but this time, we don't care about orderings. Instead, we want to know how many \textit{collections} (or \textbf{combinations}) we can form. 
+% TODO: Needs more
+% e.g. (a,c) and (c,a) are to be considered not distinct
+
+Let's write out all of them here:
+
+\begin{gather*}
+\{a, b\} \\
+\{a, c\} \\
+\{a, d\} \\
+\{b, c\} \\
+\{b, d\} \\
+\{c, d\} \\
+\end{gather*}
+
+% TODO: Explain this observation
+% ("First thing to see":)
+% (One key thing to see: The "subproblems" are no longer equivalent (and are actually sort of dependent on one another -- find a good way to phrase this).)
+
+Let's build off our previous sections' work. In some sense, we'd like to see how much we're "over-counting". 
+
+For example, let's say we were considering letters $a$ and $b$. If we include both $(a, b)$ and $(b, a)$ in the count, instead of simply the collection $\{a, b\}$, would be over-counting this collection by a factor of 2. 
+
+As another example: If we had the letters $b$, $c$, and $d$ (for our collection $\{b, c, d\}$), we would have the arrangements:
+
+\begin{gather*}
+(b, c, d) \\
+(b, d, c) \\
+(c, b, d) \\
+(c, d, b) \\
+(d, b, c) \\
+(d, c, b) \\
+\end{gather*}
+
+Here, we're over-counting by a factor of 6.
+
+% Possible TODO: Use this verbiage?: (So what can we do? We eliminate all the duplicate possibilities.)
+
+In fact, hopefully the pattern is clear. If we are considering a collection of size $k$, then we are over-counting by the "number of orderings from $k$ things", which is simply ($k!$).\footnote{This sentence deserves an explanation mark, but that would cause confusion.} 
+
+Let's incorporate this into our final observation. Let $c_{n,k}$ be the number of collections we can form of size $k$, from $n$ things. To account for our "over-counting" from the previous section's problem, we have
+
+\begin{equation*}
+c_{n,k} = \frac{q_{n,k}}{k!}
+\end{equation*}
+
+Substituting our previous section's result (Equation \ref{eq:perms-n-k}) gives us:
+
+\begin{equation}
+c_{n,k} = \frac{n!}{(n-k)! k!}
+\end{equation}
+
+% TODO: Mention binomial notation (and perhaps "nCk" notation)
 
 
 

@@ -363,9 +363,9 @@ p_3 = 3 \cdot p_2
 
 In fact, hopefully you agree with a more general statement: For counting numbers $n$,
 
-\begin{equation*}
+\begin{equation}
 p_n = n \cdot p_{n-1}
-\end{equation*}
+\end{equation}
 
 In other words, the number of ways to arrange $n$ distinct letters (or other things) is given by $n$ times the same problem, but for $(n-1)$. 
 
@@ -373,7 +373,12 @@ In other words, the number of ways to arrange $n$ distinct letters (or other thi
 
 There's a little bit of nuance to consider here. What if $n$ is 1? Then $(n-1)$ is 0, and we haven't considered 0 a counting number. In other words, we need to stop subtracting 1 somewhere.
 
-Similar to our induction, let's consider some sort of "base case". What is $p_1$? If we only have 1 thing, there's really only 1 way to arrange it. Hence, $p_1 = 1$. 
+Similar to our induction, let's consider some sort of "base case". What is $p_1$? If we only have 1 thing, there's really only 1 way to arrange it. Hence, to complement our relation above, we have the base case:
+
+\begin{equation}
+p_1 = 1
+\end{equation}
+
 
 % TODO: Maybe need to revise the original induction section to start at 0, and for any of those inductive relations that involve starting at some number, discuss the process as being equivalent to all integers above (that starting number). 
 
@@ -425,17 +430,30 @@ Hopefully, based on a similar line of thinking, you also agree with the general 
 q_{n,k} = n \cdot q_{n-1,k-1}
 \end{equation*}
 
-Let's consider what our "base case" will be here. If we have n letters available and a "length 1" ordering, we just choose a letter and have that be our "length-1 ordering". There are of course n letters we can choose from, so we have
+Let's consider what our "base case" will be here. If we have n letters available and a "length 1" ordering, we just choose a letter and have that be our "length-1 ordering". There are of course n letters we can choose from, so we have the base case: 
+% TODO: Clarify "for all counting (or whatever) numbers $n$"
+
+\begin{equation*}
+q_{n,1} = n
+\end{equation*}
 
 % TODO: Need to discuss distinctness somehow (maybe in a footnote, or just later if you get to it)
 
 % TODO: (Some explanation, maybe alluding to induction?)
 
-\begin{equation}
+(more explicitly)
+
+\begin{equation*}
 q_{n,k} = \prod_{i=k+1}^n
+\end{equation*}
+
+% TODO: Show the work? (split the product term, cancel, etc)
+
+which we can also write, using our "factorial notation", as:
+
+\begin{equation}
+q_{n,k} = \frac{n!}{k!}
 \end{equation}
-
-
 
 
 

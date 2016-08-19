@@ -679,11 +679,11 @@ Instead of constructing a recurrence relation for $N(n)$ immediately, we'll firs
 We'll establish this relation for $k \geq 2$ and $n \geq 4$. The base cases (some of which have been discussed directly or indirectly) are:
 
 \begin{enumerate}
-\item $N_k(n) = 0 \quad \text{for all $k$, when } n \leq 2$ \label{eqbc-3s-1}
+\item $N_k(n) = 0 \quad \text{when } k \geq n$ \label{eqbc-3s-1}
 \item $N_1(n) = 0 \quad \text{when } n \geq 4$  \label{eqbc-3s-2}
-\item $N_1(3) = 1$  \label{eqbc-3s-3}
-\item $N_2(3) = 0$ \label{hooo}  \label{eqbc-3s-4}
-\item $N_k(n) = 0 \quad \text{when } k \geq n$ \label{eqbc-3s-5}
+\item $N_1(2) = 0$  \label{eqbc-3s-3}
+\item $N_1(3) = 1$  \label{eqbc-3s-4}
+\item $N_2(3) = 0$ \label{hooo}  \label{eqbc-3s-5}
 \end{enumerate}
 
 
@@ -715,7 +715,7 @@ N_k(n) = \binom{n-4}{k-2} + \sum_{i=1}^{n-1} N_{k-1}(n-i)
 
 Now that we have something for $N_k(n)$, let's see what we can do with $N(n)$. 
 
-Starting from Equation \ref{composition-num-3s-n-nk}, we have:
+Starting from Equation \ref{composition-num-3s-n-nk}, we have (for $n \geq 4$ and $k \geq 2$):
 
 \begin{align*}
 N(n) &= \sum_{k=2}^{n-1} N_k(n) \\
@@ -736,15 +736,13 @@ At this point, we want to make sure we handle our base cases correctly, since th
 
 \begin{align*}
 N(n) &= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) \\
-&= 2^{n-4} + \sum_{k=1}^{n-2} N_{k}(1) + \sum_{k=1}^{n-2} N_{k}(2) + \sum_{k=1}^{n-2} N_{k}(3) + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Split off $i = 1,2,3$ terms)} \\
-&= 2^{n-4} + 0 + 0 + \sum_{k=1}^{n-2} N_{k}(3) + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Base case \ref{eqbc-3s-1})} \\
-&= 2^{n-4} + \sum_{k=1}^{n-2} N_{k}(3) + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) \\
-&= 2^{n-4} + N_1(3) + N_2(3) + \sum_{k=3}^{n-2} N_{k}(3) + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) \\
-&= 2^{n-4} + 1 + 0 + 0 + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Base cases \ref{eqbc-3s-3}, \ref{eqbc-3s-4}, \ref{eqbc-3s-5})} \\
-&= 2^{n-4} + 1 + \sum_{i=4}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) \\
-&= 2^{n-4} + 1 + \sum_{i=4}^{n-1} \sum_{k=2}^{n-2} N_{k}(i) && \text{(Base case \ref{eqbc-3s-2})} \\
-&= 2^{n-4} + 1 + \sum_{i=4}^{n-1} \left( \sum_{k=2}^{i-1} N_{k}(i) + \sum_{k=i}^{n-2} N_{k}(i) \right) && \text{(Split sum)} \\
-&= 2^{n-4} + 1 + \sum_{i=4}^{n-1} \sum_{k=2}^{i-1} N_{k}(i) && \text{(Base case \ref{eqbc-3s-5})} \\
+&= 2^{n-4} + \sum_{i=1}^{n-1} \left( \sum_{k=1}^{i-1} N_{k}(i) + \sum_{k=i}^{n-2} N_{k}(i) \right) && \text{(Split sum)} \\
+&= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=1}^{i-1} N_{k}(i) && \text{(Base case \ref{eqbc-3s-1})} \\
+&= 2^{n-4} + \sum_{i=2}^{n-1} \sum_{k=1}^{i-1} N_{k}(i) && \text{(Empty inside sum at $i=1$)} \\
+&= 2^{n-4} + \left( N_1(2) \right) + \left( N_1(3) + N_2(3) \right) + \sum_{i=4}^{n-1} \sum_{k=1}^{i-1} N_{k}(i) && \text{(Split and expand sums at $i=2,3$)} \\
+&= 2^{n-4} + 0 + \left( 1 + 0 \right) + \sum_{i=4}^{n-1} \sum_{k=1}^{i-1} N_{k}(i) && \text{(Base cases \ref{eqbc-3s-3}, \ref{eqbc-3s-4}, \ref{eqbc-3s-5})} \\
+&= 2^{n-4} + 1 + \sum_{i=4}^{n-1} \sum_{k=1}^{i-1} N_{k}(i) \\
+&= 2^{n-4} + 1 + \sum_{i=4}^{n-1} \sum_{k=2}^{i-1} N_{k}(i) && \text{(Base case \ref{eqbc-3s-2})} \\
 &= 2^{n-4} + 1 + \sum_{i=4}^{n-1} N(i) && \text{(Equation \ref{composition-num-3s-n-nk} again!)} \\
 \end{align*}
 
@@ -794,4 +792,6 @@ N(n) &= 2^{n-4} + 1 + \sum_{i=4}^{n-1} N(i) \\
 \end{align*}
 
 Hence, our strong inductive step holds, and therefore our statement holds: for $n \geq 4$, $N(n) = n2^{n-5}$. $\square$
+
+% TODO: Mention other solution possibilities (with different overlapping base cases, go through possible work there - maybe pull out previous commits?)
 

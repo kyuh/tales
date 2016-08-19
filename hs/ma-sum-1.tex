@@ -306,7 +306,7 @@ Let's write them out:
 
 In case you feel like counting, there are 24 of them.
 
-But writing out all our possibilities is slightly annoying, even with only four letters. (Imagine using more!) We might even have missed some! How could we have figured out how many we have otherwise, perhaps with more confidence? % (more rigorously) 
+But writing out all our possibilities is slightly annoying, even with only four letters. (Imagine using more!) We might even have missed some! How could we have figured out how many we have otherwise, perhaps with more confidence? % ("more rigorously") 
 
 Hopefully the order in which we wrote the above permutations is a bit revealing. Delving a little deeper, we can divide our arrangements into 4 possibilities:
 
@@ -319,11 +319,15 @@ Hopefully the order in which we wrote the above permutations is a bit revealing.
 
 Let's look at the ones that start with the letter $a$. In each such arrangement, the only letters that can be used for the last three spaces are $b$, $c$, and $d$. 
 
-Similar things happen in the other cases. If we take one of the letters and use it as our first, the last three characters must be taken from the three characters you haven't used yet. (For example, if we use $b$ as our first character, then our last three characters must be an ordering using the letters $a$, $c$, and $d$ in some order.) % Explain better?
+Similar things happen in the other cases. If we take one of the letters and use it as our first, the last three characters must be taken from the three characters we haven't used yet. (For example, if we use $b$ as our first character, then our last three characters must be an ordering using the letters $a$, $c$, and $d$ in some order.) % Explain better?
 
-This leads us to a really important observation. We have a problem of finding the "number of arrangements of 4 things". We can divide it into 4 separate scenarios (the 4 cases), each of which has a smaller, but very similar problem -- the "number of arrangements of 3 things". 
+This leads us to a really important observation. Our original problem, in essence, was to determine the "number of possible arrangements of 4 distinct things". We can divide this problem into 4 separate scenarios (the 4 cases), each of which has a smaller, but very similar problem -- the "number of possible arrangements of 3 distinct things".
 
-Let's come up with some better notation. Let $p_n$ denote the "number of arrangements of $n$ things". Our observation is that:
+% TODO: Explain that we have 4 times the number of 3 things. (And more explanation on this point in general.) 
+
+%\footnote{It doesn't really matter that they are the letters $a$, $b$, $c$, and $d$, as opposed to the letters $x$, $z$, $w$, and $q$, or the numbers 1, 2, 3, and 4, or balls of colors red, yellow, green, and blue.} \footnote{What \emph{does} matter is \emph{distinctness} -- if I were to try to find the number ... TODO: Discuss distinctness, and getting to non-distinctness later?} 
+
+Let's come up with some better notation. Let $p_n$ denote the "number of possible arrangements of $n$ things". Our observation is that:
 
 \begin{equation*}
 p_4 = 4 \cdot p_3
@@ -388,6 +392,16 @@ p_1 = 1
 
 % TODO: Need to restate recursion and base case together, and give (ideally combined) equation number
 
+\begin{exercise}
+In our four-letter example, it didn't really matter that we used the letters $a$, $b$, $c$, and $d$, as opposed to the letters $x$, $z$, $w$, and $q$, or the numbers 1, 2, 3, and 4, or balls of colors red, yellow, green, and blue. The number of ways to arrange each of these groups of 4 things is still 24.
+
+What does matter is \textbf{distinctness} -- if we were to try to find the number of ways to arrange the letters $b$, $b$, $c$, and $d$ (i.e. $b$ occurring twice), we may get different results.
+
+Write down the number of ways to arrange these four letters. Is your answer still 24?
+
+(We will cover non-distinct arrangements later in the chapter.)
+\end{exercise}
+
 \subsubsection{(Handling 0)}
 
 % TODO: Explain how the definition makes sense for n = 0. 
@@ -418,7 +432,7 @@ We could write out all of our possibilities. Here they are:
 
 These are slightly easier to list. However, let's do a similar process.
 
-Let $q_{n,k}$ denote the number of ways to make an ordering of length k from n distinct letters (or other things), and let's consider $q_{4,2}$. As before, we have four "groups" of arrangements based on our starting character (again, the 4 cases being those that start with $a$, $b$, $c$, or $d$). Within each of these 4 cases, we then have the problem of selecting an "arrangement of length 1" (in other words, just a character) from the remaining three available characters. Therefore, our observation is that:
+Let $q_{n,k}$ denote the number of ways to make an ordering of length $k$, from $n$ distinct letters (or other things), and let's consider $q_{4,2}$. As before, we have four "groups" of arrangements based on our starting character (again, the 4 cases being those that start with $a$, $b$, $c$, or $d$). Within each of these 4 cases, we then have the problem of selecting an "arrangement of length 1" (in other words, just a character) from the remaining three available characters. Therefore, our observation is that:
 
 \begin{equation*}
 q_{4,2} = 4 \cdot q_{3,1}

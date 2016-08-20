@@ -950,7 +950,7 @@ Starting from Equation \ref{composition-num-3s-n-nk}, we have (for $n \geq 4$ an
 \begin{align*}
 N(n) &= \sum_{k=2}^{n-1} N_k(n) \\
 &= \sum_{k=2}^{n-1} \left( \binom{n-4}{k-2} + \sum_{i=1}^{n-1} N_{k-1}(n-i) \right) && \text{(Equation \ref{composition-num-3s-nk-recurrence})} \\
-&= \sum_{k=2}^{n-1} \left( \binom{n-4}{k-2} + \sum_{i=1}^{n-1} N_{k-1}(i) \right) && \text{(Exercise \ref{TODO-sum-i-ni})} \\
+&= \sum_{k=2}^{n-1} \left( \binom{n-4}{k-2} + \sum_{i=1}^{n-1} N_{k-1}(i) \right) && \text{(Problem \ref{defining-sigma})} \\
 &= \sum_{k=2}^{n-1} \binom{n-4}{k-2} + \sum_{k=2}^{n-1} \sum_{i=1}^{n-1} N_{k-1}(i) \\
 &= \sum_{k=0}^{n-3} \binom{n-4}{k} + \sum_{k=2}^{n-1} \sum_{i=1}^{n-1} N_{k-1}(i) && \text{(Shift index)} \\
 &= \sum_{k=0}^{n-4} \binom{n-4}{k} + \binom{n-4}{n-3} + \sum_{k=2}^{n-1} \sum_{i=1}^{n-1} N_{k-1}(i) \\
@@ -976,7 +976,7 @@ N(n) &= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) \\
 &= 2^{n-4} + 1 + \sum_{i=4}^{n-1} N(i) && \text{(Equation \ref{composition-num-3s-n-nk} again!)} \\
 \end{align*}
 
-This is promising -- we now have a recurrence relation for $N(n)$ itself! (In fact, it looks sort of like that from Exercise \ref{TODO-strong-induction-sequence}. 
+This is promising -- we now have a recurrence relation for $N(n)$ itself! (In fact, it looks sort of like that from Problem \ref{sequence-recursive-sum}, with different notation and a few extra terms thrown in.)
 
 
 \subsubsection{Induction}

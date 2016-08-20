@@ -554,30 +554,53 @@ c_{n,k} = \frac{n!}{(n-k)! k!}
 \begin{problem}
 \label{defining-sigma}
 
-% This maybe should just be part of the text. 
-% (Actually nvm, define it in the text but leave the exercise here.)
-% (Or move the exercise up when it's ready. Or some hybrid of these.)
-% (Wording of the question, esp. the intro, may need to change)
+% TODO: Either hint at sequences a bit more earlier, or add some detail here.
 
-We've seen that the sigma-notation is a helpful way to write down an extended sum. If we have some sequence (essentially some "thing" dependent on an index $i$ ranging from 1 through $n$)\footnote{Note that the sum doesn't necessarily have to have an $a_2$ term or terms beyond that -- for example, $\sum_{i=1}^1 a_i$ is simply equal to $a_1$.}:
+% SCRAP: We've seen that the sigma-notation is a helpful way to write down an extended sum. If we have some \emph{sequence}\footnote{We'll talk more formally about sequences in the next chapter.} (essentially some "thing" dependent on an index $i$ ranging from 1 through $n$)\footnote{Note that the sum doesn't necessarily have to have an $a_2$ term or terms beyond that -- for example, $\sum_{i=1}^1 a_i$ is simply equal to $a_1$.}:
+
+% TODO: Explain "index variable" more, depending on previous content
+
+% TODO: Explain the "define" notation footnote more?
+
+We've seen that the sigma-notation is a helpful way to write down an extended sum, especially when each term in the sum is dependent on some sort of "index variable". We previously used this notation to (among other things) describe the sum of the integers from 1 through some counting number $n$. For example, if $n$ is 10, then:\footnote{The "$:=$" notation means "the left side is terminology, and we are \emph{defining} it to be equal to the right side.}
 
 \begin{align*}
-\sum_{i=1}^n a_i := a_1 + a_2 + ... + a_n 
+\sum_{i=1}^{10} i := 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 
 \end{align*}
 
-% TODO depending on context: "For example, ..."
+Let's more formally generalize this a bit. We'll define $a_i$ to be some quantity that depends on $i$. Then (taking $n$ to equal 10 again, for our example):
 
-We can actually define this notation as a mathematical quantity more rigorously. We'll define it recursively, as follows:
+\begin{align*}
+\sum_{i=1}^{10} a_i := a_1 + a_2 + a_3 + a_4 + a_5 + a_6 + a_7 + a_8 + a_9 + a_{10}
+\end{align*}
+
+For example, if $a_i := 3i$, then:
+
+\begin{align*}
+\sum_{i=1}^{10} a_i := 3 + 6 + 9 + 12 + 15 + 18 + 21 + 24 + 27 + 30
+\end{align*}
+
+Let's be even more specific and rigorous. We can \emph{define} sigma-notation rigorously, using recursion. Here is a recursive definition, assuming we want to start our index variable at 1:
 
 % TODO: Use := notation here?
 
 \begin{align*}
 \sum_{i=1}^1 a_i &= a_1 \\
-\sum_{i=1}^n a_i &= \left(\sum_{i=1}^{n-1} a_i\right) + a_n & n > 1
+\sum_{i=1}^n a_i &= \left(\sum_{i=1}^{n-1} a_i\right) + a_n & \text{when } n > 1
 \end{align*}
+
+We see that the first equation is a "base case", and the second is a recursive relation. 
+
+% TODO: May need to get into starting indices, and adding terms from the beginning
+
+% TODO: Maybe the problems on changing indices should be here (with perhaps some context, e.g. "we can define b_i = a_{i+1}"
+
 
 % TODO: Correct this statement based on context
 We can now rigorously inspect and prove some properties that we've taken for granted before. For the following problems, let $\{a_i\}$ be any sequence. 
+
+
+% TODO: We've never mentioned the i to n-i problem before. Give some context, spell out small cases, etc. 
 
 \begin{enumerate}[(a)]
 \item Prove that $\sum_{i=1}^{n-1} a_i = \sum_{i=1}^{n-1} a_{n-i}$ for integer $n \geq 2$. (Think about why this is true first.)

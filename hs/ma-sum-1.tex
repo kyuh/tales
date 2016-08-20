@@ -537,9 +537,71 @@ c_{n,k} = \frac{n!}{(n-k)! k!}
 
 \subsection{Pascal's triangle}
 
+% TODO: Preface with something (even as simple as the "fifth tale")
+
+Consider the following "triangle" of numbers:
+
+% TODO: Insert standard Pascal's triangle (for a few rows)
+% TODO: Mention (maybe in terms/references and/or footnotes) that it's often called Pascal's triangle
+
+Each number has an interesting property: it is the sum of the two numbers "above" it in the triangle. The exceptions are the numbers on the two "edges" of the triangle, which are all 1s.
+
+Can we find a "formula" that will give us each number in the triangle?
+
+% TODO?: space/break
+
+Let's try coming up with some ways to communicate about each term. Let's define $a_{n,k}$ to be
+
+% TODO: Do we want to start numbering the rows and "columns" at 1, to prove a point? (and make it seem more discovery-esque?) (Tentatively think so)
+
+% TODO: Insert Pascal's triangle formation, but now with c_{n,k} formation
+% (Maybe ask them to verify it a bit?)
+
+% TODO: (Explain that it's a theorem and we'll call them that)
+
+% (Note that we'll eventually clarify the results outside these n and k bounds)
+\begin{theorem} For $n \geq 0$ and $0 \leq k \leq n$, 
+\begin{equation}
+c_{n+1,k+1} = c_{n,k} + c_{n,k+1}
+\end{equation} 
+
+\end{theorem}
+\begin{proof}
+Starting from the right side, 
+
+\begin{align*}
+c_{n,k} + c_{n,k+1} &:= \frac{n!}{(n-k)! k!} + \frac{n!}{(n-(k+1))! (k+1)!} \\
+&= \frac{n!}{(n-k)! k!} + \frac{n!}{(n-k-1)! (k+1)!} \\
+&= \frac{k+1}{k+1} \cdot \frac{n!}{(n-k)! k!} + \frac{n-k}{n-k} \cdot \frac{n!}{(n-k-1)! (k+1)!} && (\text{"Multiplying by 1"}) \\
+&= \frac{ (k+1) \cdot n!}{(n-k)! (k+1)!} + \frac{n-k}{n-k} \cdot \frac{n!}{(n-k-1)! (k+1)!} && (\text{since $(k+1)! = (k+1) \cdot k!$}) \\
+&= \frac{ (k+1) \cdot n!}{(n-k)! (k+1)!} + \frac{(n-k)! n!}{(n-k)! (k+1)!} && (\text{since $(n-k)! = (n-k) \cdot (n-k-1)!$}) \\
+&= \frac{ (k+1) \cdot n! + (n-k)! n!}{(n-k)! (k+1)!} && \text{(Combine fraction)}\\
+&= \frac{ (k+1 + n-k) \cdot n!}{(n-k)! (k+1)!} && \text{(Factor out)}\\
+&= \frac{ (n+1) \cdot n!}{(n-k)! (k+1)!} \\
+&= \frac{ (n+1)!}{(n-k)! (k+1)!} && (\text{since $(n+1)! = (n+1) \cdot n!$}) \\
+&= \frac{ (n+1)!}{((n+1)-(k+1))! (k+1)!} && (\text{"Adding 0"}) \\
+&=: c_{n+1,k+1}\\
+\end{align*}
+
+\end{proof}
+
+% TODO: Briefly explain the reverse "=:"
+
+% TODO: Some philosophizing on the proof maybe? (It's mostly just factorial manipulation to get a common denominator)
+% 	Btw TODO: Could also recursively define factorial similarly, maybe in exercise? (maybe unnecessary, but you could mention it off-hand in the main first recursion exercise)
+
+
+% TODO: Mention the edges and how they can be resolved, with the triangle in a "bath" of 0s, and how it relates to outside values of c_{n,k}. 
+% (Actually do this after introducing the c_{n,k} pattern and our intuition for "how many ways to arrange/select things") (This is a nice way to finish off this subsection?)
+
+
+
 \subsection{(Binomial expansion)}
 
+
+
 % TODO: (Eventually some/more recursion stuff)
+% section/subsection here?
 
 
 

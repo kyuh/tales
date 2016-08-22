@@ -529,7 +529,19 @@ Substituting our previous section's result (Equation \ref{eq:perms-n-k}) gives u
 c_{n,k} = \frac{n!}{(n-k)! k!}
 \end{equation}
 
+% TODO: Briefly mention for what n and k values it makes sense
+% Requires (either now, or probably earlier) mention of 0 factorial
+
 % TODO: Mention binomial notation (and perhaps "nCk" notation)
+
+\begin{exercise}
+\label{ex:binom-coeff-symmetry}
+Briefly prove that $c_{n,k} = c_{n,n-k}$.
+
+(While the proof is short, the consequences are quite interesting. For example, if I have 20 distinct things to choose from, the number of ways to make collections of 3 things is equal to that of making collections of 17 things!)
+% Hint: Basically substitute n-k for n
+% TODO: Mention in solutions of just thinking about it as the collection and its "complement"
+\end{exercise}
 
 
 
@@ -550,16 +562,89 @@ Can we find a "formula" that will give us each number in the triangle?
 
 % TODO?: space/break
 
-Let's try coming up with some ways to communicate about each term. Let's define $a_{n,k}$ to be
+% Note: In this section, we won't start by numbering indices the "conventional" way. Basically we'll sort of "discover" that the binomial coefficients have the properties, and realize that we have to do an index adjustment. (This sort of gives a better sense of discovery and refining observations, imo.) 
 
-% TODO: Do we want to start numbering the rows and "columns" at 1, to prove a point? (and make it seem more discovery-esque?) (Tentatively think so)
+Let's try coming up with some notation to communicate about each "spot" in the triangle. We'll start numbering the rows from the top of the triangle downward, from 1, 2, 3, ... onwards. (We'll call this index $n$.) Then, in each row of the triangle, we'll number the leftmost number as 1, the one to its right as 2, and so on. (We'll call this index $k$.) Then we'll let $a_{n,k}$ denote each such number.
 
-% TODO: Insert Pascal's triangle formation, but now with c_{n,k} formation
-% (Maybe ask them to verify it a bit?)
+So our triangle looks something like this:
+
+% TODO: Insert "Pascal's triangle" with a_{n,k} enumerated by n and k (so a_{1,1} at top, a_{2,1} and a_{2,2} on the second row, etc.
+
+There are a few observations we can make here:
+
+\begin{itemize}
+\item First, for any given row $n$, the second index ($k$) here is always at least 1, and at most $n$. In other words, in any given row $n$, $a_{n,1}$ is the leftmost term in the row, and $a_{n,n}$ is the rightmost. 
+\item In addition, based on how the triangle looks, it seems like its left and right edges are all 1s. Using our notation, this means that for all counting numbers $n \geq 1$, we have $a_{n,1} = 1$, and $a_{n,n} = 1$ as well. (This acts sort of as a "base case", for now.)
+\item It also appears that the triangle is "symmetric" - if I were to draw a line down the triangle, the left side is a mirror image of the right, for every term. Using our notation -- and being a bit careful with our indices -- it looks as though, for every row $n$, and for each possible index $k$ (basically $1 \leq k \leq n$) we have $a_{n,k} = a_{n,(n+1) - k}$. 
+% TODO: Figure - draw this?
+
+\item We need to account for our "sum" relation -- in other words, each number on the inside of the triangle should be the sum of the two numbers "above" it. Using our notation, and thinking about our indices carefully, gives that for all counting numbers $n \geq 3$, and all counting numbers $k$ where $2 \leq k \leq n-1$: \footnote{Note that at $n = 1$ and $n = 2$, all numbers of the triangles are on the edges, and are covered by the base case mentioned previously.}
+
+% OLD FOOTNOTE: \footnote{Note that, as the statement stands, this statement is meaningless at $n=1$ or $n=2$, because this would require $2 \leq k \leq 0$ and $2 \leq k \leq 1$, respectively. TODO: Philosophy on vacuous statements?}
+
+\begin{equation}
+\label{ex:pascal-rule-mys}
+a_{n,k} = a_{n-1,k-1} + a_{n-1,k}
+\end{equation}
+\end{itemize}
+
+This last relation seems like a particularly weird one to crack. Unlike previous example, it's a recursive relationship that now depends on \emph{two} index variables.
+
+\subsubsection{(Searching)} 
+
+Sometimes it helps to find patterns and connections with what we've learned before. 
+
+We've seen one double-indexed sequence previously in the chapter -- the terms $c_{n,k}$, which we used to count the number of ways to make collections of size $k$, from $n$ distinct things.
+
+Could this have any connection? From Exercise \ref{ex:binom-coeff-symmetry}, we know that $c_{n,k}$ has a similar "symmetry" property. 
+
+What about $c_{n,k}$'s "base case"? We didn't define $c_{n,k}$ recursively, but do any particular values occur at "edge cases", like when $k = 0$ or when $k = n$, or when $n = 0$?
+
+\begin{exercise}
+\label{ex:binom-coeff-cn0}
+Show that for all counting numbers $n \geq 0$, $c_{n,0} = 1$.
+\end{exercise}
+
+\begin{exercise}
+Show that for all counting numbers $n \geq 0$, $c_{n,n} = 1$.
+
+(Hint: You could repeat the strategy of Exercise \ref{ex:binom-coeff-cn0}, but could you use Exercise \ref{ex:binom-coeff-symmetry} as a shortcut?)
+\end{exercise}
+
+
+\subsubsection{(Closer)} 
+
+It seems like $c_{n,k}$ is giving promising results so far. It shares the symmetry and "base case" behavior with our mystery terms $a_{n,k}$, except the indices seem a bit off.
+
+%What if we fixed that problem?
+
+What about this "sum" property described in Equation \ref{ex:pascal-rule-mys}? In theory, it would be nice if the numbers for collections obeyed some rule. In other words, for \emph{some} suitable choice of $n$ and $k$, we'd like it to be true that $c_{n,k} = c_{n-1,k-1} + c_{n-1,k}$.
+
+What intuition can we develop, based on our notion of the "collections" problem? Well, let's say we wanted to find all the ways to collect $k$ things from $n$ distinct things. 
+
+Suppose that there were a special element we had in mind. (Let's say that the elements are the numbers $1, 2, ..., n$, and that a particular one is our "lucky number".\footnote{13 is always a good choice, assuming $n \geq 13$.})
+
+So we can divide our $k$-collections into the following cases:
+
+\begin{enumerate}
+\item Those that have our lucky number
+\item Those that don't have our lucky number
+\end{enumerate}
+
+How many collections have our lucky number? Well, if our lucky number is already chosen, then it is one of the $k$ elements -- so, we have $k-1$ more to select. Also, since we already selected it from our $n$ elements, we now have $n-1$ elements to choose from. Hence, counting up all the ways, there are $c_{n-1,k-1}$ collections that have our lucky number.
+
+How many don't have our lucky number? Unlike in our previous case, we haven't chosen it yet -- so we have $k$ more elements to select. However, we've now "blacklisted" our lucky number from the $n$ elements we can choose from, so we can only choose from $n-1$ of them now. Hence, there are $c_{n-1,k}$ collections that have our lucky number.
+
+Well, since all collections we're interested in either have our lucky number or don't, and the total is $c_{n,k}$, it seems that this relationship works out!\footnote{With a bit more care with the indices, this would be a full-on bijective proof, like the balls problem above!}
+
+So our "intuition" (or, "almost bijective proof") hints to us that $c_{n,k}$ might have the "sum property" that we desire!
+
+Let's try to prove it formally. We'll actually give an algebraic proof below, and be a bit more rigorous with what the valid values of $n$ and $k$ are. We'll call this a \textbf{Theorem} -- basically, a statement proven rigorously -- and it will be one of many useful statements we'll build up and rely on in the book.
 
 % TODO: (Explain that it's a theorem and we'll call them that)
 
 % (Note that we'll eventually clarify the results outside these n and k bounds)
+
 \begin{theorem} For $n \geq 0$ and $0 \leq k \leq n$, 
 \begin{equation}
 c_{n+1,k+1} = c_{n,k} + c_{n,k+1}
@@ -588,6 +673,7 @@ c_{n,k} + c_{n,k+1} &:= \frac{n!}{(n-k)! k!} + \frac{n!}{(n-(k+1))! (k+1)!} \\
 % TODO: Briefly explain the reverse "=:"
 
 % TODO: Some philosophizing on the proof maybe? (It's mostly just factorial manipulation to get a common denominator)
+% 	"This time, we combined the fraction..." (or something)
 % 	Btw TODO: Could also recursively define factorial similarly, maybe in exercise? (maybe unnecessary, but you could mention it off-hand in the main first recursion exercise)
 
 
@@ -602,6 +688,8 @@ c_{n,k} + c_{n,k+1} &:= \frac{n!}{(n-k)! k!} + \frac{n!}{(n-(k+1))! (k+1)!} \\
 
 % TODO: (Eventually some/more recursion stuff)
 % section/subsection here?
+
+\section{(Why are we talking about this?)}
 
 
 

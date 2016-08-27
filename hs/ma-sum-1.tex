@@ -645,7 +645,9 @@ Let's try to prove it formally. We'll actually give an algebraic proof below, an
 
 % (Note that we'll eventually clarify the results outside these n and k bounds)
 
-\begin{theorem} For $n \geq 0$ and $0 \leq k \leq n$, 
+\begin{theorem} 
+\label{th:pascal-binom-coeff}
+For $n \geq 0$ and $0 \leq k \leq n-1$, 
 \begin{equation}
 c_{n+1,k+1} = c_{n,k} + c_{n,k+1}
 \end{equation} 
@@ -676,10 +678,15 @@ c_{n,k} + c_{n,k+1} &:= \frac{n!}{(n-k)! k!} + \frac{n!}{(n-(k+1))! (k+1)!} \\
 % 	"This time, we combined the fraction..." (or something)
 % 	Btw TODO: Could also recursively define factorial similarly, maybe in exercise? (maybe unnecessary, but you could mention it off-hand in the main first recursion exercise)
 
+\begin{exercise}
+In the proof of Theorem \ref{th:pascal-binom-coeff}, where did we rely on the fact that $n \geq 0$ and $0 \leq k \leq n-1$?
+\end{exercise}
+
 
 % TODO: Mention the edges and how they can be resolved, with the triangle in a "bath" of 0s, and how it relates to outside values of c_{n,k}. 
 % (Actually do this after introducing the c_{n,k} pattern and our intuition for "how many ways to arrange/select things") (This is a nice way to finish off this subsection?)
-
+% Have a subsubsection for it below
+% 
 
 
 \subsection{(Binomial expansion)}

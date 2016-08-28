@@ -1,0 +1,81 @@
+%!TEX root = tales-main.tex
+
+
+% Big theme here: Emergent properties
+%	(i.e. what happens when we have this property (here, among members of sets)
+%	we can get some interesting consequence (e.g. dimension))
+
+\chapter{(Sets and Emergence)}
+
+% Sth: "This might be the most boring way to start a chapter. In the past, we've talked about counting things -- here, we'll be talking about, quite literally, "things" (or more properly, collections of things)"
+
+
+\section{(Sets -- collections of things)}
+
+\begin{exercise}
+What are the intersection and union of...
+\begin{enumerate}[(a)]
+\item ...the set $\{1, 2, 3\}$ and the set $\{2, 3, 4\}$?
+\item ...the "null set" (the set with nothing in it) and any other set?
+\item ...the set of all even integers, and the set of all odd integers?
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+What is the intersection of...
+\begin{enumerate}[(a)]
+\item ...the set of prime numbers, and the set of even numbers?
+\item ...the set of integers divisible by 2, and the set of integers divisible by 3?
+\end{enumerate}
+\end{exercise}
+
+% TODO: Need to have defined prime numbers at some point
+
+\section{Problems}
+
+\begin{problem}
+\label{pr:amoeba-basic}
+Suppose we have an amoeba. It has a probability $p_d$ of dying, and a probability $(1 - p_d)$ of dividing into two amoebas (which themselves have the same probabilities of dying and dividing). Given our one starting amoeba, what is the probability that the whole "family tree" dies out?
+\end{problem}
+% TODO: Insert solution (and revise it for rigor)
+% TODO: Include another problem as an extension, where "magical amoeba" can divide into n copies of itself. Use as interesting plotting/limiting behavior exercise (connect to "yeah as n grows, less likely to die")
+% TODO: Problem/extension - consider what happens when we have more than one starting amoeba
+
+\newpage
+\section{Terms and References}
+
+\section{Hints}
+
+\newpage
+\section{Solutions}
+
+\subsection{Problem \ref{pr:amoeba-basic}}
+
+Let $p_G$ be the probability of the generation dying out, starting from one amoeba. There are two possibilities for that amoeba's family tree to die off: 
+
+\begin{enumerate}
+\item The amoeba itself dies. (This occurs with probability $p_d$.)
+\item The amoeba survives, but dies off in future generations. The probability of the amoeba surviving (denote $P(parent survival)$) is $(1 - p_d)$. The probability of the generation dying off, given survival of the parent amoeba, is $P(gen survival | parent survival) = p_G^2$; this is because the probability of a generation dying, starting from a given amoeba, is $p_G$, and we have to have this occur independently on each child of the original parent. 
+
+Hence, the probability of this whole chain of events (parent survival and gen survival) is the product of the two quantities above (since $P(A \cap B) = P(B | A)P(A)$), and we get $(1-p_d)p_G^2$. 
+\end{enumerate}
+
+Hence, we have the equation
+
+\begin{align*}
+p_G = p_d + (1-p_d)p_G^2
+\end{align*}
+
+Solving this gives $p_G = p_d / (1 - p_d)$ and $p_G = 1$. Because of (FILL IN HERE), the latter is of course invalid. 
+
+For example, if $p_d = 1/4$, then $p_G = 1/3$. % TODO: In other words...
+
+$\square$
+
+% TODO: Be more rigorous on why $p_G = 1$ is not a valid solution?
+% TODO: Make this more rigorous with probability spaces, etc.
+
+
+
+
+

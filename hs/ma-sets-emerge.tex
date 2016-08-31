@@ -44,10 +44,13 @@ Suppose we have an amoeba. It has a probability $p_d$ of dying, and a probabilit
 \begin{problem}
 \label{pr:amoeba-caprep}
 \end{problem}
+% TODO: Mention the irony that this is actually the harder problem than the "infinite" case
+% TODO: Link it back to the infinite case (likely using some fixed-point/convergence arguments, etc)
 
 \begin{problem}
 \label{pr:amoeba-nstart}
 \end{problem}
+% TODO: (This has a low CSD) Mention that this should be quite easy using some of the work done in the first amoeba problem 
 
 \begin{problem}
 \label{pr:amoeba-ndesc}
@@ -120,6 +123,9 @@ Combining everything above, we get that $p_F$ must satisfy the following relatio
 \begin{equation}
 p_F = p_d + (1-p_d)p_F^2
 \end{equation}
+
+% TODO: Philosophize a bit here on what we've done
+% e.g. (starting this) This is the trick we've done -- we've managed to show that
 
 Solving this gives $p_F = p_d / (1 - p_d)$ and $p_F = 1$. 
 

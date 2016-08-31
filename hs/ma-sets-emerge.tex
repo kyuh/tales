@@ -41,6 +41,16 @@ Suppose we have an amoeba. It has a probability $p_d$ of dying, and a probabilit
 % TODO: Include another problem as an extension, where "magical amoeba" can divide into n copies of itself. Use as interesting plotting/limiting behavior exercise (connect to "yeah as n grows, less likely to die")
 % TODO: Problem/extension - consider what happens when we have more than one starting amoeba
 
+\begin{problem}
+\label{pr:amoeba-ndesc}
+Suppose we have the situation described in Problem \ref{pr:amoeba-basic}, but we now have a "magical amoeba" that divides into $k$ children (and so does its descendants). 
+
+\begin{enumerate}[(a)]
+\item Intuitively, what should happen to the probability of the family tree's survival, as $k$ increases?
+\item 
+\end{enumerate}
+\end{problem}
+
 \newpage
 \section{Terms and References}
 
@@ -51,7 +61,51 @@ Suppose we have an amoeba. It has a probability $p_d$ of dying, and a probabilit
 
 \subsection{Problem \ref{pr:amoeba-basic}}
 
-Let $p_G$ be the probability of the generation dying out, starting from one amoeba. There are two possibilities for that amoeba's family tree to die off: 
+Let $p_G$ be the probability of the amoeba family dying out, starting from one amoeba. Ideally, we'd like to find what $p_G$ is, in terms of $p_d$. 
+
+% TODO: Potentially bee more clear here. Emphasize using the "divide the world into two possibilities" trick
+There are two (mutually exclusive) ways for that amoeba's family tree to die off: 
+\begin{enumerate}
+\item This amoeba dies.
+\item This amoeba lives to divide into two, but the family dies off later on.
+\end{enumerate}
+
+% Two possibilities view 1: Amoeba dies, or it lives
+% Two possibilities view 2: (Among all the ways to die) Generation dies now, or dies "sometime later"
+
+% some equation work
+
+\begin{align*}
+p_G &:= P(\text{ generation dies }) \\
+&= P(\text{ generation dies from parental death }) + P(\text{ generation dies from later death }) \\ % mutually exclusive
+\end{align*}
+
+i.e.
+
+\begin{align*}
+&= P(\text{ generation dies AND parent dies }) + P(\text{ generation dies AND parent lives }) \\
+&= P(\text{ parent dies }) \cdot P\left(\text{ generation dies } \middle| \text{ parent dies }\right) \\
+&\qquad + P(\text{ parent lives }) \cdot P\left(\text{ generation dies } \middle| \text{ parent lives }\right) \\
+&= p_d \cdot 1 + (1 - p_d) \cdot P\left(\text{ generation dies } \middle| \text{ parent lives }\right)
+\end{align*}
+
+What is $P\left(\text{ generation dies } \middle| \text{ parent lives }\right)$? If a parent has successfully lived to reproduce, then there are now two amoebas in its place. Each of them is now in the same situation as our original amoeba (it could die or divide into two, further continuing the family line), and also has probability $p_G$ of dying. Both amoebas must independently have their family lines die under them in order for the amoeba line as a whole to die.
+
+Therefore, 
+
+\begin{align*}
+&P\left(\text{ generation dies } \middle| \text{ parent lives }\right) \\
+&= P\left(\text{ generation dies under child 1 AND generation dies under child 2 } \right) \\
+&= P\left(\text{ generation dies under child 1} \right) \cdot P\left(\text{ generation dies under child 2 } \right) \\
+&= p_G \cdot p_G \\
+&= p_G^2
+\end{align*}
+
+%TODO: Fix super/subscript formatting
+%TODO: "Generations" term is wrong, use some other word (like line)
+
+
+\subsection{(Old solution scraps)}
 
 \begin{enumerate}
 \item The amoeba itself dies. (This occurs with probability $p_d$.)

@@ -42,6 +42,14 @@ Suppose we have an amoeba. It has a probability $p_d$ of dying, and a probabilit
 % TODO: Problem/extension - consider what happens when we have more than one starting amoeba
 
 \begin{problem}
+\label{pr:amoeba-caprep}
+\end{problem}
+
+\begin{problem}
+\label{pr:amoeba-nstart}
+\end{problem}
+
+\begin{problem}
 \label{pr:amoeba-ndesc}
 Suppose we have the situation described in Problem \ref{pr:amoeba-basic}, but we now have a "magical amoeba" that divides into $k$ children (and so does its descendants). 
 
@@ -68,28 +76,31 @@ There are two (mutually exclusive) ways for that amoeba's family tree to die off
 \begin{enumerate}
 \item This amoeba dies.
 \item This amoeba lives to divide into two, but the family dies off later on.
-\end{enumerate}
+\end{enumerate} \hfill
 
-% Two possibilities view 1: Amoeba dies, or it lives
-% Two possibilities view 2: (Among all the ways to die) Generation dies now, or dies "sometime later"
-
-% some equation work
-
+Therefore, 
 \begin{align*}
 p_G &:= P(\text{ generation dies }) \\
-&= P(\text{ generation dies from parental death }) + P(\text{ generation dies from later death }) \\ % mutually exclusive
+&= P(\text{ generation dies from parental death }) \\
+&\qquad + P(\text{ generation dies from later death }) \\ % mutually exclusive
 \end{align*}
 
-i.e.
+Rephrasing this a little bit, we have:
 
 \begin{align*}
-&= P(\text{ generation dies AND parent dies }) + P(\text{ generation dies AND parent lives }) \\
+&= P(\text{ generation dies AND parent dies }) \\
+&\qquad + P(\text{ generation dies AND parent lives }) \\
 &= P(\text{ parent dies }) \cdot P\left(\text{ generation dies } \middle| \text{ parent dies }\right) \\
 &\qquad + P(\text{ parent lives }) \cdot P\left(\text{ generation dies } \middle| \text{ parent lives }\right) \\
-&= p_d \cdot 1 + (1 - p_d) \cdot P\left(\text{ generation dies } \middle| \text{ parent lives }\right)
+&= p_d \cdot 1 \\
+&\qquad + (1 - p_d) \cdot P\left(\text{ generation dies } \middle| \text{ parent lives }\right)
 \end{align*}
 
-What is $P\left(\text{ generation dies } \middle| \text{ parent lives }\right)$? If a parent has successfully lived to reproduce, then there are now two amoebas in its place. Each of them is now in the same situation as our original amoeba (it could die or divide into two, further continuing the family line), and also has probability $p_G$ of dying. Both amoebas must independently have their family lines die under them in order for the amoeba line as a whole to die.
+What is $P\left(\text{ generation dies } \middle| \text{ parent lives }\right)$? In other words, what exactly is the probability that, even though the first amoeba divides into two, our family dies anyway?
+
+If a parent has successfully lived to reproduce, then there are now two amoebas in its place. Each of them is now in the same situation as its parent (it could die or divide into two, further continuing the family line), and hence, by definition, also has probability $p_G$ of dying. 
+
+Both amoebas must then independently have their family lines die under them in order for the amoeba line as a whole to die.
 
 Therefore, 
 
@@ -104,30 +115,36 @@ Therefore,
 %TODO: Fix super/subscript formatting
 %TODO: "Generations" term is wrong, use some other word (like line)
 
+Combining everything above, we get that $p_G$ must satisfy the following relation:
 
-\subsection{(Old solution scraps)}
-
-\begin{enumerate}
-\item The amoeba itself dies. (This occurs with probability $p_d$.)
-\item The amoeba survives, but dies off in future generations. The probability of the amoeba surviving (denote $P(parent survival)$) is $(1 - p_d)$. The probability of the generation dying off, given survival of the parent amoeba, is $P(gen survival | parent survival) = p_G^2$; this is because the probability of a generation dying, starting from a given amoeba, is $p_G$, and we have to have this occur independently on each child of the original parent. 
-
-Hence, the probability of this whole chain of events (parent survival and gen survival) is the product of the two quantities above (since $P(A \cap B) = P(B | A)P(A)$), and we get $(1-p_d)p_G^2$. 
-\end{enumerate}
-
-Hence, we have the equation
-
-\begin{align*}
+\begin{equation}
 p_G = p_d + (1-p_d)p_G^2
-\end{align*}
+\end{equation}
 
-Solving this gives $p_G = p_d / (1 - p_d)$ and $p_G = 1$. Because of (FILL IN HERE), the latter is of course invalid. 
+Solving this gives $p_G = p_d / (1 - p_d)$ and $p_G = 1$. 
 
-For example, if $p_d = 1/4$, then $p_G = 1/3$. % TODO: In other words...
+Which of these solutions is correct? While we could analyze this in a more complicated manner, here is a simple thought experiment: If $p_G = 1$, then no matter what $p_d$ is, the amoeba family will die. This would then be true even if $p_d = 0$ (in other words, no amoeba dies before reproducing), which would be nonsensical. 
+
+% TODO: Possibly justify existence of this probability, and hence it being p_d / (1 - p_d) by necessity?
+
+Hence, we are forced to conclude that $p_G = p_d / (1 - p_d)$.
+
+% TODO: Get more into what this relation looks like? (Graph, numerical example at edge cases, etc) instead of (just?) the numerical example below.
+
+For example, if $p_d = 1/4$, then $p_G = 1/3$.
 
 $\square$
 
-% TODO: Be more rigorous on why $p_G = 1$ is not a valid solution?
-% TODO: Make this more rigorous with probability spaces, etc.
+%\subsection{(Old solution scraps)}
+
+%\begin{enumerate}
+%\item The amoeba itself dies. (This occurs with probability $p_d$.)
+%\item The amoeba survives, but dies off in future generations. The probability of the amoeba surviving (denote $P(parent survival)$) is $(1 - p_d)$. The probability of the generation dying off, given survival of the parent amoeba, is $P(gen survival | parent survival) = p_G^2$; this is because the probability of a generation dying, starting from a given amoeba, is $p_G$, and we have to have this occur independently on each child of the original parent. 
+
+%Hence, the probability of this whole chain of events (parent survival and gen survival) is the product of the two quantities above (since $P(A \cap B) = P(B | A)P(A)$), and we get $(1-p_d)p_G^2$. 
+%\end{enumerate}
+
+% TODO: Possibly make this more rigorous with probability spaces, etc.
 
 
 

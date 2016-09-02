@@ -53,7 +53,7 @@ Suppose we have an amoeba. It has a probability $p_d$ of dying, and a probabilit
 % TODO: (This has a low CSD) Mention that this should be quite easy using some of the work done in the first amoeba problem 
 
 \begin{problem}
-\label{pr:amoeba-ndesc}
+\label{pr:amoeba-kdesc}
 Suppose we have the situation described in Problem \ref{pr:amoeba-basic}, but we now have a "magical amoeba" that divides into $k$ children (and so does its descendants). 
 
 \begin{enumerate}[(a)]
@@ -151,6 +151,29 @@ $\square$
 %\end{enumerate}
 
 % TODO: Possibly make this more rigorous with probability spaces, etc.
+
+\subsection{Problem \ref{pr:amoeba-kdesc}}
+
+Intuitively (or at the very least, "it feels like") the probability of family death ($p_F$) should decrease as $k$ increases.
+
+More significantly, consider the following phenomenon: The "further one gets" along the family tree, the more likely it seems that the family will survive indefinitely. As a brief example, consider having the one starting amoeba versus the two amoebas that come after it in our original (upon successful reproduction) -- our conditional chances are a lot better in the latter case.\footnote{More precisely, as we found earlier, the chances of death are $p_F^2$ after division, as opposed to $p_F$ before it -- and since $0 \leq p_F \leq 1$, $p_F^2 < p_F$.}
+
+Intuitively, as $k$ increases, the degree to which we're "better off" after our first amoeba should be much higher. 
+
+% TODO: There are a LOT of ways (mathematical and intuitive) to go into this -- do them!
+% Perhaps even make subsubsections for them.
+
+Following pretty much the exact same train of logic as in Problem \ref{pr:amoeba-basic}, we get the following relation for $p_F$:
+
+\begin{equation}
+p_F = p_d + (1-p_d)p_F^k
+\end{equation}
+
+Rearranging this as a more "traditional" polynomial in terms of $p_F$, we get:
+
+\begin{equation}
+(1-p_d)p_F^k - p_F + p_d = 0
+\end{equation}
 
 
 

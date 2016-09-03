@@ -36,6 +36,7 @@ What is the intersection of...
 %%%%%%%% Fixed-point iteration problems
 
 \begin{problem}
+\label{pr:fp-intro}
 For any function $f$, we call $c$ a \textbf{fixed point} of $f$ if $f(c) = c$. 
 
 (For functions involving real numbers, imagine fixed points as those points where the graph of $f(x)$ touches or crosses the line $y = x$.)
@@ -56,7 +57,42 @@ For any function $f$, we call $c$ a \textbf{fixed point} of $f$ if $f(c) = c$.
 
 For the purposes of this problem, let $f_2(x)$ = $f(f(x))$, $f_3(x) = f(f(f(x)))$, and so on. More formally, define let $f_1(x) = f(x)$, and $f_k(x) = f(f_{k-1}(x))$.
 
-\item Prove that, if $c$ is a fixed point of $f$, then $c$ is also a fixed point of $f_k$. (This is a really short proof and may seem obvious, but it will play a key role soon.)
+\item Prove that, if $c$ is a fixed point of $f$, then $c$ is also a fixed point of $f_k$ for all counting numbers $k \geq 1$. (This is a really short proof and may seem obvious, but it will play a key role soon.)
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+
+% Let f be a real-valued function.
+
+The "point" of Problem \ref{pr:fp-intro} was preparation for the following general problem: Suppose we have a function $f$, and some value $x_0$. What happens to the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ...? (Does it converge? Does it oscillate? Does it have some strange chaotic behavior?)
+
+\begin{enumerate}[(a)]
+\item Let's first consider $f(x) = x/3$. What does this pattern look like for various starting values?
+\item Do the same with $f(x) = \cos(x)$.
+\item Do the same with $f(x) = 2x$. 
+\item Do the same with $f(x) = x/2 + 1$. 
+\item Do the same with $f(x) = 4x(1-x)$. % TODO: Reference chaos theory stuff in the references section
+
+While it is difficult to make general statements on the matter (there are whole fields devoted to the intricacies of this topic!), we can actually prove some pretty useful results.
+
+%(We'll use the $f_k$ notation of Problem \ref{pr:fp-intro} to denote iterated functions.)
+
+\item Suppose $f$ is a \emph{continuous} function, and we \emph{know} that, for some starting value $x_0$, the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ... converges to some value (call it $c$). Prove that $c$ is a fixed point of $f$.
+\item Suppose $f$ didn't have to be continuous; find a counterexample to the above claim.
+
+In other words, if we find that this sequence converges, it converges to a fixed point. But when does it converge at all? While we cannot cover all cases, we'll try to find some cases where this is true.
+
+% TODO: More parts to this problem that aren't amoeba-related
+
+\item Suppose now that $f$ is a continuous and \emph{increasing} function. Suppose we also choose our "starting point" $x_0$ where $f(x_0) > x_0$, and there is also a fixed point $c > x_0$. Prove that the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ... converges to the closest such fixed point. 
+
+% TODO: Put diagram for this here or in hints?
+% TODO: Also put diagram of what happens for multiple fixed points?
+
+% TODO: Insert logical conclusions for f(x_0) < x_0, f is decreasing, etc? (maybe - don't really need them for amoeba problem)
+
+
 \end{enumerate}
 \end{problem}
 
@@ -77,7 +113,7 @@ Let $P_d(n)$ be the probability that the family tree dies before the $n$-th gene
 \item What is $P_d(1)$?
 \item Find a recursive relation for $P_d(n)$, in terms of $P_d(n-1)$, for $n > 1$. 
 \item Suppose we instead had $m$ starting amoebas. What is the probability of dying before the $n$-th generation now? Answer in terms of our original $P_d(n)$.
-\item What is the probability that our amoeba family (with 1 starting amoeba) doesn't die out at all -- and simply lives on forever? In particular, under what conditions (i.e. for what values of $p$) is the amoeba family certain to die?
+\item What is the probability that our amoeba family (with 1 starting amoeba) doesn't die out at all -- and simply lives on forever? In particular, under what conditions (i.e. for what values of $p$) is the amoeba family certain to die at some point?
 \end{enumerate}
 \hfill
 \end{problem}

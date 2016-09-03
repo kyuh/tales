@@ -160,15 +160,15 @@ There are two (mutually exclusive) ways for that amoeba's family tree to die off
 \item This amoeba lives to divide into two, but the family dies off later on.
 \end{enumerate} \hfill
 
-Let's clarify the second case a bit more. If our current amoeba has lived to reproduce, then the child amoebas have $(n-1)$ generations to go in reaching our original $n$-generation goal. The only way for the family to die out before $n$ generations is if \emph{both} of our children amoebas produce families that die out before $(n-1)$ generations, respective to them. By our definition, each such child amoeba has probability $P_d(n-1)$ of that occurring.
+Let's clarify the second case a bit more. If our current amoeba has lived to reproduce, then the only way for the family to die out before $n$ generations is if \emph{both} of our children amoebas produce families that die out before $(n-1)$ generations, respective to them. By our definition, each such child amoeba has probability $P_d(n-1)$ of that occurring.
 
-This looks promising recurrence-relation wise! Let's solidify our relation a bit more formally.
+This looks promising recurrence-relation wise! Let's solidify our relation a bit more formally. We have:
 
 Therefore, 
 \begin{align*}
-p_F &:= P(\text{ family dies }) \\
-&= P(\text{ family dies from parental death }) \\
-&\qquad + P(\text{ family dies from later death }) \\ % mutually exclusive
+P_d(n) &:= P(\text{ family dies in $< n$ generations }) \\
+&= P(\text{ family dies in $< n$ generations from parent death }) \\
+&\qquad + P(\text{ family dies in $< n$ generations from later death }) \\ % mutually exclusive
 \end{align*}
 
 Rephrasing this a little bit, we have:

@@ -141,22 +141,28 @@ Suppose we have the situation described in Problem \ref{pr:amoeba-ngen}, but we 
 \newpage
 \section{Solutions}
 
-\subsection{Problem \ref{pr:amoeba-inf}}
+\subsection{Problem \ref{pr:amoeba-ngen}}
+
+\subsubsection{Part (a)}
+
+$P_d(1)$ is simply the probability that we don't make it to first generation. This will only happen if the first amoeba dies, which happens with probability $p_d$.
 
 
 
-\subsubsection{(Intuition, at least for $p_d > 1/2$ and $p_d = 0$)}
+\subsubsection{Part (b)}
 
-\subsubsection{(needs moving to finite case, doesn't totally work here?)}
-
-Let $p_F$ be the probability of the amoeba family dying out, starting from one amoeba. Ideally, we'd like to find what $p_F$ is, in terms of $p_d$. 
+A recap of the scenario here: We have one amoeba, and we'd like to see whether (or not) it produces a family tree that lives to at least $n$ generations.
 
 % TODO: Potentially bee more clear here. Emphasize using the "divide the world into two possibilities" trick
-There are two (mutually exclusive) ways for that amoeba's family tree to die off: 
+There are two (mutually exclusive) ways for that amoeba's family tree to die off before then: 
 \begin{enumerate}
 \item This amoeba dies.
 \item This amoeba lives to divide into two, but the family dies off later on.
 \end{enumerate} \hfill
+
+Let's clarify the second case a bit more. If our current amoeba has lived to reproduce, then the child amoebas have $(n-1)$ generations to go in reaching our original $n$-generation goal. The only way for the family to die out before $n$ generations is if \emph{both} of our children amoebas produce families that die out before $(n-1)$ generations, respective to them. By our definition, each such child amoeba has probability $P_d(n-1)$ of that occurring.
+
+This looks promising recurrence-relation wise! Let's solidify our relation a bit more formally.
 
 Therefore, 
 \begin{align*}
@@ -214,6 +220,8 @@ Which of these solutions is correct?
 
 % TODO: This problem solution in general should maybe have multiple sections? (Where the first one ends sort of vaguely like above?)
 
+
+\subsubsection{(Intuition, at least for $p_d > 1/2$ and $p_d = 0$)}
 
 \subsubsection{(Actual fixed-point analysis)}
 %%%% subsection

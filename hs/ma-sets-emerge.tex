@@ -47,23 +47,17 @@ Let $P_d(n)$ be the probability that the family tree dies before the $n$-th gene
 \begin{enumerate}[(a)]
 \item What is $P_d(1)$?
 \item Find a recursive relation for $P_d(n)$, in terms of $P_d(n-1)$, for $n > 1$. 
-\item What is the probability that our amoeba family doesn't die out at all -- and simply lives on forever? In particular, under what conditions (i.e. for what values of $p$) is the amoeba family certain to die?
+\item Suppose we instead had $m$ starting amoebas. What is the probability of dying before the $n$-th generation now? Answer in terms of our original $P_d(n)$.
+\item What is the probability that our amoeba family (with 1 starting amoeba) doesn't die out at all -- and simply lives on forever? In particular, under what conditions (i.e. for what values of $p$) is the amoeba family certain to die?
 \end{enumerate}
 \hfill
 \end{problem}
 
 %"Forever" essentially translates to $\lim_{n \rightarrow \infty} P_d(n)$. 
 
-
-\begin{problem}
-\label{pr:amoeba-nstart}
-Suppose we have the situation in Problem \ref{pr:amoeba-ngen}, except now with $m$ starting amoebas. % TODO: Say to mention in terms of pref problem's terms
-\end{problem}
-% TODO: (This has a low CSD) Mention that this should be quite easy using some of the work done in the first amoeba problem 
-
 \begin{problem}
 \label{pr:amoeba-kdesc}
-Suppose we have the situation described in Problem \ref{pr:amoeba-ngen}, but we now have a "magical amoeba" that divides into $k$ children (and so does its descendants). 
+Suppose we have the situation described in Problem \ref{pr:amoeba-ngen}, but we now have a "magical amoeba" that divides into $k$ children (and so does its descendants, and the descendants after that, etc). 
 
 % TODO: Recommend (somewhere) to solve (and consult our solution) on ngen problem before this one?
 \begin{enumerate}[(a)]

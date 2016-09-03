@@ -33,6 +33,35 @@ What is the intersection of...
 
 \section{Problems}
 
+%%%%%%%% Fixed-point iteration problems
+
+\begin{problem}
+For any function $f$, we call $c$ a \textbf{fixed point} of $f$ if $f(c) = c$. 
+
+(For functions involving real numbers, imagine fixed points as those points where the graph of $f(x)$ touches or crosses the line $y = x$.)
+
+% TODO: Insert some figure here
+
+\begin{enumerate}[(a)]
+\item Find the fixed points of... 
+\begin{enumerate}[i]
+\item $f(x) = 3$
+\item $f(x) = 2x + 1$
+\item $f(x) = x^2$
+\item $f(x) = x$
+\item $f(x) = 1$ when $x$ is rational, and 0 when $x$ is irrational
+
+(Assume $f$ maps real numbers to real numbers in each of the above cases.)
+\end{enumerate}
+
+For the purposes of this problem, let $f_2(x)$ = $f(f(x))$, $f_3(x) = f(f(f(x)))$, and so on. More formally, define let $f_1(x) = f(x)$, and $f_k(x) = f(f_{k-1}(x))$.
+
+\item Prove that, if $c$ is a fixed point of $f$, then $c$ is also a fixed point of $f_k$. (This is a really short proof and may seem obvious, but it will play a key role soon.)
+\end{enumerate}
+\end{problem}
+
+
+%%%%%%%% Amoeba problems
 
 \begin{problem}
 \label{pr:amoeba-ngen}
@@ -65,6 +94,8 @@ Suppose we have the situation described in Problem \ref{pr:amoeba-ngen}, but we 
 \item For what values of $p$ is our "magical amoeba family" certain to die?
 \end{enumerate}
 \end{problem}
+
+%%%%%%%%%%%%%%
 
 \newpage
 \section{Terms and References}

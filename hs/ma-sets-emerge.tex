@@ -35,10 +35,10 @@ What is the intersection of...
 
 
 \begin{problem}
-\label{pr:amoeba-2}
+\label{pr:amoeba-ngen}
 Suppose we have an amoeba. It has a probability $p_d$ of dying, and a probability $(1 - p_d)$ of dividing into two amoebas (which themselves have the same probabilities of dying vs. dividing). 
 
-(We'll say that the first amoeba is in the 0th generation. Then, for any $n$-th generation amoeba, if it divides into children, said offspring are $(n+1)$-th generation amoebas.) 
+We'll say that the first amoeba is the 0th generation. Then, for any $n$-th generation amoeba, if it divides into children, said offspring are $(n+1)$-th generation amoebas. 
 
 Let $P_d(n)$ be the probability that the family tree dies before the $n$-th generation.\footnote{In other words, the probability that this family tree does not produce an $n$-th generation amoeba.}
 
@@ -49,12 +49,18 @@ Let $P_d(n)$ be the probability that the family tree dies before the $n$-th gene
 \item Find a recursive relation for $P_d(n)$, in terms of $P_d(n-1)$, for $n > 1$. 
 \end{enumerate}
 \hfill
-
-Given our one starting amoeba, what is the probability that the whole "family tree" dies out?
 \end{problem}
-% TODO: Insert solution (and revise it for rigor)
-% TODO: Include another problem as an extension, where "magical amoeba" can divide into n copies of itself. Use as interesting plotting/limiting behavior exercise (connect to "yeah as n grows, less likely to die")
-% TODO: Problem/extension - consider what happens when we have more than one starting amoeba
+
+
+\begin{problem}
+\label{pr:amoeba-inf}
+A natural question then follows: What is the probability that our amoeba family lives forever?
+
+%"Forever" essentially translates to $\lim_{n \rightarrow \infty} P_d(n)$. 
+\end{problem}
+
+
+
 
 
 

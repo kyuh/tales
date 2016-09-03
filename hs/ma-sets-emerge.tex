@@ -33,19 +33,30 @@ What is the intersection of...
 
 \section{Problems}
 
+
 \begin{problem}
-\label{pr:amoeba-basic}
-Suppose we have an amoeba. It has a probability $p_d$ of dying, and a probability $(1 - p_d)$ of dividing into two amoebas (which themselves have the same probabilities of dying and dividing). Given our one starting amoeba, what is the probability that the whole "family tree" dies out?
+\label{pr:amoeba-2}
+Suppose we have an amoeba. It has a probability $p_d$ of dying, and a probability $(1 - p_d)$ of dividing into two amoebas (which themselves have the same probabilities of dying vs. dividing). 
+
+(We'll say that the first amoeba is in the 0th generation. Then, for any $n$-th generation amoeba, if it divides into children, said offspring are $(n+1)$-th generation amoebas.) 
+
+Let $P_d(n)$ be the probability that the family tree dies before the $n$-th generation.\footnote{In other words, the probability that this family tree does not produce an $n$-th generation amoeba.}
+
+% TODO: Show tree figures of what this could look like?
+
+\begin{enumerate}[(a)]
+\item What is $P_d(1)$?
+\item Find a recursive relation for $P_d(n)$, in terms of $P_d(n-1)$, for $n > 1$. 
+\end{enumerate}
+\hfill
+
+Given our one starting amoeba, what is the probability that the whole "family tree" dies out?
 \end{problem}
 % TODO: Insert solution (and revise it for rigor)
 % TODO: Include another problem as an extension, where "magical amoeba" can divide into n copies of itself. Use as interesting plotting/limiting behavior exercise (connect to "yeah as n grows, less likely to die")
 % TODO: Problem/extension - consider what happens when we have more than one starting amoeba
 
-\begin{problem}
-\label{pr:amoeba-caprep}
-\end{problem}
-% TODO: Mention the irony that this is actually the harder problem than the "infinite" case
-% TODO: Link it back to the infinite case (likely using some fixed-point/convergence arguments, etc)
+
 
 \begin{problem}
 \label{pr:amoeba-nstart}
@@ -70,7 +81,7 @@ Suppose we have the situation described in Problem \ref{pr:amoeba-basic}, but we
 \newpage
 \section{Solutions}
 
-\subsection{Problem \ref{pr:amoeba-basic}}
+\subsection{Problem \ref{pr:amoeba-inf}}
 
 
 

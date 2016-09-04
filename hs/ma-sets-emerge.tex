@@ -204,17 +204,26 @@ Combining everything above, we get that $p_F$ must satisfy the following relatio
 P_d(n) = p_d + (1-p_d) \cdot P_d(n-1)^2
 \end{equation}
 
+
+\subsubsection{Part (c)}
+
+If we have $m$ starting amoebas, each amoeba proceeds in producing its family tree independently. In order for us to have no amoebas at generation $n$, each amoeba's family tree must independently die out before them. Hence, using very similar logic as in Part (b)'s independence discussion, we simply multiply for each of the $m$ amoebas, giving us $P_d(n)^m$. 
+
+As a quick check on ourselves: Since probabilities are between 0 and 1, inclusive, $P_d(n)^m$ will decrease as $m$ increases. This is exactly what we expect, since our chances of complete death should go much lower if we have more amoebas to start with.
+
+% TODO: Actually do the work here? 
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 
 
 % TODO: Philosophize a bit here on what we've done
 % e.g. (starting this) This is the trick we've done -- we've managed to show that
 
-Solving this gives $p_F = p_d / (1 - p_d)$ and $p_F = 1$. 
+% SCRAP (TODO: eventually morph into fixed points): Solving this gives $p_F = p_d / (1 - p_d)$ and $p_F = 1$. 
 
-Which of these solutions is correct? 
+% SCRAP (TODO: eventually morph into fixed points): Which of these solutions is correct? 
 
 % TODO: Start by thinking about certain cases (e.g. at p_d > 1/2, first answer is nonsensical; at p_d = 0, second answer is. Also get into what intuitively should happen when p_d > 1/2)
 

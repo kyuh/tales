@@ -181,20 +181,18 @@ Rephrasing this a little bit, we have: \footnote{Note that, in the second equati
 &\qquad + (1 - p_d) \cdot P\left(\text{ family dies } \middle| \text{ parent lives }\right)
 \end{align*}
 
-What is $P\left(\text{ family dies } \middle| \text{ parent lives }\right)$? In other words, what exactly is the probability that, even though the first amoeba divides into two, our family dies anyway?
-
-If an amoeba has successfully lived to reproduce, then there are now two amoebas in its place. Each of them is now in the same situation as its parent (it could die or divide into two, further continuing the family line), and hence, by definition, also has probability $p_F$ of dying. 
-
-Both amoebas must then independently have their family lines die under them in order for the amoeba line as a whole to die.
+What is $P\left(\text{ family dies } \middle| \text{ parent lives }\right)$? In other words, what exactly is the probability that, even though the first amoeba divides into two, our family dies in $n$ generations (relative to the first amoeba) anyway? We know that each child amoeba then has to die in less than $(n-1)$ generations, which happens with probability $P_d(n-1)$, and there are two children. The reproduction of each child is independent of the other child, and hence both amoebas must independently have their family lines die under them in order for the amoeba line as a whole to die.
 
 Therefore, 
 
 \begin{align*}
-&P\left(\text{ family dies } \middle| \text{ parent lives }\right) \\
-&= P\left(\text{ family dies under child 1 AND family dies under child 2 } \right) \\
-&= P\left(\text{ family dies under child 1} \right) \cdot P\left(\text{ family dies under child 2 } \right) \\
-&= p_F \cdot p_F \\
-&= p_F^2
+&P\left(\text{ family dies in $<n$ generations } \middle| \text{ parent lives }\right) \\
+&= P(\text{ family dies under child 1} \\
+&\qquad\text{ AND family dies under child 2 }) \\
+&= P\left(\text{ family dies under child 1} \right) \\ 
+&\qquad\cdot P\left(\text{ family dies under child 2 } \right) \\
+&= P_d(n-1) \cdot P_d(n-1) \\
+&= P_d(n-1)^2
 \end{align*}
 
 %TODO: Fix super/subscript formatting
@@ -203,8 +201,13 @@ Therefore,
 Combining everything above, we get that $p_F$ must satisfy the following relation:
 
 \begin{equation}
-p_F = p_d + (1-p_d)p_F^2
+P_d(n) = p_d + (1-p_d) \cdot P_d(n-1)^2
 \end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 
 % TODO: Philosophize a bit here on what we've done
 % e.g. (starting this) This is the trick we've done -- we've managed to show that

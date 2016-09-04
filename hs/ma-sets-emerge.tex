@@ -162,20 +162,19 @@ There are two (mutually exclusive) ways for that amoeba's family tree to die off
 
 Let's clarify the second case a bit more. If our current amoeba has lived to reproduce, then the only way for the family to die out before $n$ generations is if \emph{both} of our children amoebas produce families that die out before $(n-1)$ generations, respective to them. By our definition, each such child amoeba has probability $P_d(n-1)$ of that occurring.
 
-This looks promising recurrence-relation wise! Let's solidify our relation a bit more formally. We have:
+This looks promising recurrence-relation wise! Let's solidify our relation a bit more formally. We have: \footnote{It might seem a bit silly to write "dies in $<n$ generations from parent death" -- after all, not only does it die before the $n$-th generation, it dies before even the first one! But bear with us here.}
 
-Therefore, 
 \begin{align*}
 P_d(n) &:= P(\text{ family dies in $< n$ generations }) \\
 &= P(\text{ family dies in $< n$ generations from parent death }) \\
 &\qquad + P(\text{ family dies in $< n$ generations from later death }) \\ % mutually exclusive
 \end{align*}
 
-Rephrasing this a little bit, we have:
 
+Rephrasing this a little bit, we have: \footnote{Note that, in the second equation, we're using the general notion that $P(B \cap A) = P\left(B \middle| A\right) \cdot P(A)$}
 \begin{align*}
-&= P(\text{ family dies AND parent dies }) \\
-&\qquad + P(\text{ family dies AND parent lives }) \\
+&= P(\text{ family dies in $< n$ generations AND parent dies }) \\
+&\qquad + P(\text{ family dies $< n$ generations AND parent lives }) \\
 &= P(\text{ parent dies }) \cdot P\left(\text{ family dies } \middle| \text{ parent dies }\right) \\
 &\qquad + P(\text{ parent lives }) \cdot P\left(\text{ family dies } \middle| \text{ parent lives }\right) \\
 &= p_d \cdot 1 \\

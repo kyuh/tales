@@ -120,7 +120,7 @@ Let $P_d(n)$ be the probability that the family tree dies before the $n$-th gene
 \item What is $P_d(1)$?
 \item Find a recursive relation for $P_d(n)$, in terms of $P_d(n-1)$, for $n > 1$. 
 \item Suppose we instead had $m$ starting amoebas. What is the probability of dying before the $n$-th generation now? Answer in terms of our original $P_d(n)$.
-\item What is the probability that our amoeba family (with 1 starting amoeba) dies at some point in the future, period? (Alternatively, what is the probably that our family \emph{doesn't} die out at all -- and simply lives on forever?) %In particular, under what conditions (i.e. for what values of $p$) is the amoeba family certain to die at some point?
+\item What is the probability that our amoeba family (with one starting amoeba) dies at some point in the future, period? (Alternatively, what is the probably that our family \emph{doesn't} die out at all -- and simply lives on forever?) %In particular, under what conditions (i.e. for what values of $p$) is the amoeba family certain to die at some point?
 \end{enumerate}
 \hfill
 \end{problem}
@@ -365,6 +365,8 @@ g(x) &= f(x) - x \\
 &= p_d + (1 - p_d)x^k - x
 \end{align*}
 
+Note that the fixed points will occur whenever $g(x) = 0$.\footnote{Since then $f(x) - x = 0$, i.e. $f(x) = x$}
+
 Then
 
 \begin{equation}
@@ -388,7 +390,7 @@ This gives us these possibilities:
 \begin{itemize}
 \item $g$ has a root $x_a < 1$: 
 \end{itemize}
-\item $g$ has exactly one root, at $x = 1$. This will only happen if and only if $g'(1) = 0$.
+\item $g$ has exactly one root, at $x = 1$. This will happen if and only if $g'(1) = 0$.
 \end{itemize}
 
 % TODO: Actually fill this in with IVT/deriv proof details and stuff.

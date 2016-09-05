@@ -129,12 +129,12 @@ Let $P_d(n)$ be the probability that the family tree dies before the $n$-th gene
 
 \begin{problem}
 \label{pr:amoeba-kdesc}
-Suppose we have the situation described in Problem \ref{pr:amoeba-ngen}, but we now have a "magical amoeba" that divides into $k$ children (and so does its descendants, and the descendants after that, etc). 
+Suppose we have the situation described in Problem \ref{pr:amoeba-ngen}, but we now have a "magical amoeba" that divides into $k$ children (and so does its descendants, and the descendants after that, etc), where $k \geq 2$. 
 
 % TODO: Recommend (somewhere) to solve (and consult our solution) on ngen problem before this one?
 \begin{enumerate}[(a)]
 \item Intuitively, what should happen to the probability of the family tree's survival (for any $n$ generations and for eternity), as $k$ increases?
-\item For what values of $p$ is our "magical amoeba family" certain to die?
+\item For what values of $p_d$ is our "magical amoeba family" certain to die?
 \end{enumerate}
 \end{problem}
 
@@ -246,7 +246,7 @@ Consider the function $f(x) = p_d + (1 - p_d)x^2$.
 
 Let's say we have $x_0 = P_d(1) = p_d$, from Part (a). Then, by definition, $P_d(2)$ is equal to $f(x_0)$. Furthermore, $P_d(3) = f(P_d(2)) = f(f(x_0))$, and $P_d(4) = f(P_d(3)) = f(f(f(x_0)))$, and so on.
 
-This is starting to look like a function iteration problem! More specifically, we can say $P_d(k+1) = f_k(x_0)$ for $k > 1$. 
+This is starting to look like a function iteration problem! More specifically, we can say $P_d(n+1) = f_n(x_0)$ for $n > 1$. 
 
 From our previous problems, we have a hunch that the fixed points of $f$ can be important. They are simply the solutions to the equation $x = f(x)$, i.e.
 
@@ -314,6 +314,93 @@ More significantly, consider the following phenomenon: The "further one gets" al
 As $k$ increases, the degree to which we're "better off" after our first amoeba should be much higher. In fact, the big determiner in our family survival should be whether the first amoeba dies!\footnote{Think "carrying the team" here.} Therefore, intuitively, the probability of family survival should approach the probability of the first amoeba's death, which is simply $p_d$. 
 
 Of course, in the last problem, we ran into the issue where, if $p_d$ is too high, family death is simply certain. When is $p_d$ too high here? We'll find out in the next part!
+
+\subsubsection{Part (b)}
+
+To start, we'll take a very similar approach as that of the last problem.
+
+\paragraph{Preliminary work}
+
+We'll re-use notation a bit, and let $P_d(n)$ denote the probability of family death before $n$ generations. 
+
+Hopefully you believe that, with $k$ descendants per (surviving) amoeba, 
+
+\begin{equation*}
+P_d(n) = p_d + (1 - p_d) P_d(n-1)^k
+\end{equation*}
+
+Now, consider the function 
+
+\begin{equation}
+f(x) = p_d + (1 - p_d) x^k
+\end{equation} 
+
+Using the same logic as before, we now have $P_d(n+1) = f_n(p_d)$.\footnote{Inserting our starting value here directly, instead of calling it $x_0$.}
+
+\paragraph{(Exploration)}
+
+We now have a slight problem: For arbitrary $k$, we can't explicitly solve for all of the fixed points of $f$. % TODO: Mention why - might be able to link back into previous work
+
+Let's explore a bit. What happens if we keep $p$ constant, and vary $k$?
+
+% TODO: Insert "thinking" and graphs of what happens as we vary k, and as we vary p
+
+What happens if we keep $k$ constant, and vary $p$?
+
+% TODO: Philosophize more on exploration
+
+% TODO stuff to write: It seems like we still have a very similar to the $k = 2$ case - it's almost as if we still have two fixed points, except perhaps at some "turning point". It also seems like x = 1 is still always a fixed point, and that the other one "moves to the right" as p_d increases, until it passes 1. The probability at which it passes 1 seems to be a higher value of p, as k increases.
+%
+% In addition, we see the behavior we intuitively thought about earlier -- as k increases (with p_d held constant), it looks like, as long as p_d is low enough, the leftmost fixed point approaches p_d
+
+
+\paragraph{The actual proof}
+
+%We'll now prove that $f$ has at most two fixed points. In the process, we'll show what $p_d$ has to be, in order for death to be certain! 
+
+Consider the function
+
+\begin{align*}
+g(x) &= f(x) - x \\
+&= p_d + (1 - p_d)x^k - x
+\end{align*}
+
+Then
+
+\begin{equation}
+g'(x) = (1 - p_d)kx^{k-1} - 1
+\end{equation}
+
+and
+
+\begin{equation}
+g''(x) = (1 - p_d)k(k-1)x^{k-2}
+\end{equation}
+
+Note that $g''(x)$ is positive whenever $x > 0$, so from $x = 0$ on, $g$ is convex. Per Problem \ref{pr:convex-root-limit}, we know that $g$ will have at most 2 roots. % TODO: Mention something like "recall that it could have 0, 1, or 2, depending on (cases)"
+
+We clearly see (by plugging in) that $g(1) = 0$, which gives us at least one root.\footnote{This makes sense: From our graphs, we suspected that this was true. One could have also plugged in to see that $f(1) = p_d + (1 - p_d) = 1$.}
+
+This gives us these possibilities:
+
+\begin{itemize}
+\item $g$ has exactly two roots. We divide this into separate cases regarding the second root:
+\begin{itemize}
+\item $g$ has a root $x_a < 1$: 
+\end{itemize}
+\item $g$ has exactly one root, at $x = 1$. This will only happen if and only if $g'(1) = 0$.
+\end{itemize}
+
+% TODO: Actually fill this in with IVT/deriv proof details and stuff.
+
+% TODO: Figure describing these three possibilities. Label things!
+
+
+
+
+
+% TODO: What did we do here? In theory, we could have done this when k = 2, in the last problem. However, we had the solutions explicitly there. Here, we had to show that an additional solution besides x = 1 exists, even though we can't actually give a formula for it. 
+
 
 
 

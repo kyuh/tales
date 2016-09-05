@@ -379,29 +379,45 @@ and
 g''(x) = (1 - p_d)k(k-1)x^{k-2}
 \end{equation}
 
-Note that $g''(x)$ is positive whenever $x > 0$, so from $x = 0$ on, $g$ is convex. Per Problem \ref{pr:convex-root-limit}, we know that $g$ will have at most 2 roots. % TODO: Mention something like "recall that it could have 0, 1, or 2, depending on (cases)"
+Note that $g''(x)$ is positive whenever $x > 0$, so from $x = 0$ on, $g$ is convex. Per Problem \ref{pr:convex-root-limit}, we know that $g$ will have at most 2 roots. In the course of that proof, we also saw that, if $g$ has two distinct roots $x_a$ and $x_b$, where $x_a < x_b$, then $g'(x_a) < 0$, and $g'(x_b) > 0$ -- and if $g$ has only one distinct root $x_a$, then $g'(x_a) = 0$. % TODO: Mention something like "recall that it could have 0, 1, or 2, depending on (cases)"
 
 We clearly see (by plugging in) that $g(1) = 0$, which gives us at least one root.\footnote{This makes sense: From our graphs, we suspected that this was true. One could have also plugged in to see that $f(1) = p_d + (1 - p_d) = 1$.}
 
-This gives us these possibilities:
+This leaves us three possibilities:
 
 \begin{itemize}
-\item $g$ has exactly two roots. We divide this into separate cases regarding the second root:
-\begin{itemize}
-\item $g$ has a root $x_a < 1$: 
+\item $g$ has an additional root $x_a < 1$: Then $g'(x_a) < 0$, and $g'(1) > 0$.
+\item $g$ has an additional root $x_a > 1$: Then $g'(x_a) > 0$, and $g'(1) < 0$.
+\item $g$ has exactly one root, at $x = 1$: Then $g'(1) = 0$.
 \end{itemize}
-\item $g$ has exactly one root, at $x = 1$. This will happen if and only if $g'(1) = 0$.
-\end{itemize}
-
-% TODO: Actually fill this in with IVT/deriv proof details and stuff.
 
 % TODO: Figure describing these three possibilities. Label things!
 
+Combining these three statements, we now have an "if and only if" relationship between these three cases and the value of $g'(1)$. 
 
+What is it? Plugging in, we see that $g'(1) = (1 - p_d)k - 1$. Solving, we then see that $g'(1) = 0$ when $p_d = (k-1)/k$. Moreover, when $p_d < (k-1)/k$, $g'(1) > 0$ (and conversely, when $p_d > (k-1)/k$, $g'(1) < 0$). 
 
+\paragraph{More proof}
 
+What does this mean in terms of our fixed-point iteration and final answer?
 
-% TODO: What did we do here? In theory, we could have done this when k = 2, in the last problem. However, we had the solutions explicitly there. Here, we had to show that an additional solution besides x = 1 exists, even though we can't actually give a formula for it. 
+In preparation, we point out three final facts: First, $f$ itself is increasing. Second, at our iteration starting point, $p_d$, we note that $g(p_d) = p_d + (1 - p_d)p_d^k - p_d = (1 - p_d)p_d^k \geq 0$ (and is, in fact, greater than 0 unless $p_d = 1$). Therefore, the $x$-value of $p_d$ must be either in the "first" (before both roots) or "second" (after both roots) positive region of $g$. However, since $p_d \leq 1$, it cannot be in the second region, and hence must come before both roots. This has the consequence that, if there is a second distinct root $x_a$ of $g$, it must satisfy $x_a > p_d$. 
+
+% TODO: Go back and clarify the \leqs vs less-thans - in other words, the edge cases in general.
+
+Finally, as in the previous problem, we satisfy the conditions to use the result of Problem \ref{pr:fp-iter} -- and hence, we know that our iteration will converge to the nearest fixed point to the right of $p_d$, our initial starting point.
+
+Let's now revisit our cases above. 
+
+\begin{itemize}
+\item When $p_d > (k-1)/k$, then $g'(1) < 0$, so there is a second root $x_a$ of $g$ (i.e. a second fixed point of $f$), where $x_a > 1$. Hence, 1 is the closest root, and hence our iteration converges there. Therefore, $\lim_{n \rightarrow \infty} P_d(n) = 1$, and hence our amoeba family will die. 
+\item When $p_d = (k-1)/k$, then $g'(1) = 0$, so we have only the root $x = 1$ (and hence only that fixed of $f$). Therefore, our iteration converges to it, hence $\lim_{n \rightarrow \infty} P_d(n) = 1$, and the family dies.
+\item However, when $p_d < (k-1)/k$, $g'(1) > 0$, so we have one root of $g$ (read: fixed point of $f$) $x_a$ which is less than 1. From above, we know that $x_a > p_d$, so it is the nearest rightmost fixed point of $p_d$. Hence, our iteration converges to a value less than 1, so our amoeba family has hope for eternal survival. 
+\end{itemize}
+
+% TODO: Philosophize. Kind of amazing how we could conclude this without actually knowing what the root even is. 
+% 
+% Also what did we do here? In theory, we could have done this when k = 2, in the last problem. However, we had the solutions explicitly there. Here, we had to show that an additional solution besides x = 1 exists, even though we can't actually give a formula for it. 
 
 
 

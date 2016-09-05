@@ -305,28 +305,16 @@ $\square$
 
 \subsection{Problem \ref{pr:amoeba-kdesc}}
 
-Intuitively (or at the very least, "it feels like") the probability of family death ($p_F$) should decrease as $k$ increases.
+\subsubsection{Part (a)}
+
+Intuitively (or at the very least, "it feels like") the probability of family death should decrease as $k$ increases.
 
 More significantly, consider the following phenomenon: The "further one gets" along the family tree, the more likely it seems that the family will survive indefinitely. As a brief example, consider having the one starting amoeba versus the two amoebas that come after it in our original (upon successful reproduction) -- our conditional chances are a lot better in the latter case.\footnote{More precisely, as we found earlier, the chances of death are $p_F^2$ after division, as opposed to $p_F$ before it -- and since $0 \leq p_F \leq 1$, $p_F^2 < p_F$.}
 
-Intuitively, as $k$ increases, the degree to which we're "better off" after our first amoeba should be much higher. 
+As $k$ increases, the degree to which we're "better off" after our first amoeba should be much higher. In fact, the big determiner in our family survival should be whether the first amoeba dies!\footnote{Think "carrying the team" here.} Therefore, intuitively, the probability of family survival should approach the probability of the first amoeba's death, which is simply $p_d$. 
 
-% TODO: There are a LOT of ways (mathematical and intuitive) to go into this -- do them!
-% Perhaps even make subsubsections for them.
+Of course, in the last problem, we ran into the issue where, if $p_d$ is too high, family death is simply certain. When is $p_d$ too high here? We'll find out in the next part!
 
-Following pretty much the exact same train of logic as in Problem \ref{pr:amoeba-basic}, we get the following relation for $p_F$:
-
-\begin{equation}
-p_F = p_d + (1-p_d)p_F^k
-\end{equation}
-
-Rearranging this as a more "traditional" polynomial in terms of $p_F$, we get:
-
-\begin{equation}
-(1-p_d)p_F^k - p_F + p_d = 0
-\end{equation}
-
-% TODO: The fixed-point analysis gets a bit involved here too, bc of where roots actually lie. Get into this more
 
 
 

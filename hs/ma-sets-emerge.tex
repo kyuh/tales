@@ -62,6 +62,7 @@ For the purposes of this problem, let $f_2(x)$ = $f(f(x))$, $f_3(x) = f(f(f(x)))
 \end{problem}
 
 \begin{problem}
+\label{pr:fp-iter}
 
 % Let f be a real-valued function.
 
@@ -85,12 +86,18 @@ In other words, if we find that this sequence converges, it converges to a fixed
 
 % TODO: More parts to this problem that aren't amoeba-related
 
-\item Suppose now that $f$ is a continuous and \emph{increasing} function. Suppose we also choose our "starting point" $x_0$ where $f(x_0) > x_0$, and there is also a fixed point $c > x_0$. Prove that the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ... converges to the closest such fixed point. 
+\item Suppose now that $f$ is a continuous and \emph{increasing} function. 
+\begin{enumerate}[i]
+\item Suppose we also choose our "starting point" $x_0$ where $f(x_0) > x_0$, and there is exactly one fixed point $c > x_0$. Prove that the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ... converges to the closest such fixed point. 
+\item Suppose we have the same scenario, except there are now multiple fixed points to the right of $x_0$. Which one will our sequence converge to, and why?
+% TODO: Insert logical conclusions for f(x_0) < x_0, f is decreasing, etc? (maybe - don't really need them for amoeba problem)
+\end{enumerate}
 
 % TODO: Put diagram for this here or in hints?
+
 % TODO: Also put diagram of what happens for multiple fixed points?
 
-% TODO: Insert logical conclusions for f(x_0) < x_0, f is decreasing, etc? (maybe - don't really need them for amoeba problem)
+
 
 
 \end{enumerate}
@@ -113,7 +120,7 @@ Let $P_d(n)$ be the probability that the family tree dies before the $n$-th gene
 \item What is $P_d(1)$?
 \item Find a recursive relation for $P_d(n)$, in terms of $P_d(n-1)$, for $n > 1$. 
 \item Suppose we instead had $m$ starting amoebas. What is the probability of dying before the $n$-th generation now? Answer in terms of our original $P_d(n)$.
-\item What is the probability that our amoeba family (with 1 starting amoeba) doesn't die out at all -- and simply lives on forever? In particular, under what conditions (i.e. for what values of $p$) is the amoeba family certain to die at some point?
+\item What is the probability that our amoeba family (with 1 starting amoeba) dies at some point in the future, period? (Alternatively, what is the probably that our family \emph{doesn't} die out at all -- and simply lives on forever?) %In particular, under what conditions (i.e. for what values of $p$) is the amoeba family certain to die at some point?
 \end{enumerate}
 \hfill
 \end{problem}
@@ -213,45 +220,88 @@ As a quick check on ourselves: Since probabilities are between 0 and 1, inclusiv
 
 % TODO: Actually do the work here? 
 
+\subsubsection{Part (d)}
+
+We'd like to find the chances that our amoeba family simply never dies, and simply keeps on living forever. Alternatively, we're trying to find the probability that this \emph{doesn't} happen -- in other words, the probability that, at some point, the family dies.\footnote{The probability of either possibility is, of course, 1 minus the other.}
+
+In theory, the latter possibility is simply the limit of $P_d(n)$ as $n$ approaches infinity. 
+
+What is this limit? Does it even exist? Trying to find an explicit formula for $P_d(n)$ from our recurrence relation looks messy, at best (but you can try!) -- so let's try a different look at the problem.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Brief intuition}
+
+Let's first try to intuit what happens -- in particular, at a few "edge" cases.
+
+First, let's consider what happens at $p_d = 0$, which means that every amoeba will reproduce without dying. Then our family should obviously live forever, so our family death probability (for any $n$, and the limit as $n$ approaches infinity) should be 0.\footnote{Going back to our recurrence relation, this makes sense -- when $p_d = 0$, we have $P_d(n) = 0 + (1 - 0) \cdot P_d(n-1) = P_d(n-1)$. Given that $P_d(1) = p_d = 0$, it follows that $P_d(n) = 0$ for all $n$.}
+
+Let's also consider what happens when $p_d > 1/2$. This effectively means that it is more likely for an amoeba to die than it is to reproduce. If we look at this from an "expected value" viewpoint, then we expect the population to go down as time goes on -- so our survival probability in the timeframe of "forever" should be very low, if anything at all!
+
+But let's do a more rigorous analysis. Will it support our intuition?
 
 
-% TODO: Philosophize a bit here on what we've done
-% e.g. (starting this) This is the trick we've done -- we've managed to show that
+\paragraph{Fixed-point iteration returns!}
 
-% SCRAP (TODO: eventually morph into fixed points): Solving this gives $p_F = p_d / (1 - p_d)$ and $p_F = 1$. 
+Consider the function $f(x) = p_d + (1 - p_d)x^2$. 
 
-% SCRAP (TODO: eventually morph into fixed points): Which of these solutions is correct? 
+Let's say we have $x_0 = P_d(1) = p_d$, from Part (a). Then, by definition, $P_d(2)$ is equal to $f(x_0)$. Furthermore, $P_d(3) = f(P_d(2)) = f(f(x_0))$, and $P_d(4) = f(P_d(3)) = f(f(f(x_0)))$, and so on.
 
-% TODO: Start by thinking about certain cases (e.g. at p_d > 1/2, first answer is nonsensical; at p_d = 0, second answer is. Also get into what intuitively should happen when p_d > 1/2)
+This is starting to look like a function iteration problem! More specifically, we can say $P_d(k+1) = f_k(x_0)$ for $k > 1$. 
 
-% TODO: Get more into what this relation looks like? (Graph, numerical example at edge cases, etc) instead of (just?) the numerical example below.
+From our previous problems, we have a hunch that the fixed points of $f$ can be important. They are simply the solutions to the equation $x = f(x)$, i.e.
 
-% TODO: This problem solution in general should maybe have multiple sections? (Where the first one ends sort of vaguely like above?)
+\begin{equation*}
+x = p_d + (1 - p_d)x^2
+\end{equation*}
+
+Solving this equation\footnote{We can use the "quadratic formula" here.} gives two solutions (which we'll call $x_a$ and $x_b$):
+\begin{equation*}
+x_a = 1
+\end{equation*}
+and 
+\begin{equation*}
+x_b = \frac{p_d}{1 - p_d}
+\end{equation*}
+
+One key thing we see: $x_a = x_b$ when $p_d = 1/2$. In fact, when $p_d > 1/2$, $x_b > x_a$ (and when $p_d < 1/2$, $x_b < x_a$). 
+
+% TODO: Insert figure of graph for various values of p_d. Give one color to those < 1/2, one to those >, and one to those equal. Put dots at the fixed points
 
 
-\subsubsection{(Intuition, at least for $p_d > 1/2$ and $p_d = 0$)}
 
-\subsubsection{(Actual fixed-point analysis)}
-%%%% subsection
+\paragraph{The actual solution}
 
-% TODO: Fixed-point theory view? (maybe done mostly in finite problem)
+Why was that all important? Three more key facts:
 
+\begin{itemize}
+\item $f$ is continuous and increasing for $x > 0$. 
+\item $f(x) > x$ before the first fixed point. 
+\item Our starting point, $x_0$, is simply $p_d$. Note that $p_d \leq x_a$ (because $p_d \leq 1$), and since $(1 - p_d) \leq 1$, we have $p_d \leq x_b$ as well. Hence, our starting point is to the left of both fixed points (or on top of one -- we'll take care of that special case shortly). 
+\end{itemize}
+
+Now comes our big realization. Remember Problem \ref{pr:fp-iter}? We've met all the conditions to show that, once we start iterating at $p_d$, our limit is the \emph{closest} fixed point to the right -- in other words, the lesser of $x_a$ and $x_b$.
+
+What does that mean for us? Let's consider 3 cases:
+
+\begin{itemize}
+\item $p_d > 1/2$: The leftmost fixed point is 1, so our iterated function limit, i.e. $\lim_{n \rightarrow \infty} P_d(n)$, is 1. Therefore, our amoeba family is certain to die at some point. (How sad.)\footnote{We actually could have had a quick "side-channel" solution for this case. If $p_d > 1/2$, then $p_d / (1 - p_d) > 1$, so it would be nonsensical to have that has a probability value. However, hopefully the rigor we worked through hopefully gives a more solid-feeling justification}
+\item $p_d = 1/2$: Here, in fact, we only have one fixed point (since $x_a = x_b$), which is 1. Hence, our amoeba family will, at some point, die.
+\item $p_d < 1/2$: The leftmost fixed point is now $p_d / (1 - p_d)$, which must then be our iterated function limit (i.e. $\lim_{n \rightarrow \infty} P_d(n)$). For $p_d < 1/2$, this value is less than 1 -- in other words, our amoeba family might live on forever!
+\end{itemize}
+
+
+\paragraph{(Philosophizing)}
+
+%TODO: More intuition? (especially in the expected-value sense)
+
+% TODO: Get more into what this p_d / (1 - p_d) relation looks like? (Graph, numerical example at edge cases, etc) instead of (just?) the numerical example below.
+
+% TODO: More philosophizing in general
+
+% TODO: Possibly make this whole thing link back to "first principles" (probability spaces, etc). However, this can probably occur in the recurrence relation section. 
 
 $\square$
 
-%\subsection{(Old solution scraps)}
-
-%\begin{enumerate}
-%\item The amoeba itself dies. (This occurs with probability $p_d$.)
-%\item The amoeba survives, but dies off in future generations. The probability of the amoeba surviving (denote $P(parent survival)$) is $(1 - p_d)$. The probability of the generation dying off, given survival of the parent amoeba, is $P(gen survival | parent survival) = p_G^2$; this is because the probability of a generation dying, starting from a given amoeba, is $p_G$, and we have to have this occur independently on each child of the original parent. 
-
-%Hence, the probability of this whole chain of events (parent survival and gen survival) is the product of the two quantities above (since $P(A \cap B) = P(B | A)P(A)$), and we get $(1-p_d)p_G^2$. 
-%\end{enumerate}
-
-% TODO: Possibly make this more rigorous with probability spaces, etc.
 
 \subsection{Problem \ref{pr:amoeba-kdesc}}
 

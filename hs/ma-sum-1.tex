@@ -691,12 +691,135 @@ In the proof of Theorem \ref{th:pascal-binom-coeff}, where did we rely on the fa
 
 \subsection{(Binomial expansion)}
 
+We now present our final tale. What do patterned triangles and counting techniques have to do with factoring and expanding ordinary expressions? % TODO: Present this better
 
+Let's look at a brief pattern. Suppose we have the expression $(x+y)^2$. How else can we write it? Can we get an expression that doesn't involve parentheses?
+
+Well,
+
+\begin{align*}
+(x+y)^2 &= (x+y)(x+y) \\
+&= x(x+y) + y(x+y) \\
+&= x \cdot x + x \cdot y + y \cdot x + y \cdot y \\
+&= x^2 + 2xy + y^2
+\end{align*}
+
+% TODO: Could also give the geometric view?
+
+Seems like a mess to get to, but we get an expression in the end.
+
+\begin{exercise}
+Try using some actual values (for example, $x=3$ and $y=4$), to convince yourself that you get the same answer when evaluating $(x+y)^2$, as when evaluating $x^2 + 2xy + y^2$ directly. 
+\end{exercise}
+
+What about a more complicated expression, like $(x+y)^3$? We see that:
+
+\begin{align*}
+(x+y)^3 &= (x+y)(x+y)^2 \\
+&= (x+y)(x^2+2xy+y^2) \\
+&= x(x^2+2xy+y^2) + y(x^2+2xy+y^2) \\
+&= x^3 + 2x^2y + xy^2 + x^2y + 2xy^2 + y^3 \\
+&= x^3 + 2x^2y + x^2y + xy^2 + 2xy^2 + y^3 \\
+&= x^3 + 3x^2y + 3xy^2 + y^3 \\
+\end{align*}
+
+Seems like even more of a mess! Yet, we were able to simply and get something here as well.
+
+\begin{exercise}
+Try finding a similar expression for $(x+y)^4$. 
+\end{exercise}
+
+% Want to separate the exercise from the solution for now
+\newpage
+
+The expressions just seem to get more and more complicated! Yet -- is there anything interesting in what the more \emph{general} expression $(x+y)^n$ looks like when "expanded" -- in other words, some sort of pattern dependent on $n$? 
+
+Let's try writing what we know slightly differently:
+
+\begin{align*}
+(x+y)^2 &= 1 \cdot x^2 + 2 \cdot xy + 1 \cdot y^2 \\
+(x+y)^3 &= 1 \cdot x^3 + 3 \cdot x^2y + 3 \cdot xy^2 + 1 \cdot y^3 \\
+(x+y)^4 &= 1 \cdot x^4 + 4 \cdot x^3y + 6 \cdot x^2y^2 + 4 \cdot xy^3 + 1 \cdot y^4 \\
+\end{align*}
+
+These coefficients are the exact same as rows in our previous triangle!
+
+Let's formulate this more specifically. First, let's rewrite the above equations as follows:
+
+\begin{align*}
+(x+y)^2 &= 1 \cdot x^2 y^0 + 2 \cdot x^1 y^1 + 1 \cdot x^0 y^2 \\
+(x+y)^3 &= 1 \cdot x^3 y^0 + 3 \cdot x^2 y^1 + 3 \cdot x^1 y^2 + 1 \cdot x^0 y^3 \\
+(x+y)^4 &= 1 \cdot x^4 y^0 + 4 \cdot x^3 y^1 + 6 \cdot x^2 y^2 + 4 \cdot x^1 y^3 + 1 \cdot x^0 y^4 \\
+\end{align*}
+
+
+First, it at least looks like $(x+y)^n$ will expand into a bunch of terms involving powers of $x$ and $y$, as follows:
+
+\begin{equation*}
+(x+y)^n = \sum_{k=0}^n \text{(something)} \cdot x^{n-k} y^k
+\end{equation*}
+
+What is that something? It looks to be, for each term, the corresponding $(n,k)$ coefficient in Pascal's triangle -- in other words, $c_{n,k}$. (!)
+
+Does it work? Let's prove it. (Challenge: Try to prove it yourself before looking at the proof on the next page.)
+
+\newpage
+
+\begin{theorem} 
+\label{th:binom-expand}
+For $n \geq 0$, 
+\begin{equation}
+(x+y)^n = \sum_{k=0}^n c_{n,k} x^k y^{n-k}
+\end{equation} 
+
+\end{theorem}
+\begin{proof}
+We'll prove this using induction. Briefly looking at the base case, wee see that $(x+y)^0 = 1$, and
+
+\begin{equation*}
+\sum_{k=0}^0 c_{n,k} x^k y^{n-k} = c_{0,0} x^0 y^0 = 1 \cdot 1 \cdot 1 = 1
+\end{equation*}
+
+as well.
+
+We now assume the statement is true for some value $n$, and show it is true at $n+1$:
+
+\begin{align*}
+(x+y)^{n+1} &= (x+y)(x+y)^n \\
+&= (x+y) \sum_{k=0}^n c_{n,k} x^k y^{n-k} && \text{(inductive assumption)} \\
+&= x \sum_{k=0}^n c_{n,k} x^k y^{n-k} + y \sum_{k=0}^n c_{n,k} x^k y^{n-k} \\
+&= \sum_{k=0}^n c_{n,k} x^{k+1} y^{n-k} + \sum_{k=0}^n c_{n,k} x^k y^{n-k+1} \\
+&= \sum_{k=1}^{n+1} c_{n,k-1} x^{(k-1)+1} y^{n-(k-1)} + \sum_{k=0}^n c_{n,k} x^k y^{n-k+1} \\
+&= \sum_{k=1}^{n+1} c_{n,k-1} x^{k} y^{(n+1)-k} + \sum_{k=0}^n c_{n,k} x^k y^{(n+1)-k} \\
+&= c_{n,n} x^{n+1} y^0 + \sum_{k=1}^{n} c_{n,k-1} x^{k} y^{(n+1)-k} \\
+&\qquad+ \sum_{k=1}^n c_{n,k} x^k y^{(n+1)-k} + c_{n,0} x^0 y^{n+1} \\
+&= c_{n,n} x^{n+1} y^0 + \sum_{k=1}^{n} (c_{n,k-1} + c_{n,k}) x^{k} y^{(n+1)-k} + c_{n,0} x^0 y^{n+1} \\
+&= c_{n,n} x^{n+1} y^0 + \sum_{k=1}^{n} c_{n+1,k} x^{k} y^{(n+1)-k} + c_{n,0} x^0 y^{n+1} && \text{(Theorem \ref{th:pascal-binom-coeff})} \\
+&= c_{n+1,n+1} x^{n+1} y^0 + \sum_{k=1}^{n} c_{n+1,k} x^{k} y^{(n+1)-k} + c_{n+1,0} x^0 y^{n+1} && \text{(They all equal 1)} \\
+&= \sum_{k=0}^{n+1} c_{n+1,k} x^{k} y^{(n+1)-k} && \text{(Combine $k=n+1$ term from left, $k=0$ term from right)} \\
+%&= \sum_{k=1}^{n+1} c_{n,k-1} x^{k} y^{n-k+1} + \sum_{k=1}^n c_{n,k} x^k y^{n-k+1} + c_{n,0} x^0 y^0 \\
+%&= \sum_{k=1}^{n+1} (c_{n,k-1} + c_{n,k}) x^{k} y^{n-k+1} + c_{n,0} x^0 y^0 \\
+%&= \sum_{k=1}^{n+1} c_{n+1,k} x^{k} y^{n-k+1} + c_{n,0} x^0 y^0 && \text{(Theorem \ref{th:pascal-binom-coeff})} \\
+%&= \sum_{k=1}^{n+1} c_{n+1,k} x^{k} y^{n-k+1} + c_{n+1,0} x^0 y^0 && \text{(both equal 1)} \\
+%&= \sum_{k=0}^{n+1} c_{n+1,k} x^{k} y^{n-k+1} \\
+\end{align*}
+
+\end{proof}
+
+% TODO: Philosophizing
+
+
+%%%%%%
 
 % TODO: (Eventually some/more recursion stuff)
 % section/subsection here?
 
 \section{(Why are we talking about this?)}
+
+% Key points here:
+% 	- Sense of what it feels like to work through and discover things. The real scientific process is a lot more like this than (what's commonly presented)
+% 	- We'll rely on all this later. (Throw out brief examples)
+%	- Don't get discouraged. ("How could I possibly have come up with this?" syndrome) This is deliberately the hardest part, and hopefully by reading through this, you'll develop more of a sense at the end.
 
 
 

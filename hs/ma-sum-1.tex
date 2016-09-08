@@ -797,16 +797,40 @@ We now assume the statement is true for some value $n$, and show it is true at $
 &= c_{n,n} x^{n+1} y^0 + \sum_{k=1}^{n} c_{n+1,k} x^{k} y^{(n+1)-k} + c_{n,0} x^0 y^{n+1} && \text{(Theorem \ref{th:pascal-binom-coeff})} \\
 &= c_{n+1,n+1} x^{n+1} y^0 + \sum_{k=1}^{n} c_{n+1,k} x^{k} y^{(n+1)-k} + c_{n+1,0} x^0 y^{n+1} && \text{(They all equal 1)} \\
 &= \sum_{k=0}^{n+1} c_{n+1,k} x^{k} y^{(n+1)-k} && \text{(Combine $k=n+1$ term from left, $k=0$ term from right)} \\
-%&= \sum_{k=1}^{n+1} c_{n,k-1} x^{k} y^{n-k+1} + \sum_{k=1}^n c_{n,k} x^k y^{n-k+1} + c_{n,0} x^0 y^0 \\
-%&= \sum_{k=1}^{n+1} (c_{n,k-1} + c_{n,k}) x^{k} y^{n-k+1} + c_{n,0} x^0 y^0 \\
-%&= \sum_{k=1}^{n+1} c_{n+1,k} x^{k} y^{n-k+1} + c_{n,0} x^0 y^0 && \text{(Theorem \ref{th:pascal-binom-coeff})} \\
-%&= \sum_{k=1}^{n+1} c_{n+1,k} x^{k} y^{n-k+1} + c_{n+1,0} x^0 y^0 && \text{(both equal 1)} \\
-%&= \sum_{k=0}^{n+1} c_{n+1,k} x^{k} y^{n-k+1} \\
 \end{align*}
 
 \end{proof}
 
 % TODO: Philosophizing
+
+This actually leads us to one last interesting pattern with our "triangle". We'll introduce it with the following exercise:
+
+\begin{exercise}
+Try calculating the sum of all the numbers in a row of Pascal's triangle -- and do this for a few rows. Do you notice a pattern?
+\end{exercise}
+
+\newpage
+
+You probably noticed that the rows sum to successive powers of 2. At this point, the proof is actually very simple.
+
+\begin{theorem} 
+\label{th:sum-row-pascal}
+If we count the top of Pascal's triangle as the 0th row, the $n$-th row sums to $2^n$. In other words, 
+\begin{equation}
+\sum_{k=0}^n c_{n,k} = 2^n
+\end{equation} 
+\end{theorem}
+
+\begin{proof}
+We see that:
+\begin{align*}
+\sum_{k=0}^n c_{n,k} &= \sum_{k=0}^n c_{n,k} 1^k 1^{n-k} \\
+&= (1+1)^n && \text{(Theorem \ref{th:binom-expand})} \\
+&= 2^n
+\end{align*}
+\end{proof}
+
+% TODO: More philosophizing
 
 
 %%%%%%

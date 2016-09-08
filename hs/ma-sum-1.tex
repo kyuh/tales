@@ -1170,14 +1170,12 @@ The number of times we'll see 3 in total is simply the sum of times over all len
 N(n) = \sum_{k=1}^{n} N_k(n)
 \end{equation*}
 
-Two key observations help explain this expression, and also let us simplify this a bit:
+Three key observations help explain this expression, and also let us simplify it a bit:
 
 \begin{itemize}
-\item We won't see a 3 in any composition of length $n$, because the only such composition is (1, 1, 1, ..., 1) -- essentially $n$ 1s. Therefore, $N_n(n) = 0$ for all counting numbers $n$.
-\begin{itemize}
-\item For similar reasons, it also follows that $N_k(n) = 0$ whenever $k \geq n$, because for $k > n$, there are no positive-number compositions at all of length $k$ for $n$. (This isn't relevant in this section, but will be important later.)
-\end{itemize}
-\item If $n \geq 4$, then we won't see a 3 in any composition of length $1$, because the only such composition consists of $n$ itself -- and if $n \geq 4$, then $n \neq 3$. Therefore, $N_1(n)$ = 0. 
+\item We note that $N_k(n) = 0$ whenever $k \geq n$, because for $k > n$, there are no positive-number compositions at all of length $k$ for $n$ (similar to our last example above). Therefore, the above sum as $n$ as an upper limit. 
+\item In fact, we won't see a 3 in any composition of length $n$, because the only such composition is (1, 1, 1, ..., 1) -- essentially $n$ 1s. Therefore, $N_n(n) = 0$ for all counting numbers $n$.
+\item If $n \geq 4$, then we won't see a 3 in any composition of length $1$, because the only such composition consists of $n$ itself -- which will only give us a 3 if $n \neq 3$. Therefore, for $n \geq 4$, $N_1(n)$ = 0. 
 \end{itemize}
 
 So simplifying the above equation gives:

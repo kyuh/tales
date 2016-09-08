@@ -925,6 +925,17 @@ Let's prove it. Prove that this pattern exists for all integer powers of 2 -- in
 \end{problem}
 
 \begin{problem}
+\label{pr:sum-i2i}
+Another pattern: I claim that
+\begin{equation*}
+\sum_{i=1}^{n} i2^i = 2+2^{n+1}(n-1)
+\end{equation*}
+
+Prove this claim for $n \geq 1$, using induction.
+
+\end{problem}
+
+\begin{problem}
 \label{sequence-recursive-sum}
 
 Here's a bit of an odd sequence: Let the sequence $\{a_i\}$ be defined by
@@ -1100,7 +1111,7 @@ The base case at $n = 1$ is true -- clearly, $1 + 2^0 = 2^1$.
 
 Let's do the inductive step. We assume the statement is true at $n = k$, i.e. we assume $1 + \sum_{i=0}^{k-1} 2^i = 2^k$ -- and show that the statement is true at $n = k + 1$, i.e. we show that $1 + \sum_{i=0}^{k} 2^i = 2^{k+1}$.
 
-We do this as follows: 
+We can proceed as follows: 
 
 % TODO: Maybe I'm being a bit overly explicit here
 
@@ -1113,6 +1124,36 @@ We do this as follows:
 \end{align*}
 
 Hence, the inductive step holds, and therefore the claim holds for all integers $n \geq 1$. 
+
+\subsection{Problem \ref{pr:sum-i2i}}
+
+As mentioned, we prove this claim using induction. The base case at $n=1$ is true, since
+
+\begin{equation*}
+\sum_{i=1}^{1} i2^i = 1 \cdot 2^1 = 2
+\end{equation*}
+
+and
+
+\begin{equation*}
+2+2^{1+1}(1-1) = 2 + 2^2 \cdot 0 = 2 + 0 = 2
+\end{equation*}
+
+We then look at the inductive step -- we assume for a given $k$ that $\sum_{i=1}^{k} i2^i = 2+2^{k+1}(k-1)$, and show that $\sum_{i=1}^{k+1} i2^i = 2+2^{(k+1)+1}((k+1)-1)$, i.e. $2+k2^{k+2}$. 
+
+We can proceed as follows:
+
+\begin{align*}
+\sum_{i=1}^{k+1} i2^i &= \sum_{i=1}^{k} i2^i + (k+1)2^{k+1} \\
+&= 2+2^{k+1}(k-1) + (k+1)2^{k+1} && \text{(Inductive assumption)} \\
+&= 2+2^{k+1}(k-1) + (k+1)2^{k+1} \\
+&= 2+((k-1) + (k+1))2^{k+1} \\
+&= 2+(2k)2^{k+1} \\
+&= 2+k2^{k+2} \\
+\end{align*}
+
+Hence, the inductive step holds, and therefore the claim holds for all integers $n \geq 1$. 
+
 
 \subsection{Problem \ref{sequence-recursive-sum}}
 
@@ -1293,7 +1334,7 @@ N(n) &= 2^{n-4} + 1 + \sum_{i=4}^{n-1} N(i) \\
 &= 2^{n-4} + 1 + 2^{-5} \sum_{i=4}^{n-1} i2^{i} \\
 &= 2^{n-4} + 1 + 2^{-5} \left(\sum_{i=1}^{n-1} i2^{i} - \left( 3 \cdot 2^3 + 2 \cdot 2^2 + 1 \cdot 2^1 \right) \right) \\
 &= 2^{n-4} + 1 + 2^{-5} \left(\sum_{i=1}^{n-1} i2^{i} - (24 + 8 + 2) \right) \\
-&= 2^{n-4} + 1 + 2^{-5} \left(2 + 2^{(n-1)+1}((n-1)-1) - (24 + 8 + 2) \right) \\
+&= 2^{n-4} + 1 + 2^{-5} \left(2 + 2^{(n-1)+1}((n-1)-1) - (24 + 8 + 2) \right) && \text{(Problem \ref{pr:sum-i2i})} \\
 &= 2^{n-4} + 1 + 2^{-5} \left(2 + 2^{n}(n-2) - (24 + 8 + 2) \right) \\
 &= 2^{n-4} + 1 + 2^{-5} \left(2^{n}(n-2) - (24 + 8) \right) \\
 &= 2^{n-4} + 1 + 2^{-5} \left(2^{n}(n-2) - 2^5 \right) \\

@@ -1178,14 +1178,7 @@ Three key observations help explain this expression, and also let us simplify it
 \item If $n \geq 4$, then we won't see a 3 in any composition of length $1$, because the only such composition consists of $n$ itself -- which will only give us a 3 if $n \neq 3$. Therefore, for $n \geq 4$, $N_1(n)$ = 0. 
 \end{itemize}
 
-So simplifying the above equation gives:
-\begin{align*}
-N(n) &= \sum_{k=1}^{n} N_k(n) \\
-&= N_1(n) + \sum_{k=2}^{n-1} N_k(n) + N_n(n) \\
-&= 0 + \sum_{k=2}^{n-1} N_k(n) + 0 \\
-\end{align*}
-
-and therefore, for $n \geq 4$,
+Hence, we can get rid of the two "zero" terms, $N_1(n)$ and $N_n(n)$, in our above sum, giving (for $n \geq 4$):
 
 \begin{equation}
 \label{composition-num-3s-n-nk}

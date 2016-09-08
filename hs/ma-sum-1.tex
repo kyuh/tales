@@ -1152,13 +1152,25 @@ Ideally, we'd like to find a recurrence relation for $N(n)$ -- that way, we coul
 
 \subsubsection{A new term}
 
-Let $N_k(n)$ be the number of times we see 3 among compositions \emph{of length $k$}. The number of times we'll see 3 in total is simply the sum of times over all lengths $k$ -- in other words:
+Let $N_k(n)$ be the number of times we see 3 among compositions \emph{of length $k$}. A few examples of what this looks like:
+
+\begin{itemize}
+\item The only composition of 4 of length 1 is simply $(4)$ -- in other words, the sequence containing only the number 4. We have no 3s here, so $N_1(4) = 0$.
+\item The only compositions of 4 of length 2 are $(1,3)$, $(2,2)$, and $(3,1)$. We see 2 3s in total among them, so $N_2(4) = 2$.
+\item Similar to our first example, the only composition of 3 of length 1 is simply $(3)$. We have a single 3 here, so $N_1(3) = 1$.
+\item The only compositions of 3 of length 2 are $(1,2)$ and $(2,1)$. No 3s here, so $N_2(3) = 0$.
+\item We can't have any compositions of $n < 3$ that contain 3, so $N_k(n) = 0$ for all $k$ whenever $n < 3$. (Makes sense -- from part (d), we know that $N(n) = 0$ itself when $n < 3$.)
+% TODO: More here, e.g. the N_k(n) for n < 3
+\end{itemize}
+
+
+The number of times we'll see 3 in total is simply the sum of times over all lengths $k$ -- in other words:
 
 \begin{equation*}
 N(n) = \sum_{k=1}^{n} N_k(n)
 \end{equation*}
 
-Two key observations let us simplify this a bit:
+Two key observations help explain this expression, and also let us simplify this a bit:
 
 \begin{itemize}
 \item We won't see a 3 in any composition of length $n$, because the only such composition is (1, 1, 1, ..., 1) -- essentially $n$ 1s. Therefore, $N_n(n) = 0$ for all counting numbers $n$.

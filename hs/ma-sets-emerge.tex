@@ -83,18 +83,13 @@ While it is difficult to make general statements on the matter (there are whole 
 %(We'll use the $f_k$ notation of Problem \ref{pr:fp-intro} to denote iterated functions.)
 
 \item Suppose $f$ is a \emph{continuous} function, and we \emph{know} that, for some starting value $x_0$, the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ... converges to some value (call it $c$). Prove that $c$ is a fixed point of $f$.
-\item Suppose $f$ didn't have to be continuous; find a counterexample to the above claim.
 
 In other words, if we find that this sequence converges, it converges to a fixed point. But when does it converge at all? While we cannot cover all cases, we'll try to find some cases where this is true.
 
 % TODO: More parts to this problem that aren't amoeba-related
 
-\item Suppose now that $f$ is a continuous and \emph{increasing} function. 
-\begin{enumerate}[i]
-\item Suppose we also choose our "starting point" $x_0$ where $f(x_0) > x_0$, and there is exactly one fixed point $c > x_0$. Prove that the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ... converges to the closest such fixed point. 
-\item Suppose we have the same scenario, except there are now multiple fixed points to the right of $x_0$. Which one will our sequence converge to, and why?
+\item Suppose now that $f$ is a continuous and \emph{increasing} function. Suppose we also choose our "starting point" $x_0$ where $f(x_0) > x_0$, and there are some fixed points to the right of $x_0$. Prove that the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ... converges to the closest such fixed point.\footnote{We could have stated the fixed point condition more precisely as: There is a sequence of fixed points with length at least 1, where $x_0 < c_1 < c_2 < ...$. Prove that the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$ converges to $c_1$.}
 % TODO: Insert logical conclusions for f(x_0) < x_0, f is decreasing, etc? (maybe - don't really need them for amoeba problem)
-\end{enumerate}
 
 % TODO: Put diagram for this here or in hints?
 
@@ -175,6 +170,18 @@ In addition,
 % TODO: Probably have to justify the n-1 (probably show invariance under this in an earlier problem, for general limits)
 
 Therefore, $f(c) = c$, i.e. $c$ is a fixed point of $f$. $\square$
+
+\subsubsection{Part (d)}
+
+Let's use the same $x_n$ notation as we did in Part (c).
+
+We'll first prove a few preliminaries:
+
+\begin{lemma}
+${x_n}$ is bounded by $c_1$.
+\end{lemma}
+
+
 
 
 

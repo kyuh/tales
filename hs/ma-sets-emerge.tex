@@ -88,7 +88,7 @@ In other words, if we find that this sequence converges, it converges to a fixed
 
 % TODO: More parts to this problem that aren't amoeba-related
 
-\item Suppose now that $f$ is a continuous and \emph{increasing} function. Suppose we also choose our "starting point" $x_0$ where $f(x_0) > x_0$, and there are some fixed points to the right of $x_0$. Prove that the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ... converges to the closest such fixed point.\footnote{We could have stated the fixed point condition more precisely as: There is a sequence of fixed points with length at least 1, where $x_0 < c_1 < c_2 < ...$. Prove that the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$ converges to $c_1$.}
+\item Suppose now that $f$ is a continuous and \emph{increasing} function. Suppose we also choose our "starting point" $x_0$ where $f(x_0) > x_0$, and there is at least one fixed point to the right of $x_0$. Prove that the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ... converges to the closest such fixed point.
 % TODO: Insert logical conclusions for f(x_0) < x_0, f is decreasing, etc? (maybe - don't really need them for amoeba problem)
 
 % TODO: Put diagram for this here or in hints?
@@ -173,15 +173,65 @@ Therefore, $f(c) = c$, i.e. $c$ is a fixed point of $f$. $\square$
 
 \subsubsection{Part (d)}
 
-Let's use the same $x_n$ notation as we did in Part (c).
+Let's use the same $x_n$ notation as we did in Part (c). 
+
+Let's also formulate what we mean by converging to the "closest fixed point" more precisely. Let's suppose there is a sequence of fixed points with length at least 1, where $x_0 < c_1 < c_2 < ...$. We wish to prove that the sequence $\{x_n\}$ converges to $c_1$.
 
 We'll first prove a few preliminaries:
 
 \begin{lemma}
-${x_n}$ is bounded by $c_1$.
+\label{l:fp-iter-region}
+$f(x) > x$ over the region $\left[x_0, c_1\right)$. 
 \end{lemma}
+\begin{proof}
+Let $g(x) = f(x) - x$. Our claim is equivalent to asserting that, over this region, $g(x) > 0$. 
 
+We'll do a proof by contradiction. Suppose this weren't true, i.e. there existed at least one point $x_a$ in the region such that $f(x_a) < x_a$, i.e. $g(x_a) < 0$. We're given (in the problem) that $f(x_0) > x_0$, i.e. $g(x_0) > 0$. Therefore, by the intermediate value theorem, there exists a point $x_b$ in $(x_0, x_a)$ such that $g(x_b) = 0$, i.e. $f(x_b) = x_b$. 
 
+Then $x_b$ would be a fixed point. However, we're given that our leftmost fixed point to the right of $x_0$ is $c_1$, and here, $x_0 < x_b < c_1$. Contradiction.
+\end{proof}
+
+\begin{lemma}
+\label{l:fp-iter-bound}
+$\{x_n\}$ is strictly bounded above by $c_1$.
+\end{lemma}
+\begin{proof}
+We prove this by induction. Our base case is easy: we're simply given that $x_0 < c_1$.
+
+For the inductive step, we assume that $x_k < c_1$, and show that $x_{k+1} < c_1$. This is short as well -- since $f$ is increasing and $x_k < c_1$, we have $f(x_k) < f(c_1)$. By definition, $x_{k+1} = f(x_k)$, and since $c_1$ is a fixed point, $f(c_1) = c_1$. Therefore, $x_{k+1} < c_1$. 
+\end{proof}
+
+% {l:fp-iter-prob-region}
+
+\begin{lemma}
+\label{l:fp-iter-increasing-lower-bound}
+$\{x_n\}$ is increasing, and bounded below by $x_0$. 
+\end{lemma}
+\begin{proof}
+We'll prove that for all $k \geq 0$, $x_0 \leq x_k < x_{k+1}$ (i.e. both $x_0 \leq x_k$, and $x_k < x_{k+1}$). 
+
+For our base case, clearly $x_0 \leq x_0$. We are given that $f(x_0) > x_0$, and by definition of our sequence, $x_1 = f(x_0)$.
+
+For our inductive step, $x_0 \leq x_k < x_{k+1}$, and prove that $x_0 \leq x_{k+1} < x_{k+2}$. Since $x_0 \leq x_k < x_{k+1}$, we clearly have $x_0 \leq x_{k+1}$. Per Lemma \ref{l:fp-iter-bound}, we have $x_{k+1} < c_1$. Therefore, we have that $x_{k+1} \in \left[x_0, c_1\right)$, so by Lemma \ref{l:fp-iter-region}, $f(x_{k+1}) > x_{k+1}$. We simply then have $x_{k+2} = f(x_{k+1})$, and therefore $x_{k+1} < x_{k+2}$. 
+
+% TODO: Mention something like (We proved the increasing and lower boundedness statement together because they are intricately linked in our proof.)
+\end{proof}
+
+From Lemmas \ref{l:fp-iter-bound} and \ref{l:fp-iter-increasing-lower-bound}, we see that $\{x_n\}$ is an increasing and bounded sequence. Therefore, by Theorem \ref{th:monotone-seq}, $\{x_n\}$ converges (to its least upper bound, specifically). Therefore, by Part (c), it must converge to a fixed point.
+
+We finally show that, therefore, $\{x_n\}$ must converge to $c_1$. As for the fixed points greater than $c_1$, clearly none of them can be a least upper bound by definition, so converge to them is out of the question.
+
+What about the fixed points to the \emph{left} of $x_0$? (We haven't discussed these at all yet!) From Lemma \ref{l:fp-iter-increasing-lower-bound}, $x_0$ is a lower bound for our sequence. Since $x_0$ isn't a fixed point itself (since $f(x_0) > x_0$), any such fixed points must be strictly less than $x_0$. Therefore (even ignoring the fact that $\{x_n\}$ is increasing and could never approach such a fixed point), the bound means that we would not be able to get with arbitrary $\epsilon$ distance of a fixed point to the left.
+
+This all leaves us with only one possibility: $\{x_n\}$ converges to $c_1$, its lowest fixed point to the right.
+
+% TODO: We need to introduce the $\{x_n\}$ notation at some point.
+
+% TODO: Go back to the problem and revise problem statement (or at least add caveat that we could have a solid real-line block of real numbers where f(x) = x, and hence we can't index them. In this case there would be an *uncountable* number of fixed points (we may or may not have already talked about countability at that point?)
+% 	- Possible way to revise the problem: There is at least one fixed point to the right of $x_0$. Let $c_0$ be the lowest such fixed point. Prove that sequence must converge to $c_0$.
+
+% TODO: Might want to just say "greater than", rather than "to the right of"
+ 
 
 
 

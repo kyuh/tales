@@ -151,6 +151,33 @@ Suppose we have the situation described in Problem \ref{pr:amoeba-ngen}, but we 
 \newpage
 \section{Solutions}
 
+\subsection{Problem \ref{pr:fp-iter}}
+
+\subsubsection{Part (c)}
+
+For notation purposes, let's define the sequence $x_n = f_n(x_0)$ (and $x_0$ will just be the initial value from the problem).
+
+We're given that:
+
+\begin{equation*}
+\lim_{n \rightarrow \infty} x_n = c
+\end{equation*}
+
+In addition,
+
+\begin{align*}
+\lim_{n \rightarrow \infty} x_n &= \lim_{n \rightarrow \infty} f(x_{n-1}) \\
+&= f(\lim_{n \rightarrow \infty} x_{n-1}) && \text{(Since $f$ is continuous)} \\
+&= f(c) \\
+\end{align*}
+
+% TODO: Probably have to prove continuity and moving limit through sequence (and then ref it here).
+% TODO: Probably have to justify the n-1 (probably show invariance under this in an earlier problem, for general limits)
+
+Therefore, $f(c) = c$, i.e. $c$ is a fixed point of $f$. $\square$
+
+
+
 \subsection{Problem \ref{pr:amoeba-ngen}}
 
 \subsubsection{Part (a)}

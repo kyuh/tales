@@ -175,7 +175,7 @@ Therefore, $f(c) = c$, i.e. $c$ is a fixed point of $f$. $\square$
 
 Let's use the same $x_n$ notation as we did in Part (c). 
 
-Let's also formulate what we mean by converging to the "closest fixed point" more precisely. Let's suppose there is a sequence of fixed points with length at least 1, where $x_0 < c_1 < c_2 < ...$. We wish to prove that the sequence $\{x_n\}$ converges to $c_1$.
+Let's also formulate what we mean by converging to the "closest fixed point" more precisely. Let's suppose there is a sequence of fixed points $\{c_n\}$ with length at least 1, where $x_0 < c_1 < c_2 < ...$. We wish to prove that the sequence $\{x_n\}$ converges to $c_1$.
 
 We'll first prove a few preliminaries:
 
@@ -190,6 +190,10 @@ We'll do a proof by contradiction. Suppose this weren't true, i.e. there existed
 
 Then $x_b$ would be a fixed point. However, we're given that our leftmost fixed point to the right of $x_0$ is $c_1$, and here, $x_0 < x_b < c_1$. Contradiction.
 \end{proof}
+
+% TODO: Insert a figure representation of this proof?
+
+% TODO: This won't be our first proof by contradiction (at the very least, it will be that sqrt(2) is irrational), but we do need to account for explaining it (and possibly reviewing it in this problem). 
 
 \begin{lemma}
 \label{l:fp-iter-bound}
@@ -208,22 +212,22 @@ For the inductive step, we assume that $x_k < c_1$, and show that $x_{k+1} < c_1
 $\{x_n\}$ is increasing, and bounded below by $x_0$. 
 \end{lemma}
 \begin{proof}
-We'll prove that for all $k \geq 0$, $x_0 \leq x_k < x_{k+1}$ (i.e. both $x_0 \leq x_k$, and $x_k < x_{k+1}$). 
+We'll prove (using induction) that for all $k \geq 0$, $x_0 \leq x_k < x_{k+1}$ (i.e. both $x_0 \leq x_k$, and $x_k < x_{k+1}$). 
 
-For our base case, clearly $x_0 \leq x_0$. We are given that $f(x_0) > x_0$, and by definition of our sequence, $x_1 = f(x_0)$.
+For our base case, clearly $x_0 \leq x_0$. We are given that $f(x_0) > x_0$, and by definition of our sequence, $x_1 = f(x_0)$, so $x_0 < x_1$.
 
-For our inductive step, $x_0 \leq x_k < x_{k+1}$, and prove that $x_0 \leq x_{k+1} < x_{k+2}$. Since $x_0 \leq x_k < x_{k+1}$, we clearly have $x_0 \leq x_{k+1}$. Per Lemma \ref{l:fp-iter-bound}, we have $x_{k+1} < c_1$. Therefore, we have that $x_{k+1} \in \left[x_0, c_1\right)$, so by Lemma \ref{l:fp-iter-region}, $f(x_{k+1}) > x_{k+1}$. We simply then have $x_{k+2} = f(x_{k+1})$, and therefore $x_{k+1} < x_{k+2}$. 
+For our inductive step, we assume $x_0 \leq x_k < x_{k+1}$, and prove that $x_0 \leq x_{k+1} < x_{k+2}$. Since $x_0 \leq x_k < x_{k+1}$, we clearly have $x_0 \leq x_{k+1}$. Per Lemma \ref{l:fp-iter-bound}, we have $x_{k+1} < c_1$. Therefore, we have that $x_{k+1} \in \left[x_0, c_1\right)$, so by Lemma \ref{l:fp-iter-region}, $f(x_{k+1}) > x_{k+1}$. By definition, $x_{k+2} = f(x_{k+1})$, so $x_{k+1} < x_{k+2}$. 
 
 % TODO: Mention something like (We proved the increasing and lower boundedness statement together because they are intricately linked in our proof.)
 \end{proof}
 
 From Lemmas \ref{l:fp-iter-bound} and \ref{l:fp-iter-increasing-lower-bound}, we see that $\{x_n\}$ is an increasing and bounded sequence. Therefore, by Theorem \ref{th:monotone-seq}, $\{x_n\}$ converges (to its least upper bound, specifically). Therefore, by Part (c), it must converge to a fixed point.
 
-We finally show that, therefore, $\{x_n\}$ must converge to $c_1$. As for the fixed points greater than $c_1$, clearly none of them can be a least upper bound by definition, so converge to them is out of the question.
+We finally show that, therefore, $\{x_n\}$ must converge to $c_1$. As for the fixed points greater than $c_1$, clearly none of them can be a least upper bound by definition, so convergence to them is out of the question.
 
 What about the fixed points to the \emph{left} of $x_0$? (We haven't discussed these at all yet!) From Lemma \ref{l:fp-iter-increasing-lower-bound}, $x_0$ is a lower bound for our sequence. Since $x_0$ isn't a fixed point itself (since $f(x_0) > x_0$), any such fixed points must be strictly less than $x_0$. Therefore (even ignoring the fact that $\{x_n\}$ is increasing and could never approach such a fixed point), the bound means that we would not be able to get with arbitrary $\epsilon$ distance of a fixed point to the left.
 
-This all leaves us with only one possibility: $\{x_n\}$ converges to $c_1$, its lowest fixed point to the right.
+This all leaves us with only one possibility: $\{x_n\}$ converges to $c_1$, the smallest fixed point to the right of our starting point $x_0$.
 
 % TODO: We need to introduce the $\{x_n\}$ notation at some point.
 

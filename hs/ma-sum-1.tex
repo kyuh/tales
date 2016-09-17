@@ -125,26 +125,37 @@ What about the sum $8 + 11 + 14 + 17 + 20 + 23 + 26$?
 
 We'll start our first real mathematical tale by looking at numbers themselves. 
 
-Here, we'll focus on the \textbf{counting numbers}: 1, 2, 3, 4, ... and so on. Practically, they're used to describe the quantity of things that can't really be divided into parts (for example, you can have 1.42 liters of water, but you can't have 1.42 balls in a jar). 
+Here, we'll focus on the \textbf{counting numbers}: 0, 1, 2, 3, 4, ... and so on. Practically, they're used to describe the quantity of things that can't really be divided into parts (for example, you can have 1.42 liters of water, but you can't have 1.42 balls in a jar). 
 
 \subsection{Definition}
 
 How can we \emph{define} what we mean by counting numbers? ("Numbers for counting balls" doesn't quite cut it.)
 
-We know that the numbers should be 1, 2, 3, 4, ... and so on. How do we know what the "and so on" should be?
+We know that the numbers should be 0, 1, 2, 3, 4, ... and so on. How do we know what the "and so on" should be?
 
 One way is to consider the "order" of the numbers. We know that, in some sense, 7 comes after 6, which comes after 5, which comes after 4, ... 
 
 More precisely, if we have some number $k$, we know that $k+1$ comes after it. 
 
-There's also a number that doesn't "come after" anyone else: The number 1.
+There's also a number that doesn't "come after" anyone else: The number 0.
 
 Using these facts, let's define the counting numbers as the set (or collection) of numbers which has the following properties:
 
 \begin{itemize}
-\item 1 is in the collection.
+\item 0 is in the collection.
 \item If $k$ is in the collection, then $k+1$ is as well. 
 \end{itemize}
+
+\begin{exercise}
+Let's say we only care about the counting numbers greater than or equal to 1 -- in other words, the numbers 1, 2, 3, 4, ... and so on. (We'll call these the \textbf{positive counting numbers}, or alternatively, the \textbf{positive integers}.) Can you define these similarly?
+\end{exercise}
+% Hint: We "started" our collection at 0. Where can we start it now?
+% TODO: Insert this hint?
+% Possible TODO: Don't actually have this exercise, and just put it in the section above. (Then move these hints to the exercise below.)
+
+\begin{exercise}
+Same idea as above, but let's say we only care about the counting numbers greater than or equal to 3 -- so 3, 4, 5, 6, ... and so on. Can you define these similarly?
+\end{exercise}
 
 \begin{exercise}
 The numbers 2, 4, 6, 8, ... are often called the \textbf{even numbers}. Can you define these similarly?
@@ -188,13 +199,13 @@ I claim that:
 \sum_{i=1}^n i = \frac{n(n+1)}{2}
 \end{equation}
 
-I'd like to prove that this equation is true when $n$ is any counting number. How can I do it? 
+I'd like to prove that this equation is true when $n$ is any positive counting number. How can I do it? 
 
 Remember how we defined the counting numbers? Well, let's say I instead consider the "collection of numbers for which Equation \ref{sum-i} is true". 
 
 Then suppose I show that Equation \ref{sum-i} is true when $n = 1$ -- in other words, 1 is in this "collection of numbers". Then let's show that, as long as we assume Equation \ref{sum-i} is true when $n = k$ for some value $k$, we can then prove that Equation \ref{sum-i} is true when $n = k + 1$. In other words, if $k$ is in our collection, then $k+1$ is as well.
 
-Do you see where we're going with this? If we show the above true things, then we've shown that the "collection of numbers for which Equation \ref{sum-i} is true" is in fact the counting numbers. In other words, Equation \ref{sum-i} is then true whenever $n$ is a counting number!
+Do you see where we're going with this? If we show the above true things, then we've shown that the "collection of numbers for which Equation \ref{sum-i} is true" is in fact the positive counting numbers. In other words, Equation \ref{sum-i} is then true whenever $n$ is a positive counting number!
 
 \begin{exercise}
 Before we go any further, try out Equation \ref{sum-i} for yourself. Plug in 1 through 7 for $n$, and see if you get the answers you expect. 
@@ -368,6 +379,7 @@ p_3 = 3 \cdot p_2
 In fact, hopefully you agree with a more general statement: For counting numbers $n$,
 
 \begin{equation}
+\label{eq:nperms-rec}
 p_n = n \cdot p_{n-1}
 \end{equation}
 
@@ -375,13 +387,21 @@ In other words, the number of ways to arrange $n$ distinct letters (or other thi
 
 % TODO: (Maybe here, maybe elsewhere) Discuss how this type of thing is a "recursive relationship" (and relation to induction)
 
-There's a little bit of nuance to consider here. What if $n$ is 1? Then $(n-1)$ is 0, and we haven't considered 0 a counting number. In other words, we need to stop subtracting 1 somewhere.
+There's a little bit of nuance to consider here. We can't define $p_n$ in terms of $p_{n-1}$ forever. (How can we define the arrangements of 0 things in terms of the arrangements of $-1$ things? It would be absurd!)
 
-Similar to our induction, let's consider some sort of "base case". What is $p_1$? If we only have 1 thing, there's really only 1 way to arrange it. Hence, to complement our relation above, we have the base case:
+We essentially need a "base case". What if $n$ is 1? In other words, what is $p_1$? If we only have 1 thing, there's really only 1 way to arrange it. Hence, to complement our relation above, we have the base case:
 
 \begin{equation}
+\label{eq:nperms-bc}
 p_1 = 1
 \end{equation}
+
+Combining Equations \ref{eq:nperms-rec} and \ref{eq:nperms-bc}, we have enough information to figure out, for any positive counting number $n$, how many ways we can arrange $n$ distinct things.
+
+\begin{exercise}
+Using Equations \ref{eq:nperms-rec} and \ref{eq:nperms-bc}, can you figure out how many ways to arrange 3 distinct things?
+\end{exercise}
+% (Possible TODO) Hint: We write the answer on the previous page
 
 
 % TODO: Maybe need to revise the original induction section to start at 0, and for any of those inductive relations that involve starting at some number, discuss the process as being equivalent to all integers above (that starting number). 
@@ -395,14 +415,16 @@ p_1 = 1
 \begin{exercise}
 In our four-letter example, it didn't really matter that we used the letters $a$, $b$, $c$, and $d$, as opposed to the letters $x$, $z$, $w$, and $q$, or the numbers 1, 2, 3, and 4, or balls of colors red, yellow, green, and blue. The number of ways to arrange each of these groups of 4 things is still 24.
 
-Each of these example groups has four \textbf{distinct} objects. As a contrasting example, let's say we now have the four characters $b$, $b$, $c$, and $d$ to make arrangements with. ($b$ now occurs twice, so even though we have four letters, two of them are the same.)
+Each of these example groups has four \textbf{distinct} objects. 
+
+But let's say we now have the four characters $b$, $b$, $c$, and $d$ to make arrangements with. ($b$ now occurs twice, so even though we have four letters, two of them are the same.)
 
 Try to write down all the ways to arrange this group of four letters. Can you still get 24 arrangements?
 
 %What does matter is \textbf{distinctness} -- if we were to try to find the number of ways to arrange the letters $b$, $b$, $c$, and $d$ (i.e. $b$ occurring twice), we may get different results.
-
-(We will cover non-distinct arrangements later in the chapter.)
 \end{exercise}
+% (We will cover non-distinct arrangements later in the chapter.)
+% TODO: Mention this somehow?
 
 \subsubsection{(Handling 0)}
 

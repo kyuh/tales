@@ -427,6 +427,55 @@ Try to write down all the ways to arrange this group of four letters. Can you st
 % (We will cover non-distinct arrangements later in the chapter.)
 % TODO: Mention this somehow?
 
+\subsubsection{The Factorial}
+
+If we actually "solve" for what $p_2$, $p_3$, $p_4$, and so on are, we see an interesting pattern:
+
+\begin{align*}
+p_1 &= 1 \\
+p_2 &= 1 \cdot 2 \\
+p_3 &= 1 \cdot 2 \cdot 3 \\
+p_4 &= 1 \cdot 2 \cdot 3 \cdot 4 \\
+p_5 &= 1 \cdot 2 \cdot 3 \cdot 4 \cdot 5 \\
+...
+\end{align*}
+% TODO: Make this better
+
+Let's come up with some notation to represent $1 \cdot 2 \cdot ... \cdot (n-1) \cdot n$. Similar to our sum notation ($\sum$), we can use a "product" notation (let's use $\prod$). So we can write this product as:
+
+\begin{equation}
+\label{prod-i}
+\prod_{i=1}^n i
+\end{equation}
+
+(This notation is pretty generally applicable -- for example, to write the product of even numbers 2, 4, 6, ... (let's say up to 20), we could write)
+
+\begin{equation*}
+\prod_{i=1}^{10} 2i
+\end{equation*}
+
+We'll be writing Equation \ref{prod-i} a lot, so we'll come up with something shorter to write. We'll use the term $n!$ (which we'll call \textbf{$n$ factorial}), and we'll define it as:
+
+\begin{equation}
+\label{eq:factorial-def}
+n! := \prod_{i=1}^n i
+\end{equation}
+
+One cool thing: $n!$ can be defined recursively, as
+
+\begin{align}
+1! &= 1 \\
+n! &= n \cdot (n-1)!
+\end{align}
+
+We then have an easy way to write what $p_n$ is:
+
+\begin{equation}
+p_n = n!
+\end{equation}
+
+
+
 \subsubsection{(Handling 0)}
 
 % TODO: Explain how the definition makes sense for n = 0. 

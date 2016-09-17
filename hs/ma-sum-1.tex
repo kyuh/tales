@@ -474,12 +474,35 @@ We then have an easy way to write what $p_n$ is:
 p_n = n!
 \end{equation}
 
+\begin{exercise}
+Let's say we wanted to write the product from some number $k$ up to $n$ (in other words, $k \cdot (k+1) \cdot ... \cdot (n-1) \cdot n$). 
+\begin{enumerate}
+\item How can we write that using our $\prod$ notation?
+\item How can we write that using our factorial notation?
+\end{enumerate}
+\end{exercise}
+% TODO: Hint on factorial: Write as fraction
 
 
 \subsubsection{(Handling 0)}
 
-% TODO: Explain how the definition makes sense for n = 0. 
-% (May not need to if we revise the induction section, etc to start at 0)
+Let's think about one weird philosophical problem (which will become pretty important in the math ahead).
+
+How many ways are there to arrange 0 things? This seems like one of those strange questions\footnote{Like "if a tree falls in the forest with no one around, does it make a sound?"} without a good answer, but we can think about it like this: Since there's nothing to arrange, there's only 1 way for "nothing" to exist. 
+
+Therefore, we can revise our base case for $p_n$ a little bit more, and say:
+\begin{equation*}
+p_0 = 1
+\end{equation*}
+
+Then, $p_1 = 1 \cdot p_0 = 1 \cdot 1 = 1$, giving us the same answer for $p_1$ as before. 
+
+We can do the same thing for our factorial as well, since ideally, it should match the behavior of our "number of ways to arrange things" problem. So we'll say:
+
+\begin{align}
+0! &= 1 \\
+n! &= n \cdot (n-1)!
+\end{align}
 
 
 \subsection{(Arrangements of $k$ from $n$)}

@@ -147,7 +147,7 @@ Using these facts, let's define the counting numbers as the set (or collection) 
 \end{itemize}
 
 \begin{exercise}
-Let's say we only care about the counting numbers greater than or equal to 1 -- in other words, the numbers 1, 2, 3, 4, ... and so on. (We'll call these the \textbf{positive counting numbers}, or alternatively, the \textbf{positive integers}.) Can you define these similarly?
+Let's say we only care about the counting numbers greater than or equal to 1 -- in other words, the numbers 1, 2, 3, 4, ... and so on. (We'll call these the \textbf{positive counting numbers}.) Can you define these similarly?
 \end{exercise}
 % Hint: We "started" our collection at 0. Where can we start it now?
 % TODO: Insert this hint?
@@ -201,15 +201,16 @@ I claim that:
 
 I'd like to prove that this equation is true when $n$ is any positive counting number. How can I do it? 
 
+\begin{exercise}
+Before we go any further, try out Equation \ref{sum-i} for yourself. Plug in 1 through 7 for $n$, and see if you get the answers you expect. 
+\end{exercise}
+\hfill
+
 Remember how we defined the counting numbers? Well, let's say I instead consider the "collection of numbers for which Equation \ref{sum-i} is true". 
 
 Then suppose I show that Equation \ref{sum-i} is true when $n = 1$ -- in other words, 1 is in this "collection of numbers". Then let's show that, as long as we assume Equation \ref{sum-i} is true when $n = k$ for some value $k$, we can then prove that Equation \ref{sum-i} is true when $n = k + 1$. In other words, if $k$ is in our collection, then $k+1$ is as well.
 
 Do you see where we're going with this? If we show the above true things, then we've shown that the "collection of numbers for which Equation \ref{sum-i} is true" is in fact the positive counting numbers. In other words, Equation \ref{sum-i} is then true whenever $n$ is a positive counting number!
-
-\begin{exercise}
-Before we go any further, try out Equation \ref{sum-i} for yourself. Plug in 1 through 7 for $n$, and see if you get the answers you expect. 
-\end{exercise}
 
 \subsubsection{Proof}
 
@@ -468,7 +469,7 @@ Hopefully, based on a similar line of thinking, you also agree with the general 
 q_{n,k} = n \cdot q_{n-1,k-1}
 \end{equation*}
 
-Let's consider what our "base case" will be here. If we have n letters available and a "length 1" ordering, we just choose a letter and have that be our "length-1 ordering". There are of course n letters we can choose from, so we have the base case: 
+Let's consider what our "base case" will be here. If we have n letters available and a "length 1" ordering, we just choose a letter and have that be our "length-1 ordering". There are $n$ letters we can choose from, so we have the base case: 
 % TODO: Clarify "for all counting (or whatever) numbers $n$"
 
 \begin{equation*}
@@ -481,9 +482,10 @@ q_{n,1} = n
 
 (more explicitly)
 
-\begin{equation*}
-q_{n,k} = \prod_{i=n-(k-1)}^n = \prod_{i=n-k+1}^n
-\end{equation*}
+\begin{align*}
+q_{n,k} &= \prod_{i=n-(k-1)}^n i \\
+&= \prod_{i=n-k+1}^n i
+\end{align*}
 
 % TODO: Show the work? (split the product term, cancel, etc)
 

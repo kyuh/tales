@@ -200,7 +200,9 @@ Then $x_b$ would be a fixed point. However, we're given that our leftmost fixed 
 $\{x_n\}$ is strictly bounded above by $c_1$.
 \end{lemma}
 \begin{proof}
-We prove this by induction. Our base case is easy: we're simply given that $x_0 < c_1$.
+We'll prove (using induction) that $x_k < c_1$ for all $k \geq 0$. 
+
+Our base case is easy: we're simply given that $x_0 < c_1$.
 
 For the inductive step, we assume that $x_k < c_1$, and show that $x_{k+1} < c_1$. This is short as well -- since $f$ is increasing and $x_k < c_1$, we have $f(x_k) < f(c_1)$. By definition, $x_{k+1} = f(x_k)$, and since $c_1$ is a fixed point, $f(c_1) = c_1$. Therefore, $x_{k+1} < c_1$. 
 \end{proof}

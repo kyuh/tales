@@ -9,8 +9,193 @@
 
 % Sth: "This might be the most boring way to start a chapter. In the past, we've talked about counting things -- here, we'll be talking about, quite literally, "things" (or more properly, collections of things)"
 
+The start of this chapter will be particularly boring. 
 
-\section{(Sets -- collections of things)}
+So far, we've talked about counting things, adding things, mapping things to other things, and so on.
+
+In this chapter, we'll just be talking about things. More specifically, we'll be talking about collections, or \textbf{sets}, of things.
+
+% TODO: Say something like "This sounds boring. But we'll see that little quirks in our collections will give us fascinating properties -- cool things that will seem to spring out of faint air. We'll then show that 
+% TODO: Say something like "but there is something cool that happens"
+% TODO: Decide on whether to give a sneak preview here (like for integration chapter)
+
+\section{(Sets intro)}
+
+What do we mean by a "set of things"? Here are some examples:
+
+\begin{itemize}
+\item The set containing the numbers 1, 2, and 3. 
+\begin{itemize}
+\item We'll write this as $\{1, 2, 3\}$.
+\end{itemize}
+\item The set containing the numbers 0.6, 1/3, and 77.
+\begin{itemize}
+\item Similarly, we can write this as $\{0.6, 1/3, 77\}$.
+\end{itemize}
+\item The set containing all counting numbers. 
+\begin{itemize}
+\item Unlike the previous sets, this set has an \emph{infinite} number of elements. 
+\item From here on, we'll denote this as $\mathbb{N}$. 
+\end{itemize}
+\item The set containing all counting numbers divisible by 3.
+\item The set containing the numbers -1 and 1 (which we'll write as $\{-1, 1\}$). 
+\item The set containing all the numbers $x$ that satisfy the equation $x^2 = 1$.
+\begin{itemize}
+\item This set is \emph{equivalent} to the previous one, $\{-1, 1\}$.
+\end{itemize}
+\item The set containing the colors red, yellow, green, and blue.
+\begin{itemize}
+\item We'll write it as $\{\text{red}, \text{yellow}, \text{green}, \text{blue}\}$.
+\end{itemize}
+\item The set containing all real numbers.
+\begin{itemize}
+\item We've written this before as $\mathbb{R}$. 
+\end{itemize}
+\item The set of all functions that map $\mathbb{R}$ to $\mathbb{R}$, i.e. the set of all functions $f: \mathbb{R} \rightarrow \mathbb{R}$
+\item The set of all \emph{linear} functions from $\mathbb{R}$ to $\mathbb{R}$.
+\item The set of all functions from $\mathbb{R}$ to $\mathbb{R}$ that are continuous over some interval $\left[a, b\right]$.
+\end{itemize}
+% TODO: Need to explain the interval notation
+
+
+Already, the notion of a set is \emph{incredibly} general. How can we make sense of them?
+
+% TODO: Something like (maybe earlier than this): We'll start with a few interesting cases, and then move into some general statements
+% 	Possible example (or maybe culminating problem): Fixed-point iteration, and moving toward Picard iteration
+
+\subsection{(Counting numbers, divisibility, prime numbers)}
+
+Let's look at one of the first sets we ever saw: the set of counting numbers. 
+
+We defined it using two "rules":
+\begin{enumerate}
+\item 0 is in the set.
+\item If $k$ is in the set, then $k+1$ is as well. 
+\end{enumerate}
+\hfill
+
+% TODO: Mention some key properties?
+%	- There is no number "between" successive integers. (Important later.)
+
+% TODO: Correct cross/chapter numbers and problems
+A related set is the \textbf{even} counting numbers\footnote{which we saw in Exercise \ref{ex:even-numbers}} -- in other words, the numbers 0, 2, 4, 6, 8, ... and so on.
+
+This set is "contained" in (or is a \textbf{subset} of) the counting numbers -- in other words, every element in the even numbers is also in the counting numbers.
+
+There are lots of ways to define the even numbers. One way is to use a very similar definition as with the counting numbers, with a slight twist:
+\begin{enumerate}
+\item 0 is in the set.
+\item If $k$ is in the set, then $k+2$ is as well. 
+\end{enumerate}
+
+Another way to define them is the set of numbers $n$ where $n$ is a counting number and $n$ is "divisible" by 2. 
+
+What does that mean, precisely? We can rewrite the "divisibility" condition by noting that saying "$n$ is divisible by 2" is equivalent to saying "there exists a counting number $q$ such that $n = 2q$". 
+
+\begin{exercise}
+Let's make sure that our new "divisibility" definition makes sense. Try the following things:
+\begin{itemize}
+\item 4 is an even number. Does this definition work out? What number $q$ satisfies this property?
+\item 3 is not an even number. Does it make sense that there is no such number $q$? Why?
+\end{itemize}
+\end{exercise}
+
+\hfill
+
+With that, we have a second definition for the even numbers: The numbers $n \in \mathbb{N}$ where $n = 2q$ for some \emph{counting number} $q$. 
+
+
+\subsubsection{(Divisibility)}
+
+% TODO: Some not-boring divisibility problems
+
+\begin{theorem}
+\label{th:div3-10n-1}
+$(10^n - 1)$ is divisible by 3, for all counting numbers $n \geq 1$. 
+\end{theorem}
+\begin{proof}
+We'll prove this using induction. 
+
+In our base case, we see that $10^1 - 1 = 9$, which is divisible by 3 (since $3 \cdot 3 = 9$). 
+
+For our inductive step, we'll assume that, for some value $n$, there exists a counting number (we'll call it $q_n$) such that $3q = 10^n - 1$. We'll then show that there exists a (likely different) integer $q_{n+1}$ such that $3q_{n+1} = 10^{n+1} - 1$. We see that:
+
+\begin{align*}
+10^{n+1} - 1 &= 10 \cdot 10^n - 1 \\
+&= (9 + 1) \cdot 10^n - 1 \\
+&= 9 \cdot 10^n + 10^n - 1 \\
+&= 9 \cdot 10^n + 3q_n \\
+&= 3 \cdot 3 \cdot 10^n + 3q_n \\
+&= 3 \cdot (3 \cdot 10^n + q_n) \\
+\end{align*}
+
+From our inductive assumption, $q_n$ is an integer. 
+% TODO: Mention that we won't prove "closure" too formally yet
+
+\end{proof}
+
+% TODO: Needs precursor theorems
+
+% TODO: Needs some explanation on digits?
+\begin{theorem}
+Suppose we have a number $x$ whose digits are $d_{n-1}, ..., d_1, d_0$ (and hence $x = \sum_{i=0}^{n-1} d_i 10^i$). Then $x$ is divisible by 3 if and only if the sum of the digits (i.e. $\sum_{i=0}^{n-1} d_i$) is divisible by 3.
+\end{theorem}
+\begin{proof}
+Let $q$ be the counting number such that $\sum_{i=0}^{n-1} d_i = 3q$. Then:
+
+\begin{align*}
+x &= \sum_{i=0}^{n-1} d_i 10^i \\
+&= \sum_{i=0}^{n-1} d_i (10^i - 1) + \sum_{i=0}^{n-1} d_i \\
+&= \sum_{i=0}^{n-1} d_i 3r_i + \sum_{i=0}^{n-1} d_i \text{\qquad where $r_i$ is a counting number} && \text{(Theorem \ref{th:div3-10n-1})} \\
+\end{align*}
+\end{proof}
+
+
+\subsubsection{(Primes)}
+
+% TODO: More intro
+As it turns out, there are some numbers that are not divisible by \emph{any} number, other than 1 and itself. We call these the \textbf{prime numbers}. 
+
+Some of the first few prime numbers (which you can verify) are 2, 3, 5, 7, 11, 13, 17, 19. %TODO: State better
+
+% TODO: FTA
+% TODO: Some observations:
+%	- All prime numbers are odd, except for 2. 
+
+\begin{theorem}
+$\mathbb{P}$ is infinitely big. 
+\end{theorem}
+\begin{proof}
+We'll do a "proof by contradiction". % TODO: Explain (if this is the first time)
+
+Suppose $\mathbb{P}$ had finite size. Let
+
+\begin{equation*}
+x = \prod_{p \in \mathbb{P}} p
+\end{equation*}
+% TODO: Maybe explain this notation if it hasn't come up before
+
+In other words, consider the number $x$ formed by multiplying out all of the prime numbers in $\mathbb{P}$. (Since there are only finitely many elements in $\mathbb{P}$, this product is well-defined, and $x$ is just another number.) 
+
+Since we simply multiplied all of our prime numbers, $x$ is divisible by any $p$ in $\mathbb{P}$.\footnote{Using our traditional definition of divisibility, we know that for any $p$, $x = q_p p$, where $q_p = \prod_{p' \in (\mathbb{P} - \{p\})} p'$ (so $q_p$ is a counting number).}
+
+Now, let:
+
+\begin{equation*}
+y = 1 + x
+\end{equation*}
+
+Since (for every $p$) $x = q_p p$, we have $y = q_p p + 1$. Therefore, by (TODO), $y$ cannot be divisible by any such $p$.
+% TODO: Insert some stuff (using previous theorems) about how this can't be divisible by any of the prime numbers p, 
+
+But then we now have a prime number that wasn't in $\mathbb{P}$. Hence, we have a contradiction. Therefore, $\mathbb{P}$ cannot be finitely big; in other words, there must be infinitely many prime numbers.
+\end{proof}
+
+% TODO: Insert that Euler function problem?
+
+
+
+\newpage
 
 \begin{exercise}
 What are the intersection and union of...
@@ -95,6 +280,9 @@ In other words, if we find that this sequence converges, it converges to a fixed
 
 % TODO: Also put diagram of what happens for multiple fixed points?
 
+\item Suppose we have the same situation as previously, but our "starting point" $x_0$ is now such that $f(x_0) < x_0$, and we have at least one fixed point to the \emph{left} of $x_0$. Given your above proof, how would we now prove that we converge to the closest fixed point to the left? (Short answer here.)
+
+% TODO: Analogous diagram as above?
 
 
 
@@ -133,6 +321,17 @@ Suppose we have the situation described in Problem \ref{pr:amoeba-ngen}, but we 
 \begin{enumerate}[(a)]
 \item Intuitively, what should happen to the probability of the family tree's survival (for any $n$ generations and for eternity), as $k$ increases?
 \item For what values of $p_d$ is our "magical amoeba family" certain to die?
+\end{enumerate}
+\end{problem}
+
+% TODO: This problem will (likely) ultimately lead to Picard iteration
+\begin{problem}
+\qquad
+\begin{enumerate}[(a)]
+\item Suppose we have a differentiable function $f: \mathbb{R} \rightarrow \mathbb{R}$, where $0 < f'(x) < 1$ for all $x \in \mathbb{R}$. Prove that there is exactly one fixed point $c$ of $f$, and the sequence $\{f_k(x_0)\}$ (i.e. repeated function iteration) converges to $c$ from any starting point $x_0$ in $\mathbb{R}$. 
+% TODO: Hint: Use Problem 2
+
+% TODO: Actually break down the Picard iteration proof into multiple steps
 \end{enumerate}
 \end{problem}
 

@@ -1,0 +1,81 @@
+%!TEX root = tales-main.tex
+
+% (numbers, functions,)
+\chapter{(Staging area)}
+
+This is for problems/expositions that don't yet have a place. 
+
+
+% Relies on:
+% 	- Deriving $e$ from limiting approach (e^x for any x, specifically) ?
+% 	- Integral of polynomials
+\section{(Poisson distribution)}
+
+(For this problem, we'll describe a concrete scenario first.)
+
+%Suppose we're sitting at the side of the road, and that cars come by independently of each other at a rate of $\lambda$ cars/minute. 
+
+%More specifically, we'll say this is true even for the tiniest time intervals -- in other words, let's say that each infinitesimal time interval $dt$ has $\lambda dt$
+
+%Intuitively, if we  we know how many cars we expect to come by
+
+%\footnote{To make this more realistic, suppose we're sitting at the side of the road, but we're looking through a peephole -- so we can't see cars "coming" from far away.}
+
+
+% This isn't a super-standard way to derive it, but seems to be an illustrative approach.
+
+% (Prove for n \geq 0)
+
+\subsection{Solution}
+
+We'll prove a "rough" solution using induction. 
+
+\subsubsection{(Base case)}
+
+% TODO: Talk about the original thing that results in N(T) = 0
+
+%Let's say we divide the time window $\left[0, T\right)$ into $N$ sub-intervals. 
+
+\subsubsection{(Inductive step)}
+
+Now, let's prove that $\mathbb{P}\left[N(T) = n\right] = \frac{(\lambda T)^n e^{-\lambda T}}{n!}$, given the statement being true for $n-1$. 
+
+Here's a helpful intermediate: How can we get $n$ events within the time interval $\left[0, T\right)$, knowing that the \emph{last} event occurs at some time $t$? In order for this to happen, three \emph{independent} things would have to be true:
+
+\begin{enumerate}
+\item $(n-1)$ events occur before time $t$. 
+\item An event occurs in the time interval $\left[t, t + dt\right)$.
+\item No events occur in the time interval $\left[t + dt, T\right)$. 
+\end{enumerate}
+
+What are the probabilities of these events?
+
+\begin{enumerate}
+\item This is simply $\mathbb{P}\left[N(t) = n-1\right]$ (note the lowercase $t$ now). From our inductive step, this is given by:
+
+\begin{equation*}
+\frac{(\lambda t)^{n-1} e^{-\lambda t}}{(n-1)!}
+\end{equation*}
+
+\item From our earlier explanation, this is $\lambda \, dt$. 
+\item Since each time interval is independent, this is given by $\mathbb{P}\left[N(T - (t + dt)) = 0\right]$. % TODO: Explain the dt loss some more! Might want to more generally explain how multiplicative factors work. (Also remember that this isn't a totally rigorous proof.)
+\end{enumerate}
+
+
+We then sum over all these infinitesimal probabilities over all values from 0 through $t$ -- in other words, an integral. 
+
+Therefore, we have:
+
+\begin{align*}
+\mathbb{P}\left[N(T) = n\right] &= \int_{0}^{T} \mathbb{P}\left[N(t) = n-1\right] \cdot \mathbb{P}\left[\text{Occurs in $\left[t, t+dt\right)$}\right] \cdot \mathbb{P}\left[N(T-t) = 0\right] \\
+&= \int_{0}^{T} \frac{(\lambda t)^{n-1} e^{-\lambda t}}{(n-1)!} \cdot (\lambda \, dt) \cdot e^{\lambda(T-t)} \\
+&= \frac{\lambda^n}{(n-1)!} \int_{0}^{T} t^{n-1} \cdot e^{-\lambda t}e^{\lambda(T-t)} \, dt \\
+&= \frac{\lambda^n}{(n-1)!} \int_{0}^{T} t^{n-1} \cdot e^{-\lambda T} \, dt \\
+&= \frac{\lambda^n  e^{-\lambda T}}{(n-1)!} \int_{0}^{T}  t^{n-1} \, dt \\
+&= \frac{\lambda^n  e^{-\lambda T}}{(n-1)!} \cdot \frac{T^n}{n} \\
+&= \frac{(\lambda T)^n  e^{-\lambda T}}{n!} \\
+\end{align*}
+
+
+
+

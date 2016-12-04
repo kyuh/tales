@@ -78,4 +78,24 @@ Therefore, we have:
 
 
 
+% TODO: Needs precursor theorems
+
+% TODO: Needs some explanation on digits?
+\begin{theorem}
+Suppose we have a number $x$ whose digits are $d_{n-1}, ..., d_1, d_0$ (and hence $x = \sum_{i=0}^{n-1} d_i 10^i$). Then $x$ is divisible by 3 if and only if the sum of the digits (i.e. $\sum_{i=0}^{n-1} d_i$) is divisible by 3.
+\end{theorem}
+\begin{proof}
+Let $q$ be the counting number such that $\sum_{i=0}^{n-1} d_i = 3q$. Then:
+
+\begin{align*}
+x &= \sum_{i=0}^{n-1} d_i 10^i \\
+&= \sum_{i=0}^{n-1} d_i (10^i - 1) + \sum_{i=0}^{n-1} d_i \\
+&= \sum_{i=0}^{n-1} d_i 3r_i + \sum_{i=0}^{n-1} d_i \text{\qquad where $r_i$ is a counting number} && \text{(Theorem \ref{th:div3-10n-1})} \\
+\end{align*}
+\end{proof}
+
+
+
+
+
 

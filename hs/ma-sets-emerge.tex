@@ -63,9 +63,13 @@ Already, the notion of a set is \emph{incredibly} general. How can we make sense
 % TODO: Something like (maybe earlier than this): We'll start with a few interesting cases, and then move into some general statements
 % 	Possible example (or maybe culminating problem): Fixed-point iteration, and moving toward Picard iteration
 
-\subsection{(Counting numbers, divisibility, prime numbers)}
+\subsection{What's in a set?}
 
-Let's look at one of the first sets we ever saw: the set of counting numbers. 
+% (Counting numbers, divisibility, prime numbers)
+
+Let's say we've described our set somehow. How do we know what's in it?
+
+First, let's look at one of the first sets we ever saw: the set of counting numbers. 
 
 We defined it using two "rules":
 \begin{enumerate}
@@ -78,7 +82,7 @@ We defined it using two "rules":
 %	- There is no number "between" successive integers. (Important later.)
 
 % TODO: Correct cross/chapter numbers and problems
-A related set is the \textbf{even} counting numbers\footnote{which we saw in Exercise \ref{ex:even-numbers}} -- in other words, the numbers 0, 2, 4, 6, 8, ... and so on.
+A related set is the set of \textbf{even} counting numbers\footnote{which we saw in Exercise \ref{ex:even-numbers}} -- in other words, the numbers 0, 2, 4, 6, 8, ... and so on.
 
 This set is "contained" in (or is a \textbf{subset} of) the counting numbers -- in other words, every element in the even numbers is also in the counting numbers.
 
@@ -88,7 +92,7 @@ There are lots of ways to define the even numbers. One way is to use a very simi
 \item If $k$ is in the set, then $k+2$ is as well. 
 \end{enumerate}
 
-Another way to define them is the set of numbers $n$ where $n$ is a counting number and $n$ is "divisible" by 2. 
+But another way to define them is the set of numbers $n$ where $n$ is a counting number and $n$ is "divisible" by 2. 
 
 What does that mean, precisely? We can rewrite the "divisibility" condition by noting that saying "$n$ is divisible by 2" is equivalent to saying "there exists a counting number $q$ such that $n = 2q$". 
 
@@ -106,6 +110,18 @@ With that, we have a second definition for the even numbers: The numbers $n \in 
 
 
 \subsubsection{(Divisibility)}
+
+This definition is very powerful! All of a sudden, we can easily see whether a number is in the set of evens or not -- either find an appropriate counting number $q$, or show that such a $q$ doesn't exist!
+
+Let's generalize our definition a bit. We'll denote the set of numbers divisible by $k$, for some counting number $k$ (so there will be a different set for each $k$). 
+
+To define each one, we'll say that a counting number $n$ is in the $k$-divisible set if there exists a counting number $q$, such that $n = kq$.
+
+For example:
+\begin{itemize}
+\item The set of numbers divisible by 3 -- in other words, $\{0, 3, 6, 9, ...\}$. 
+\item The set of numbers divisible by 5 -- in other words, $\{0, 5, 10, 15, ...\}$. 
+\end{itemize}
 
 % TODO: Some not-boring divisibility problems
 
@@ -133,23 +149,6 @@ From our inductive assumption, $q_n$ is an integer.
 % TODO: Mention that we won't prove "closure" too formally yet
 
 \end{proof}
-
-% TODO: Needs precursor theorems
-
-% TODO: Needs some explanation on digits?
-\begin{theorem}
-Suppose we have a number $x$ whose digits are $d_{n-1}, ..., d_1, d_0$ (and hence $x = \sum_{i=0}^{n-1} d_i 10^i$). Then $x$ is divisible by 3 if and only if the sum of the digits (i.e. $\sum_{i=0}^{n-1} d_i$) is divisible by 3.
-\end{theorem}
-\begin{proof}
-Let $q$ be the counting number such that $\sum_{i=0}^{n-1} d_i = 3q$. Then:
-
-\begin{align*}
-x &= \sum_{i=0}^{n-1} d_i 10^i \\
-&= \sum_{i=0}^{n-1} d_i (10^i - 1) + \sum_{i=0}^{n-1} d_i \\
-&= \sum_{i=0}^{n-1} d_i 3r_i + \sum_{i=0}^{n-1} d_i \text{\qquad where $r_i$ is a counting number} && \text{(Theorem \ref{th:div3-10n-1})} \\
-\end{align*}
-\end{proof}
-
 
 \subsubsection{(Primes)}
 
@@ -215,6 +214,12 @@ What is the intersection of...
 \end{exercise}
 
 % TODO: Need to have defined prime numbers at some point
+
+
+
+\section{Structure}
+
+
 
 \section{Problems}
 

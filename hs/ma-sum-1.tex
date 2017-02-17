@@ -1418,8 +1418,8 @@ N(n) &= \sum_{k=2}^{n-1} N_k(n) \\
 &= 2^{n-4} + \binom{n-4}{n-3} + \sum_{k=2}^{n-1} \sum_{i=1}^{n-1} N_{k-1}(i) && \text{(Theorem \ref{th:sum-row-pascal})} \\
 &= 2^{n-4} + \sum_{k=2}^{n-1} \sum_{i=1}^{n-1} N_{k-1}(i) && \text{(Binomial coefficient defn -- term is 0)} \\
 &= 2^{n-4} + \sum_{k=2}^{n-1} \sum_{i=2}^{n-1} N_{k-1}(i) && \text{(Base case \ref{eqbc-3s-1})} \\
-&= 2^{n-4} + \sum_{i=2}^{n-1} \sum_{k=2}^{n-1} N_{k-1}(i) && \text{(Commutativity of addition!)} \\
-&= 2^{n-4} + \sum_{i=2}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Shift index)}
+&= 2^{n-4} + \sum_{k=1}^{n-2} \sum_{i=2}^{n-1} N_{k}(i) && \text{(Shift index)} \\
+&= 2^{n-4} + \sum_{i=2}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Commutativity of addition!)} \\
 \end{align*}
 
 % TODO: Possible philosophizing on the commutativity trick

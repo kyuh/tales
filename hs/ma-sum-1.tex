@@ -1394,7 +1394,7 @@ Now the number of such compositions $(x_1, x_2, ..., x_k)$, where $x_1 = 3$, is 
 
 How many of these are there? From part (b), the number of compositions of $n$ of length $k$ is $\binom{n-1}{k-1}$. Therefore, substituting our actual values gives $\binom{(n-3)-1}{(k-1)-1} = \binom{n-4}{k-2}$ such compositions. Since each of these compositions will give us one 3 in the $x_1$ term, we'll gain $\binom{n-4}{k-2}$ 3s.
 
-Combining all of this information gives us a recurrence relation:
+Combining all of this information gives us a recurrence relation for $n \geq 4$ and $k \geq 2$:
 
 \begin{equation} 
 \label{composition-num-3s-nk-recurrence}
@@ -1406,7 +1406,7 @@ N_k(n) = \binom{n-4}{k-2} + \sum_{i=1}^{n-1} N_{k-1}(n-i)
 
 Now that we have something for $N_k(n)$, let's see what we can do with $N(n)$. 
 
-Starting from Equation \ref{composition-num-3s-n-nk}, we have (for $n \geq 4$ and $k \geq 2$):
+Starting from Equation \ref{composition-num-3s-n-nk}, we have (for $n \geq 4$):
 
 \begin{align*}
 N(n) &= \sum_{k=2}^{n-1} N_k(n) \\
@@ -1424,7 +1424,7 @@ N(n) &= \sum_{k=2}^{n-1} N_k(n) \\
 
 % TODO: Possible philosophizing on the commutativity trick
 
-At this point, we want to make sure we handle our base cases correctly, since there's a lot going on. Continuing, we have:
+At this point, we want to make sure we handle our base cases correctly, since there's a lot going on. Let's continue. (Keep in mind that $n \geq 4$.)
 
 % TODO: For the "empty inside sum" step, should refer to a previous section where we're explaining how we define the sum using sigma-notation. 
 
@@ -1439,7 +1439,7 @@ N(n) &= 2^{n-4} + \sum_{i=2}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) \\
 &= 2^{n-4} + 1 + \sum_{i=4}^{n-1} N(i) && \text{(Equation \ref{composition-num-3s-n-nk} again!)} \\
 \end{align*}
 
-This is promising -- we now have a recurrence relation for $N(n)$ itself! (In fact, it looks sort of like that from Problem \ref{sequence-recursive-sum}, with different notation and a few extra terms thrown in.)
+This is promising -- we now have a recurrence relation for $N(n)$ itself! (In fact, it looks sort of like the one from Problem \ref{sequence-recursive-sum}, with different notation and a few extra terms thrown in.)
 
 
 \subsubsection{Induction}

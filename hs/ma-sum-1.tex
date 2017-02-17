@@ -1417,8 +1417,9 @@ N(n) &= \sum_{k=2}^{n-1} N_k(n) \\
 &= \sum_{k=0}^{n-4} \binom{n-4}{k} + \binom{n-4}{n-3} + \sum_{k=2}^{n-1} \sum_{i=1}^{n-1} N_{k-1}(i) \\
 &= 2^{n-4} + \binom{n-4}{n-3} + \sum_{k=2}^{n-1} \sum_{i=1}^{n-1} N_{k-1}(i) && \text{(Theorem \ref{th:sum-row-pascal})} \\
 &= 2^{n-4} + \sum_{k=2}^{n-1} \sum_{i=1}^{n-1} N_{k-1}(i) && \text{(Binomial coefficient defn -- term is 0)} \\
-&= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=2}^{n-1} N_{k-1}(i) && \text{(Commutativity of addition!)} \\
-&= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Shift index)}
+&= 2^{n-4} + \sum_{k=2}^{n-1} \sum_{i=2}^{n-1} N_{k-1}(i) && \text{(Base case \ref{eqbc-3s-1})} \\
+&= 2^{n-4} + \sum_{i=2}^{n-1} \sum_{k=2}^{n-1} N_{k-1}(i) && \text{(Commutativity of addition!)} \\
+&= 2^{n-4} + \sum_{i=2}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) && \text{(Shift index)}
 \end{align*}
 
 % TODO: Possible philosophizing on the commutativity trick
@@ -1428,10 +1429,9 @@ At this point, we want to make sure we handle our base cases correctly, since th
 % TODO: For the "empty inside sum" step, should refer to a previous section where we're explaining how we define the sum using sigma-notation. 
 
 \begin{align*}
-N(n) &= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) \\
-&= 2^{n-4} + \sum_{i=1}^{n-1} \left( \sum_{k=1}^{i-1} N_{k}(i) + \sum_{k=i}^{n-2} N_{k}(i) \right) && \text{(Split sum)} \\
-&= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=1}^{i-1} N_{k}(i) && \text{(Base case \ref{eqbc-3s-1})} \\
-&= 2^{n-4} + \sum_{i=2}^{n-1} \sum_{k=1}^{i-1} N_{k}(i) && \text{(Empty inside sum at $i=1$)} \\
+N(n) &= 2^{n-4} + \sum_{i=2}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) \\
+&= 2^{n-4} + \sum_{i=2}^{n-1} \left( \sum_{k=1}^{i-1} N_{k}(i) + \sum_{k=i}^{n-2} N_{k}(i) \right) && \text{(Split sum)} \\
+&= 2^{n-4} + \sum_{i=2}^{n-1} \sum_{k=1}^{i-1} N_{k}(i) && \text{(Base case \ref{eqbc-3s-1})} \\
 &= 2^{n-4} + \left( N_1(2) \right) + \left( N_1(3) + N_2(3) \right) + \sum_{i=4}^{n-1} \sum_{k=1}^{i-1} N_{k}(i) && \text{(Split and expand sums at $i=2,3$)} \\
 &= 2^{n-4} + 0 + \left( 1 + 0 \right) + \sum_{i=4}^{n-1} \sum_{k=1}^{i-1} N_{k}(i) && \text{(Base cases \ref{eqbc-3s-3}, \ref{eqbc-3s-4}, \ref{eqbc-3s-5})} \\
 &= 2^{n-4} + 1 + \sum_{i=4}^{n-1} \sum_{k=1}^{i-1} N_{k}(i) \\

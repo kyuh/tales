@@ -267,10 +267,13 @@ What happens to the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ...? 
 \item $f(x) = \cos(x)$.
 \item $f(x) = 2x$. 
 \item $f(x) = x/2 + 1$. 
+\item $f(x) = 1$ when $x$ is rational, and 0 when $x$ is irrational
 \item $f(x) = 4x(1-x)$. % TODO: Reference chaos theory stuff in the references section
 \end{enumerate} \hfill
 
 While it is difficult to make general statements on the matter (there are whole fields devoted to the intricacies of this topic!), we can actually prove some pretty useful results.
+
+% TODO: Have "example diagrams" to the right for all of the sub-problems below. (Maybe also in the hints section?)
 
 %(We'll use the $f_k$ notation of Problem \ref{pr:fp-intro} to denote iterated functions.)
 
@@ -385,12 +388,13 @@ Let's also formulate what we mean by converging to the "closest fixed point" mor
 
 We'll first prove a few preliminaries:
 
+% TODO: Put some figure/illustration for this lemma. 
 \begin{lemma}
 \label{l:fp-iter-region}
 $f(x) > x$ over the region $\left[x_0, c_1\right)$. 
 \end{lemma}
 \begin{proof}
-Let $g(x) = f(x) - x$. Our claim is equivalent to asserting that, over this region, $g(x) > 0$. 
+Let $g(x) = f(x) - x$. Our claim is equivalent to asserting that, over this region, $g(x) > 0$.
 
 We'll do a proof by contradiction. Suppose this weren't true, i.e. there existed at least one point $x_a$ in the region such that $f(x_a) < x_a$, i.e. $g(x_a) < 0$. We're given (in the problem) that $f(x_0) > x_0$, i.e. $g(x_0) > 0$. Therefore, by the intermediate value theorem, there exists a point $x_b$ in $(x_0, x_a)$ such that $g(x_b) = 0$, i.e. $f(x_b) = x_b$. 
 
@@ -401,6 +405,7 @@ Then $x_b$ would be a fixed point. However, we're given that our leftmost fixed 
 
 % TODO: This won't be our first proof by contradiction (at the very least, it will be that sqrt(2) is irrational), but we do need to account for explaining it (and possibly reviewing it in this problem). 
 
+% TODO: Put two illustrations for this lemma. (One with expected behavior, and one where the assumption isn't followed - and we "overshoot" across the fixed point.)
 \begin{lemma}
 \label{l:fp-iter-bound}
 $\{x_n\}$ is strictly bounded above by $c_1$.

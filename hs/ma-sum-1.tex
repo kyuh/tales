@@ -1372,6 +1372,18 @@ We'll split up our counting into two parts:
 \item How many 3s there are in the compositions of the form $(x_2, ..., x_k)$ -- in other words, the compositions from before, with the first terms chopped off.
 \end{enumerate}
 
+
+% TODO: This section is wordy and can lose people. 
+% It'll probably be helpful to have some "examples" on the side, 
+% and say something like "(n-4)C(k-2) of these -> (3, .... <- and point out that these sum to n-3)
+
+% (we could display the non-3 examples too (arbitrary m in the first term), and kind of just mention the count as being irrelevant?)
+
+% TODO: Might also want to put an explanation for why we're "lopping off" some of these special edge cases right now. They seem like a bunch of "random" observations (even if they're good to think about), but they'll make the math "work out" soon.
+
+% TODO: Could basically give brief examples with almost every paragraph we're explaining below.
+% (e.g. for the x_1 = n case, could have a something like "(n, 0, 0, 0, ..., 0) -> not a valid composition!"
+
 We'll count the latter first. In each composition of $n$, the first term $x_1$ could be any value of $i$ from 1 through $n$. However, since $k \geq 2$, we cannot have $x_1 = n$ (since $x_2, ..., x_k$ would then all have to be 0, and we are only using positive numbers in our composition). 
 
 So $x_1$ could be any value of $i$ from 1 through $(n-1)$. In each such case, the sequence $(x_2, ..., x_k)$ would now be a composition of $(n-i)$, of length $(k-1)$. The number of 3s seen collectively among these compositions would be $N_{k-1}(n-i)$, and we sum over all $i$ to get their total contribution.
@@ -1413,6 +1425,8 @@ N(n) &= \sum_{k=2}^{n-1} N_k(n) \\
 
 At this point, we want to make sure we handle our base cases correctly, since there's a lot going on. Continuing, we have:
 
+% TODO: For the "empty inside sum" step, should refer to a previous section where we're explaining how we define the sum using sigma-notation. 
+
 \begin{align*}
 N(n) &= 2^{n-4} + \sum_{i=1}^{n-1} \sum_{k=1}^{n-2} N_{k}(i) \\
 &= 2^{n-4} + \sum_{i=1}^{n-1} \left( \sum_{k=1}^{i-1} N_{k}(i) + \sum_{k=i}^{n-2} N_{k}(i) \right) && \text{(Split sum)} \\
@@ -1430,9 +1444,19 @@ This is promising -- we now have a recurrence relation for $N(n)$ itself! (In fa
 
 \subsubsection{Induction}
 
-We now proceed to the final part of our proof. A reminder of what we want to prove: if $n \geq 4$, then $N(n) = n2^{n-5}$.
+We now proceed to the final part of our proof. Ultimately, we're trying to prove that if $n \geq 4$, then 
 
-We'll use strong induction. For our base case at $n = 4$, we simply go through all compositions. They are:
+\begin{equation*}
+N(n) = n2^{n-5}
+\end{equation*}
+
+We're close! We now have an extremely nice recurrence relation for us to use -- namely, when $n \geq 4$,
+
+\begin{equation}
+N(n) = 2^{n-4} + 1 + \sum_{i=4}^{n-1} N(i) 
+\end{equation}
+
+Let's try using strong induction from here. For our base case at $n = 4$, we simply go through all compositions. They are:
 \begin{gather*}
 (1, 1, 1, 1) \\
 (2, 1, 1) \\

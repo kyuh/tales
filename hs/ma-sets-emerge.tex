@@ -588,9 +588,9 @@ Now comes our big realization. Remember Problem \ref{pr:fp-iter}? We've met all 
 What does that mean for us? Let's consider 3 cases:
 
 \begin{itemize}
-\item $p_d > 1/2$: The leftmost fixed point is 1, so our iterated function limit, i.e. $\lim_{n \rightarrow \infty} P_d(n)$, is 1. Therefore, our amoeba family is certain to die at some point. (How sad.)\footnote{We actually could have had a quick "side-channel" solution for this case. If $p_d > 1/2$, then $p_d / (1 - p_d) > 1$, so it would be nonsensical to have that has a probability value. However, hopefully the rigor we worked through hopefully gives a more solid-feeling justification}
+\item $p_d > 1/2$: The leftmost fixed point is 1, so our iterated function limit, i.e. $\lim_{n \rightarrow \infty} P_d(n)$, is 1. Therefore, our amoeba family is certain to die at some point. (How sad.)\footnote{We actually could have had a quick "side-channel" solution for this case. If $p_d > 1/2$, then $p_d / (1 - p_d) > 1$, so it would be nonsensical to have that has a probability value. However, hopefully you'd agree that our more rigorous work-through gives a more solid justification.}
 \item $p_d = 1/2$: Here, in fact, we only have one fixed point (since $x_a = x_b$), which is 1. Hence, our amoeba family will, at some point, die.
-\item $p_d < 1/2$: The leftmost fixed point is now $p_d / (1 - p_d)$, which must then be our iterated function limit (i.e. $\lim_{n \rightarrow \infty} P_d(n)$). For $p_d < 1/2$, this value is less than 1 -- in other words, our amoeba family might live on forever!
+\item $p_d < 1/2$: The leftmost fixed point is now $p_d / (1 - p_d)$, which must then be our iterated function limit (i.e. $\lim_{n \rightarrow \infty} P_d(n)$). Therefore, with probability $1 - \frac{p_d}{1-p_d}$, our amoeba family lives on forever!
 \end{itemize}
 
 
@@ -613,7 +613,7 @@ $\square$
 
 Intuitively (or at the very least, "it feels like") the probability of family death should decrease as $k$ increases.
 
-More significantly, consider the following phenomenon: The "further one gets" along the family tree, the more likely it seems that the family will survive indefinitely. As a brief example, consider having the one starting amoeba versus the two amoebas that come after it in our original (upon successful reproduction) -- our conditional chances are a lot better in the latter case.\footnote{More precisely, as we found earlier, the chances of death are $p_F^2$ after division, as opposed to $p_F$ before it -- and since $0 \leq p_F \leq 1$, $p_F^2 < p_F$.}
+Consider the following: The "further one gets" along the family tree, the more likely it seems that the family will survive indefinitely. As a brief example, consider having the one starting amoeba versus the two amoebas that come after it in our original (upon successful reproduction) -- our conditional chances are a lot better in the latter case.\footnote{More precisely, as we found earlier, the chances of death are $p_F^2$ after division, as opposed to $p_F$ before it -- and since $0 \leq p_F \leq 1$, $p_F^2 < p_F$.}
 
 As $k$ increases, the degree to which we're "better off" after our first amoeba should be much higher. In fact, the big determiner in our family survival should be whether the first amoeba dies!\footnote{Think "carrying the team" here.} Therefore, intuitively, the probability of family survival should approach the probability of the first amoeba's death, which is simply $p_d$. 
 
@@ -705,7 +705,7 @@ What is it? Plugging in, we see that $g'(1) = (1 - p_d)k - 1$. Solving, we then 
 
 What does this mean in terms of our fixed-point iteration and final answer?
 
-In preparation, we point out three final facts: First, $f$ itself is increasing. Second, at our iteration starting point, $p_d$, we note that $g(p_d) = p_d + (1 - p_d)p_d^k - p_d = (1 - p_d)p_d^k \geq 0$ (and is, in fact, greater than 0 unless $p_d = 1$). Therefore, the $x$-value of $p_d$ must be either in the "first" (before both roots) or "second" (after both roots) positive region of $g$. However, since $p_d \leq 1$, it cannot be in the second region, and hence must come before both roots. This has the consequence that, if there is a second distinct root $x_a$ of $g$, it must satisfy $x_a > p_d$. 
+In preparation, we point out three final facts: First, $f$ itself is increasing. Second, at our iteration starting point, $p_d$, we note that $g(p_d) = p_d + (1 - p_d)p_d^k - p_d = (1 - p_d)p_d^k \geq 0$ (and is, in fact, greater than 0 unless $p_d = 1$). Therefore, $p_d$ must be either in the "first" (before both roots) or "second" (after both roots) region where $g$ is positive. However, since $p_d \leq 1$, it cannot be in the second region, and hence must come before both roots. This has the consequence that, if there is a second distinct root $x_a$ of $g$, it must satisfy $x_a > p_d$. 
 
 % TODO: Go back and clarify the \leqs vs less-thans - in other words, the edge cases in general.
 
@@ -715,7 +715,7 @@ Let's now revisit our cases above.
 
 \begin{itemize}
 \item When $p_d > (k-1)/k$, then $g'(1) < 0$, so there is a second root $x_a$ of $g$ (i.e. a second fixed point of $f$), where $x_a > 1$. Hence, 1 is the closest root, and hence our iteration converges there. Therefore, $\lim_{n \rightarrow \infty} P_d(n) = 1$, and hence our amoeba family will die. 
-\item When $p_d = (k-1)/k$, then $g'(1) = 0$, so we have only the root $x = 1$ (and hence only that fixed of $f$). Therefore, our iteration converges to it, hence $\lim_{n \rightarrow \infty} P_d(n) = 1$, and the family dies.
+\item When $p_d = (k-1)/k$, then $g'(1) = 0$, so we have only the root $x = 1$ (and hence only that fixed point of $f$). Therefore, our iteration converges to it, hence $\lim_{n \rightarrow \infty} P_d(n) = 1$, and the family dies.
 \item However, when $p_d < (k-1)/k$, $g'(1) > 0$, so we have one root of $g$ (read: fixed point of $f$) $x_a$ which is less than 1. From above, we know that $x_a > p_d$, so it is the nearest rightmost fixed point of $p_d$. Hence, our iteration converges to a value less than 1, so our amoeba family has hope for eternal survival. 
 \end{itemize}
 

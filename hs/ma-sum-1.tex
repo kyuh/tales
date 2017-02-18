@@ -1124,7 +1124,7 @@ Here's a weird question: If I look at all of the positive-number compositions of
 \begin{enumerate}[(a)]
 \setcounter{enumi}{3}
 \item What are $N(1)$, $N(2)$, and $N(3)$?
-\item I claim that, if $n \geq 4$, then $N(n) = n2^{n-5}$. Prove this claim. 
+\item I claim that, if $n \geq 4$, then $N(n) = n2^{n-5}$. In other words, among all the positive compositions that sum to $n$, there will be $n2^{n-5}$ threes. \\ Prove this claim. 
 \end{enumerate}
 
 % I claim that, if I take $n \geq 4$, and look at every composition of $n$, I will see the number 3 exactly $n2^{n-5}$ times.
@@ -1311,7 +1311,7 @@ Hence, the strong inductive step holds, and therefore the claim holds: $a_n = 2^
 
 As in our problem, let $N(n)$ be the number of times we see 3 in the compositions of $n$. 
 
-Ideally, we'd like to find a recurrence relation for $N(n)$ -- that way, we could hopefully give an induction proof, or at least find some way to take advantage of our recursion. We'll do this, but first some preliminary work.
+Let's see if we can find a recurrence relation for $N(n)$ -- that way, we could hopefully give an induction proof, or at least find some way to take advantage of recursion. We'll do this, but first some preliminary work.
 
 \subsubsection{A new term}
 

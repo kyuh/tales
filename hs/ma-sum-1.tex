@@ -1397,9 +1397,17 @@ How many of these are there? From part (b), the number of compositions of $n$ of
 Combining all of this information gives us a recurrence relation for $n \geq 4$ and $k \geq 2$:
 
 \begin{equation} 
-\label{composition-num-3s-nk-recurrence}
+\label{composition-num-3s-nk-recurrence-raw}
 N_k(n) = \binom{n-4}{k-2} + \sum_{i=1}^{n-1} N_{k-1}(n-i)
 \end{equation}
+
+One last simplification: Using Problem \ref{defining-sigma}, we can turn Equation \ref{composition-num-3s-nk-recurrence-raw} into:
+
+\begin{equation}
+\label{composition-num-3s-nk-recurrence}
+N_k(n) = \binom{n-4}{k-2} + \sum_{i=1}^{n-1} N_{k-1}(i)
+\end{equation}
+
 
 
 \subsubsection{Recurrence on $N(n)$}
@@ -1407,11 +1415,9 @@ N_k(n) = \binom{n-4}{k-2} + \sum_{i=1}^{n-1} N_{k-1}(n-i)
 Now that we have something for $N_k(n)$, let's see what we can do with $N(n)$. 
 
 Starting from Equation \ref{composition-num-3s-n-nk}, we have (for $n \geq 4$):
-
 \begin{align*}
 N(n) &= \sum_{k=2}^{n-1} N_k(n) \\
-&= \sum_{k=2}^{n-1} \left( \binom{n-4}{k-2} + \sum_{i=1}^{n-1} N_{k-1}(n-i) \right) && \text{(Equation \ref{composition-num-3s-nk-recurrence})} \\
-&= \sum_{k=2}^{n-1} \left( \binom{n-4}{k-2} + \sum_{i=1}^{n-1} N_{k-1}(i) \right) && \text{(Problem \ref{defining-sigma})} \\
+&= \sum_{k=2}^{n-1} \left( \binom{n-4}{k-2} + \sum_{i=1}^{n-1} N_{k-1}(i) \right) && \text{(Equation \ref{composition-num-3s-nk-recurrence})} \\
 &= \sum_{k=2}^{n-1} \binom{n-4}{k-2} + \sum_{k=2}^{n-1} \sum_{i=1}^{n-1} N_{k-1}(i) \\
 &= \sum_{k=0}^{n-3} \binom{n-4}{k} + \sum_{k=2}^{n-1} \sum_{i=1}^{n-1} N_{k-1}(i) && \text{(Shift index)} \\
 &= \sum_{k=0}^{n-4} \binom{n-4}{k} + \binom{n-4}{n-3} + \sum_{k=2}^{n-1} \sum_{i=1}^{n-1} N_{k-1}(i) \\

@@ -1412,9 +1412,12 @@ N_k(n) = \binom{n-4}{k-2} + \sum_{i=1}^{n-1} N_{k-1}(i)
 
 \subsubsection{Recurrence on $N(n)$}
 
-Now that we have something for $N_k(n)$, let's see what we can do with $N(n)$. 
+Now that we have something for $N_k(n)$, let's see if we can find a recurrence relation for $N(n)$ itself. 
 
-Starting from Equation \ref{composition-num-3s-n-nk}, we have (for $n \geq 4$):
+We'll try to establish it for $n > 4$. Recall that we're trying to prove our explicit formula, $N(n) = n2^{n-5}$, for $n \geq 4$ -- so we'll try defining the "base case" ($n = 4$) separately later on. 
+%could be treated separately from the results of the recurrence relation.
+
+Starting from Equation \ref{composition-num-3s-n-nk}, we have:
 \begin{align*}
 N(n) &= \sum_{k=2}^{n-1} N_k(n) \\
 &= \sum_{k=2}^{n-1} \left( \binom{n-4}{k-2} + \sum_{i=1}^{n-1} N_{k-1}(i) \right) && \text{(Equation \ref{composition-num-3s-nk-recurrence})} \\
@@ -1430,7 +1433,7 @@ N(n) &= \sum_{k=2}^{n-1} N_k(n) \\
 
 % TODO: Possible philosophizing on the commutativity trick
 
-At this point, we want to make sure we handle our base cases correctly, since there's a lot going on. Let's continue. (Keep in mind that $n \geq 4$.)
+At this point, we want to make sure we handle our base cases correctly, since there's a lot going on. Let's continue. (Keep in mind that $n > 4$ here.)
 
 % TODO: For the "empty inside sum" step, should refer to a previous section where we're explaining how we define the sum using sigma-notation. 
 
@@ -1456,7 +1459,7 @@ We now proceed to the final part of our proof. Ultimately, we're trying to prove
 N(n) = n2^{n-5}
 \end{equation*}
 
-We're close! We now have an extremely nice recurrence relation for us to use -- namely, when $n \geq 4$,
+We're close! We now have an extremely nice recurrence relation for us to use -- namely, when $n > 4$,
 
 \begin{equation}
 N(n) = 2^{n-4} + 1 + \sum_{i=4}^{n-1} N(i) 

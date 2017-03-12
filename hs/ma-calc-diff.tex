@@ -25,21 +25,30 @@
 Consider a line on a graph:
 
 % TODO: Insert figure of single line on graph
+\vspace{2in}
 
 One of its major features is its \textbf{slope} -- how fast does it rise or fall? Some lines, like the dark lines below, are nearly flat -- but some lines are very "steep". In the figure below, the red lines "rise" very quickly, while the blue lines rapidly "fall".
 
 % TODO: Insert a figure with many generated lines (not necessarily all with same y-intercept). Establish a gradient red -> black -> blue by slope, as described above.
+\vspace{2in}
 
 How we can state this more precisely? A line is a function -- let's call it $l$, so $l(x)$ is the value of the function at some $x$.
 
 If a line is "rising" rapidly, then $l(x)$ increases a lot when we increase its $x$-value. If it's falling rapidly, then $l(x)$ \textit{decreases} quite a bit when we increase $x$. And for a line that's relatively flat, $l(x)$ will change slowly, even as we change the $x$-value quite a bit.
 
 % TODO: Illustrate rising line with a big jump in y relative to a jump in x
+\vspace{2in}
 
+Let's say we know of two points on the line, $(x_1, y_1)$ and $(x_2, y_2)$, where $y_1 = l(x_1)$ and $y_2 = l(x_2)$. Then the quantity:
 
-What's a more accurate way of defining slope? 
+\begin{equation}
+\label{def-slope}
+m = \frac{l(x_2) - l(x_1)}{x_2 - x_1}
+\end{equation}
 
-If we know two points on the line, then we can 
+basically says "how rapidly $l(x)$ changes relative to $x$". 
+
+We'll define $m$ in Equation \ref{def-slope} as the \textbf{slope}. If $m$ is large and positive, then $l$ is rapidly "rising" -- if $m$ is large and negative, it's rapidly "falling", and a small $m$ (close to 0) would mean an almost flat line.
 
 
 

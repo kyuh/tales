@@ -51,6 +51,7 @@ basically says "how rapidly $l(x)$ changes relative to $x$".
 We'll define $m$ in Equation \ref{def-slope} as the \textbf{slope}. If $m$ is large and positive, then $l$ is rapidly "rising" -- if $m$ is large and negative, it's rapidly "falling", and a small $m$ (close to 0) would mean an almost flat line.
 
 \begin{exercise}
+\label{slope-qns}
 Having a consistent slope for a line $l$ only works if $l$ is actually a line. If we tried to use Equation \ref{def-slope} on an arbitrary function $f$, we'd get all sorts of different slopes, depending on what we chose for $x_1$ and $x_2$!
 
 %TODO: Figure with multiple secant lines for f(x) = x^2, let's say going through 1
@@ -71,6 +72,33 @@ Given this proposition, prove that we can always write the function $l$ in the f
 \section{Terms and References}
 
 \section{Solutions}
+
+\subsection{Exercise \ref{slope-qns}}
+
+\subsubsection{Part b}
+
+We know that the "slope" is the same for any points $x_1$ and $x_2$. 
+
+Let's pick a particular value for $x_1$ --- say, $x_1 = 0$. Then, no matter what $x_2$ is, we know that:
+
+\begin{equation*}
+m = \frac{l(x_2) - l(0)}{x_2 - 0} = \frac{l(x_2) - l(0)}{x_2}
+\end{equation*}
+
+and therefore, 
+
+\begin{equation*}
+m x_2 = l(x_2) - l(0)
+\end{equation*}
+
+and therefore, 
+
+\begin{equation*}
+l(x_2) = m x_2 + l(0)
+\end{equation*}
+
+We now have the functional form we were looking for, where $b = l(0)$. In other words, $b$ is the value of our function at 0. (This value is often called the "$y$-intercept", because it's the value of the function when it crosses the "$y$-axis" of a graph, i.e. when the function's input is 0.)
+
 
 \subsection{Potential exercise (derivative of $x^n$ for integer $n$)}
 

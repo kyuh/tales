@@ -271,7 +271,7 @@ What happens to the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ...? 
 \item $f(x) = 4x(1-x)$. % TODO: Reference chaos theory stuff in the references section
 \end{enumerate} \hfill
 
-While it is difficult to make general statements on the matter (there are whole fields devoted to the intricacies of this topic!), we can actually prove some pretty useful results.
+While it is difficult to make general statements on the matter (there are whole fields devoted to the intricacies of this topic!), we can actually prove some pretty cool results.
 
 % TODO: Have "example diagrams" to the right for all of the sub-problems below. (Maybe also in the hints section?)
 
@@ -279,11 +279,22 @@ While it is difficult to make general statements on the matter (there are whole 
 
 \item Suppose $f$ is a \emph{continuous} function, and we \emph{know} that, for some starting value $x_0$, the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ... converges to some value (call it $c$). Prove that $c$ is a fixed point of $f$.
 
-In other words, if we find that this sequence converges, it converges to a fixed point. But when does it converge at all? While we cannot cover all cases, we'll try to find some cases where this is true.
+\vspace{10mm}
+In other words, if we find that this sequence converges, it converges to a fixed point. But when does it converge in the first place? 
+
+While we won't cover every scenario here, we'll show one interesting case where convergence happens!
 
 % TODO: More parts to this problem that aren't amoeba-related
 
-\item Suppose now that $f$ is a continuous and \emph{increasing} function. Suppose we also choose our "starting point" $x_0$ where $f(x_0) > x_0$, and there is at least one fixed point to the right of $x_0$. Prove that the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ... converges to the closest such fixed point.
+\item Suppose now that $f$ is a continuous and \emph{increasing} function. Suppose we also choose our "starting point" $x_0$ such that 
+
+\vspace{10mm}
+\begin{enumerate}[(1)]
+\item $f(x_0) > x_0$, and
+\item There is at least one fixed point to the right of $x_0$.
+\end{enumerate}
+
+Prove that the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ... converges to the closest such fixed point.
 % TODO: Insert logical conclusions for f(x_0) < x_0, f is decreasing, etc? (maybe - don't really need them for amoeba problem)
 
 % TODO: Put diagram for this here or in hints?

@@ -86,7 +86,7 @@ How can we measure that?
 % TODO: Insert simple graph of f(x) = x^2, no tangent line
 \vspace{2in}
 
-Perhaps the figure above can hint at something. Let's say we can draw a line that seems to "lie" on the point with the same "slope" as the function itself seems to have at that point. (We'll call this a \textbf{tangent line}.) The function doesn't seem to have a broadly defined slope -- but the line does!
+Perhaps the figure above can hint at something. Let's say we can draw a line that seems to "lie" on a point with the same "slope" as the function itself seems to have there. (We'll call this a \textbf{tangent line}.) The function doesn't seem to have a broadly defined slope -- but the line does!
 
 So what is the slope of this line?
 
@@ -95,10 +95,26 @@ There's a slight problem -- in the past, we used two points on a line to calcula
 % TODO: Insert simple graph of f(x) = x^2, with secant lines similar to exercise above, part (a)
 \vspace{2in}
 
-But let's think about our "silly"-looking exercise from before. It wasn't sensical to define a slope for a function that wasn't a line, but now we have a curious observation. As we moved $x_2$ closer to $x_1$ (which was 1), our line started to get closer in slope to being a tangent line at $x_1$!
+But let's think about our "silly"-looking exercise from before. It wasn't sensical to define a slope for a function that wasn't a line, but now we have a curious observation. As we moved $x_2$ closer to $x_1$ (which was 1), our line started to get closer in slope to being a tangent line at $x_1 = 1$!
 
+\subsection{(Limit)}
 
+Let's find out what this slope really is.
 
+For any value $x_2$, we have an "almost-tangent" line defined by the points $(x_1, f(x_2))$ and $(x_2, f(x_2))$. Then its slope is given by
+
+\begin{align*}
+m &= \frac{f(x_2) - f(x_1)}{x_2 - x_1} \\
+&= \frac{x_2^2 - x_1^2}{x_2 - x_1}
+\end{align*}
+
+Here we have $x_1 = 1$, so:
+
+\begin{align*}
+m &= \frac{x_2^2 - 1^2}{x_2 - 1} \\
+&= \frac{x_2^2 - 1}{x_2 - 1} \\
+&= \frac{(x_2 + 1)(x_2 - 1)}{x_2 - 1} \\
+\end{align*}
 
 
 \newpage

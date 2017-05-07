@@ -400,23 +400,23 @@ Let's use the same $x_n$ notation as we did in Part (c).
 % TODO: Will need to have covered least upper bounds and greatest lower bounds,
 %	including touching on how they only apply to nonempty sets
 
-Let's also formulate what we mean by converging to the "closest fixed point" more precisely. Suppose we have a set of fixed points $\{c : f(c) = c\}$ which is non-empty, and therefore has a greatest lower bound $c_1$. 
+Let's also formulate what we mean by converging to the "closest fixed point" more precisely. Suppose we have a set of fixed points $\{c : f(c) = c\}$ which is non-empty, and therefore has a greatest lower bound $c_0$. 
 
-From Problem \ref{continuous-fn-dense-set}, we know that, since $f$ is continuous, $c_1$ is in this set, and hence is a fixed point by definition.\footnote{This is important -- if we didn't establish this fact, then it's not clear that $c_1$ is a fixed point at all, and hence we wouldn't be proving our claim!} We wish to prove that the sequence $\{x_n\}$ converges to $c_1$.
+From Problem \ref{continuous-fn-dense-set}, we know that, since $f$ is continuous, $c_0$ is in this set, and hence is a fixed point by definition.\footnote{This is important -- if we didn't establish this fact, then it's not clear that $c_0$ is a fixed point at all, and hence we wouldn't be proving our claim!} We wish to prove that the sequence $\{x_n\}$ converges to $c_0$.
 
 We'll first prove a few preliminaries:
 
 % TODO: Put some figure/illustration for this lemma. 
 \begin{lemma}
 \label{l:fp-iter-region}
-$f(x) > x$ over the region $\left[x_0, c_1\right)$. 
+$f(x) > x$ over the region $\left[x_0, c_0\right)$. 
 \end{lemma}
 \begin{proof}
 Let $g(x) = f(x) - x$. Our claim is equivalent to asserting that, over this region, $g(x) > 0$.
 
 We'll do a proof by contradiction. Suppose this weren't true, i.e. there existed at least one point $x_a$ in the region such that $f(x_a) < x_a$, i.e. $g(x_a) < 0$. We're given (in the problem) that $f(x_0) > x_0$, i.e. $g(x_0) > 0$. Therefore, by the intermediate value theorem, there exists a point $x_b$ in $(x_0, x_a)$ such that $g(x_b) = 0$, i.e. $f(x_b) = x_b$. 
 
-Then $x_b$ would be a fixed point. However, we're given that our leftmost fixed point to the right of $x_0$ is $c_1$, and here, $x_0 < x_b < c_1$. Contradiction.
+Then $x_b$ would be a fixed point. However, we're given that our leftmost fixed point to the right of $x_0$ is $c_0$, and here, $x_0 < x_b < c_0$. Contradiction.
 \end{proof}
 
 % TODO: Insert a figure representation of this proof?
@@ -426,14 +426,14 @@ Then $x_b$ would be a fixed point. However, we're given that our leftmost fixed 
 % TODO: Put two illustrations for this lemma. (One with expected behavior, and one where the assumption isn't followed - and we "overshoot" across the fixed point.)
 \begin{lemma}
 \label{l:fp-iter-bound}
-$\{x_n\}$ is strictly bounded above by $c_1$.
+$\{x_n\}$ is strictly bounded above by $c_0$.
 \end{lemma}
 \begin{proof}
-We'll prove (using induction) that $x_k < c_1$ for all $k \geq 0$. 
+We'll prove (using induction) that $x_k < c_0$ for all $k \geq 0$. 
 
-Our base case is easy: we're simply given that $x_0 < c_1$.
+Our base case is easy: we're simply given that $x_0 < c_0$.
 
-For the inductive step, we assume that $x_k < c_1$, and show that $x_{k+1} < c_1$. This is short as well -- since $f$ is increasing and $x_k < c_1$, we have $f(x_k) < f(c_1)$. By definition, $x_{k+1} = f(x_k)$, and since $c_1$ is a fixed point, $f(c_1) = c_1$. Therefore, $x_{k+1} < c_1$. 
+For the inductive step, we assume that $x_k < c_0$, and show that $x_{k+1} < c_0$. This is short as well -- since $f$ is increasing and $x_k < c_0$, we have $f(x_k) < f(c_0)$. By definition, $x_{k+1} = f(x_k)$, and since $c_0$ is a fixed point, $f(c_0) = c_0$. Therefore, $x_{k+1} < c_0$. 
 \end{proof}
 
 % {l:fp-iter-prob-region}
@@ -447,18 +447,18 @@ We'll prove (using induction) that for all $k \geq 0$, $x_0 \leq x_k < x_{k+1}$ 
 
 For our base case, clearly $x_0 \leq x_0$. We are given that $f(x_0) > x_0$, and by definition of our sequence, $x_1 = f(x_0)$, so $x_0 < x_1$.
 
-For our inductive step, we assume $x_0 \leq x_k < x_{k+1}$, and prove that $x_0 \leq x_{k+1} < x_{k+2}$. Since $x_0 \leq x_k < x_{k+1}$, we clearly have $x_0 \leq x_{k+1}$. Per Lemma \ref{l:fp-iter-bound}, we have $x_{k+1} < c_1$. Therefore, we have that $x_{k+1} \in \left[x_0, c_1\right)$, so by Lemma \ref{l:fp-iter-region}, $f(x_{k+1}) > x_{k+1}$. By definition, $x_{k+2} = f(x_{k+1})$, so $x_{k+1} < x_{k+2}$. 
+For our inductive step, we assume $x_0 \leq x_k < x_{k+1}$, and prove that $x_0 \leq x_{k+1} < x_{k+2}$. Since $x_0 \leq x_k < x_{k+1}$, we clearly have $x_0 \leq x_{k+1}$. Per Lemma \ref{l:fp-iter-bound}, we have $x_{k+1} < c_0$. Therefore, we have that $x_{k+1} \in \left[x_0, c_0\right)$, so by Lemma \ref{l:fp-iter-region}, $f(x_{k+1}) > x_{k+1}$. By definition, $x_{k+2} = f(x_{k+1})$, so $x_{k+1} < x_{k+2}$. 
 
 % TODO: Mention something like (We proved the increasing and lower boundedness statement together because they are intricately linked in our proof.)
 \end{proof}
 
 From Lemmas \ref{l:fp-iter-bound} and \ref{l:fp-iter-increasing-lower-bound}, we see that $\{x_n\}$ is an increasing and bounded sequence. Therefore, by Theorem \ref{th:monotone-seq}, $\{x_n\}$ converges (to its least upper bound, specifically). Therefore, by Part (c), it must converge to a fixed point.
 
-We finally show that, therefore, $\{x_n\}$ must converge to $c_1$. As for the fixed points greater than $c_1$, clearly none of them can be a least upper bound by definition, so convergence to them is out of the question.
+We finally show that, therefore, $\{x_n\}$ must converge to $c_0$. As for the fixed points greater than $c_0$, clearly none of them can be a least upper bound by definition, so convergence to them is out of the question.
 
 What about the fixed points to the \emph{left} of $x_0$? (We haven't discussed these at all yet!) From Lemma \ref{l:fp-iter-increasing-lower-bound}, $x_0$ is a lower bound for our sequence. Since $x_0$ isn't a fixed point itself (since $f(x_0) > x_0$), any such fixed points must be strictly less than $x_0$. Therefore (even ignoring the fact that $\{x_n\}$ is increasing and could never approach such a fixed point), the bound means that we would not be able to get with arbitrary $\epsilon$ distance of a fixed point to the left.
 
-This all leaves us with only one possibility: $\{x_n\}$ converges to $c_1$, the smallest fixed point to the right of our starting point $x_0$.
+This all leaves us with only one possibility: $\{x_n\}$ converges to $c_0$, the smallest fixed point to the right of our starting point $x_0$.
 
 % TODO: We need to introduce the $\{x_n\}$ notation at some point.
 

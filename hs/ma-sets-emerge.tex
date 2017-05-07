@@ -279,6 +279,10 @@ While it is difficult to make general statements on the matter (there are whole 
 
 \item Suppose $f$ is a \emph{continuous} function, and we \emph{know} that, for some starting value $x_0$, the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ... converges to some value (call it $c$). Prove that $c$ is a fixed point of $f$.
 
+\item Suppose $f$ is a \emph{continuous} function, let $A = \{x : f(x) = x\}$ be the set of fixed points of $f$, and suppose that $A$ is bounded from below. Show that $\inf A$ is a member of $A$ -- in other words, show that the greatest lower bound of $A$ is also a fixed point of $f$.
+
+
+
 \vspace{10mm}
 In other words, if we find that this sequence converges, it converges to a fixed point. But when does it converge in the first place? 
 
@@ -391,7 +395,7 @@ In addition,
 
 Therefore, $f(c) = c$, i.e. $c$ is a fixed point of $f$. $\square$
 
-\subsubsection{Part (d)}
+\subsubsection{Part (e)}
 
 Let's use the same $x_n$ notation as we did in Part (c). 
 
@@ -400,9 +404,9 @@ Let's use the same $x_n$ notation as we did in Part (c).
 % TODO: Will need to have covered least upper bounds and greatest lower bounds,
 %	including touching on how they only apply to nonempty sets
 
-Let's also formulate what we mean by converging to the "closest fixed point" more precisely. Suppose we have a set of fixed points $\{c : f(c) = c\}$ which is non-empty, and therefore has a greatest lower bound $c_0$. 
+Let's also formulate what we mean by converging to the "closest fixed point" more precisely. Suppose we have a set of fixed points $\{x : f(x) = x\}$ which is non-empty, and therefore has a greatest lower bound $c_0$. 
 
-From Problem \ref{continuous-fn-dense-set}, we know that, since $f$ is continuous, $c_0$ is in this set, and hence is a fixed point by definition.\footnote{This is important -- if we didn't establish this fact, then it's not clear that $c_0$ is a fixed point at all, and hence we wouldn't be proving our claim!} We wish to prove that the sequence $\{x_n\}$ converges to $c_0$.
+From Part (d), we know that $c_0$ is in this set, i.e. $c_0$ is also a fixed point.\footnote{This is important -- if we didn't establish this fact, then it's not clear that $c_0$ is a fixed point at all, and hence we wouldn't be proving our claim!} We wish to prove that the sequence $\{x_n\}$ converges to $c_0$.
 
 We'll first prove a few preliminaries:
 

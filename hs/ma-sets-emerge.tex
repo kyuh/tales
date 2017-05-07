@@ -395,7 +395,14 @@ Therefore, $f(c) = c$, i.e. $c$ is a fixed point of $f$. $\square$
 
 Let's use the same $x_n$ notation as we did in Part (c). 
 
-Let's also formulate what we mean by converging to the "closest fixed point" more precisely. Let's suppose there is a sequence of fixed points $\{c_n\}$ with length at least 1, where $x_0 < c_1 < c_2 < ...$. We wish to prove that the sequence $\{x_n\}$ converges to $c_1$.
+
+% TODO: Need to have explained this set notation beforehand
+% TODO: Will need to have covered least upper bounds and greatest lower bounds,
+%	including touching on how they only apply to nonempty sets
+
+Let's also formulate what we mean by converging to the "closest fixed point" more precisely. Suppose we have a set of fixed points $\{c : f(c) = c\}$ which is non-empty, and therefore has a greatest lower bound $c_1$. 
+
+From Problem \ref{continuous-fn-dense-set}, we know that, since $f$ is continuous, $c_1$ is in this set, and hence is a fixed point by definition.\footnote{This is important -- if we didn't establish this fact, then it's not clear that $c_1$ is a fixed point at all, and hence we wouldn't be proving our claim!} We wish to prove that the sequence $\{x_n\}$ converges to $c_1$.
 
 We'll first prove a few preliminaries:
 

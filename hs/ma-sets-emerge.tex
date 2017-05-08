@@ -386,7 +386,7 @@ Suppose we have the situation described in Problem \ref{pr:amoeba-ngen}, but we 
 
 \subsection{Problem \ref{set-inf-inclusion-density}}
 
-We'll show that we get a contradiction if we assume both (1) and (2) are false.
+% We'll show that we get a contradiction if we assume both (1) and (2) are false.
 
 Let $a = \inf A$. By definition, $x \geq a$ for every $x \in A$.
 
@@ -401,9 +401,21 @@ or
 \item $x > a + \epsilon$
 \end{itemize}
 
-Now suppose (1) is false. Then $x$ cannot equal $a$, so for every $x \in A$, we have $x > a + \epsilon$. 
+\vspace{5mm}
+
+
+We'll split up into two cases.
+
+\subsubsection{Case 1: There exist elements $x > a + \epsilon$}
+
+Suppose (1) is false. Then $x$ cannot equal $a$, so for every $x \in A$, we have $x > a + \epsilon$. 
 
 Therefore, $a + \epsilon$ is a lower bound for $A$. But $a + \epsilon > a$, so $a$ is then not the \textit{greatest} lower bound of $A$. Contradiction. $\square$
+
+\subsubsection{Case 1: There exist \textit{no} elements $x > a + \epsilon$}
+
+This is our "trivial" case. Since we said $A$ is non-empty, it then has to contain $a$. (In fact, $A$ is then just the set $\{a\}$). 
+
 
 \subsection{Problem \ref{pr:fp-iter}}
 

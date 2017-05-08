@@ -223,6 +223,20 @@ What is the intersection of...
 
 \section{Problems}
 
+% TODO: Probably should cover/work with density at some point before this
+\begin{problem}
+\label{set-inf-inclusion-density}
+Let $A$ be a nonempty set that's bounded below, and let $a = \inf A$.
+
+Then at least one of the following is true:
+\begin{enumerate}[(1)]
+\item $a \in A$
+\item $A$ is "locally dense" near $a$. In other words, for all $\epsilon > 0$, there exists an $x$, where $a < x < a + \epsilon$, such that $x \in A$. 
+\end{enumerate}
+\end{problem}
+
+
+
 %%%%%%%% Fixed-point iteration problems
 
 \begin{problem}
@@ -369,6 +383,27 @@ Suppose we have the situation described in Problem \ref{pr:amoeba-ngen}, but we 
 
 \newpage
 \section{Solutions}
+
+\subsection{Problem \ref{set-inf-inclusion-density}}
+
+We'll show that we get a contradiction if we assume both (1) and (2) are false.
+
+Let $a = \inf A$. By definition, $x \geq a$ for every $x \in A$.
+
+Suppose (2) is false -- in other words, there is some $\epsilon > 0$ such that $x \notin A$ for \textit{every} $x$ in the interval $a < x < a + \epsilon$. 
+
+This means that for every $x \in A$, either:
+\begin{itemize}
+\item $x = a$
+\end{itemize}
+or
+\begin{itemize}
+\item $x > a + \epsilon$
+\end{itemize}
+
+Now suppose (1) is false. Then $x$ cannot equal $a$, so for every $x \in A$, we have $x > a + \epsilon$. 
+
+Therefore, $a + \epsilon$ is a lower bound for $A$. But $a + \epsilon > a$, so $a$ is then not the \textit{greatest} lower bound of $A$. Contradiction. $\square$
 
 \subsection{Problem \ref{pr:fp-iter}}
 

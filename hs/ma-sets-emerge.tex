@@ -270,7 +270,7 @@ For the purposes of this problem, let $f_2(x)$ = $f(f(x))$, $f_3(x) = f(f(f(x)))
 
 % Let f be a real-valued function.
 
-The "point" of Problem \ref{pr:fp-intro} was preparation for the following general problem: Suppose we have a function $f$, and some value $x_0$ that \textit{isn't} necessarily a fixed point of $f$.
+The "point" of Problem \ref{pr:fp-intro} was preparation for the following general problem: Suppose we have a function $f$ defined over the real numbers, and some value $x_0$ that \textit{isn't} necessarily a fixed point of $f$.
 
 What happens to the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ...? % <don't mention this yet> (Does it converge? Does it oscillate? Does it have some strange chaotic behavior?)
 
@@ -293,11 +293,12 @@ While it is difficult to make general statements on the matter (there are whole 
 
 \item Suppose $f$ is a \emph{continuous} function, and we \emph{know} that, for some starting value $x_0$, the sequence $x_0$, $f(x_0)$, $f(f(x_0))$, $f(f(f(x_0)))$, ... converges to some value (call it $c$). Prove that $c$ is a fixed point of $f$.
 
-\item Suppose $f$ is a \emph{continuous} function, let $A = \{x : f(x) = x\}$ be the set of fixed points of $f$, and suppose that $A$ is bounded from below. Show that $\inf A$ is a member of $A$ -- in other words, show that the greatest lower bound of $A$ is also a fixed point of $f$.
+\item Suppose $f$ is a \emph{continuous} function, let $A = \{x : f(x) = x\}$ be the set of fixed points of $f$, and suppose that $A$ is nonempty and bounded from below. Show that $\inf A$ is a member of $A$ -- in other words, show that the greatest lower bound of $A$ is also a fixed point of $f$.
 
 
 
 \vspace{10mm}
+% TODO: With the added question, this transition isn't smooth
 In other words, if we find that this sequence converges, it converges to a fixed point. But when does it converge in the first place? 
 
 While we won't cover every scenario here, we'll show one interesting case where convergence happens!
@@ -441,6 +442,30 @@ In addition,
 % TODO: Probably have to justify the n-1 (probably show invariance under this in an earlier problem, for general limits)
 
 Therefore, $f(c) = c$, i.e. $c$ is a fixed point of $f$. $\square$
+
+\subsubsection{Part (d)}
+
+From Problem \ref{set-inf-inclusion-density}, we know that \textit{any} nonempty lower-bounded set $A$ has to satisfy at least one of two properties (where $a = \inf A$):
+ 
+\begin{enumerate}[(1)]
+\item $a \in A$
+\item $A$ is "locally dense" near $a$. In other words, for all $\epsilon > 0$, there exists an $x$, where $a < x < a + \epsilon$, such that $x \in A$. 
+\end{enumerate}
+
+We'll actually do a little trick to make our later work easier. Let $g(x) = f(x) - x$, and let $B$ be the set of points $\{x : g(x) = 0\}$. Hopefully you agree that this is still the set of fixed points of $f$ (and, per the problem, we take it that $B$ is nonempty and bounded from below). Also, since $f$ is continuous and the function $h(x) = x$ is continuous, $g$ is continuous as well. 
+
+We want to show that, for \textit{this} particular set, (1) is always true. 
+
+We do this by contradiction. Suppose (1) were false, i.e. $g(a) = b$, where $b \neq 0$.
+
+Then to satisfy the conclusion of Problem \ref{set-inf-inclusion-density}, (2) would have to be true. In other words, for any $\delta > 0$, there would exist a point $x$, where $a < x < a + \delta$ and $g(x) = 0$. 
+
+Then there is no way that $\lim_{x \rightarrow a} g(x) = g(a)$, because for e.g. $\epsilon = b/2$, for any $\delta > 0$, I would have a point $x$ where $a < x < a + \delta$, but $|g(x) - g(a)| = |0 - b| = b > \epsilon$.\footnote{Note: This is a much more general statement than saying that $\lim_{x \rightarrow a} g(x) \neq g(a)$, because we don't know that any limit exists at all. But we can say that the the statement $\lim_{x \rightarrow a} g(x) = g(a)$ is false, and that is the key.}
+% TODO: Fill in the above limit statement in the footnote -- "the statement <limit>, i.e. <spell it out>"
+
+Then by definition, $g$ is not continuous at $a$. Contradiction. $\square$
+
+
 
 \subsubsection{Part (e)}
 

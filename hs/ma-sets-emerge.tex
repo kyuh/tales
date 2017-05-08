@@ -307,7 +307,6 @@ While we won't cover every scenario here, we'll show one interesting case where 
 
 \item Suppose now that $f$ is a continuous and \emph{increasing} function. Suppose we also choose our "starting point" $x_0$ such that 
 
-\vspace{10mm}
 \begin{enumerate}[(1)]
 \item $f(x_0) > x_0$, and
 \item There is at least one fixed point to the right of $x_0$.
@@ -476,9 +475,11 @@ Let's use the same $x_n$ notation as we did in Part (c).
 % TODO: Will need to have covered least upper bounds and greatest lower bounds,
 %	including touching on how they only apply to nonempty sets
 
-Let's also formulate what we mean by converging to the "closest fixed point" more precisely. Suppose we have a set of fixed points $\{x : f(x) = x\}$ which is non-empty, and therefore has a greatest lower bound $c_0$. 
+Let's also formulate what we mean by converging to the "closest fixed point" (to our right) more precisely. Suppose we have a set of fixed points $A = \{x : x > x_0 \text{ and } f(x) = x\}$. 
 
-From Part (d), we know that $c_0$ is in this set, i.e. $c_0$ is also a fixed point.\footnote{This is important -- if we didn't establish this fact, then it's not clear that $c_0$ is a fixed point at all, and hence we wouldn't be proving our claim!} We wish to prove that the sequence $\{x_n\}$ converges to $c_0$.
+We're given that there is at least one fixed point to our right, so $A$ is nonempty. In addition, $A$ is bounded from below by $x_0$. 
+
+Therefore, $A$ has a greatest lower bound $c_0$. From Part (d), we know that $c_0$ is in this set, i.e. $c_0$ is also a fixed point.\footnote{This is important -- if we didn't establish this fact, then it's not clear that $c_0$ is a fixed point at all, and hence we wouldn't be proving our claim!} We wish to prove that the sequence $\{x_n\}$ converges to $c_0$.
 
 We'll first prove a few preliminaries:
 

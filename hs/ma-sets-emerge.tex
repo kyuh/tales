@@ -531,13 +531,15 @@ For our inductive step, we assume $x_0 \leq x_k < x_{k+1}$, and prove that $x_0 
 
 From Lemmas \ref{l:fp-iter-bound} and \ref{l:fp-iter-increasing-lower-bound}, we see that $\{x_n\}$ is an increasing and bounded sequence. Therefore, by Theorem \ref{th:monotone-seq}, $\{x_n\}$ converges to its least upper bound, which we'll call $b$. 
 
-We'll now show that $b = c_0$. 
+We'll now show that $b = c_0$, by showing that the cases $b < c_0$ and $b > c_0$ cannot be true.
 
-Suppose $b < c_0$. We know from Part (c) that $b$ has to be a fixed point of $f$. We know $c_0$ is a lower bound for the fixed points of $f$ to the right of $x_0$,\footnote{specifically the greatest lower bound, of course} and we know that $x_0$ is a not a fixed point, since we're given that $f(x_0) > x_0$.
+\paragraph{Case $b < c_0$}
+
+Suppose $b < c_0$. We know from Part (c) that $b$ has to be a fixed point of $f$. We know $c_0$ is a lower bound for the fixed points of $f$ to the right of $x_0$,\footnote{Specifically the greatest lower bound, of course.} and we know that $x_0$ is a not a fixed point, since we're given that $f(x_0) > x_0$.
 
 Therefore, if $b < c_0$, then we also know that $b < x_0$. 
 
-Then to show that $\lim_{n \rightarrow \infty} x_n \neq b$, consider $\epsilon = (x_0 - b)/2$. From Lemma \ref{l:fp-iter-increasing-lower-bound}, we know that for \emph{every} $n$, $x_n > x_0$ -- and as a consequence:
+Then to show that $\lim_{n \rightarrow \infty} x_n \neq b$, consider $\epsilon = (x_0 - b)/2$. From Lemma \ref{l:fp-iter-increasing-lower-bound}, we know that for \emph{every} $n$, we have $x_n > x_0$ -- and as a consequence:
 
 \begin{align*}
 |x_n - b| &= x_n - b && \text{(since $x_n > b$, because $x_n > x_0$ and $x_0 > b$)} \\
@@ -546,19 +548,29 @@ Then to show that $\lim_{n \rightarrow \infty} x_n \neq b$, consider $\epsilon =
 &= \epsilon
 \end{align*}
 
+Therefore, we've found an $\epsilon$ that we cannot satisfy, no matter how big $n$ is. Therefore, the limit cannot be $b$ if $b < c_0$. 
 
 
+\paragraph{Case $b > c_0$}
 
-We finally show that, therefore, $\{x_n\}$ must converge to $c_0$. As for the fixed points greater than $c_0$, clearly none of them can be a least upper bound by definition, so convergence to them is out of the question.
+Suppose we do actually approach a limit $b > c_0$. By definition, for any $\epsilon > 0$, we'll have an $N(\epsilon)$ such that when $n > N(\epsilon)$, $|x_n - b| < \epsilon$. 
 
-What about the fixed points to the \emph{left} of $x_0$? (We haven't discussed these at all yet!) From Lemma \ref{l:fp-iter-increasing-lower-bound}, $x_0$ is a lower bound for our sequence. Since $x_0$ isn't a fixed point itself (since $f(x_0) > x_0$), any such fixed points must be strictly less than $x_0$. Therefore (even ignoring the fact that $\{x_n\}$ is increasing and could never approach such a fixed point), the bound means that we would not be able to get with arbitrary $\epsilon$ distance of a fixed point to the left.
+Consider $\epsilon = b - c_0$. Note that $|x_n - b| = b - x_n$ (since $b >= x_n$ since $b$ is an upper bound of the sequence as mentioned above). Therefore, we'd have:
 
-This all leaves us with only one possibility: $\{x_n\}$ converges to $c_0$, the smallest fixed point to the right of our starting point $x_0$.
+\begin{equation*}
+b - x_n < b - c_0
+\end{equation*}
+
+and therefore,
+
+\begin{equation*}
+x_n > c_0
+\end{equation*}
+
+which contradicts Lemma \ref{l:fp-iter-bound}.
+
 
 % TODO: We need to introduce the $\{x_n\}$ notation at some point.
-
-% TODO: Go back to the problem and revise problem statement (or at least add caveat that we could have a solid real-line block of real numbers where f(x) = x, and hence we can't index them. In this case there would be an *uncountable* number of fixed points (we may or may not have already talked about countability at that point?)
-% 	- Possible way to revise the problem: There is at least one fixed point to the right of $x_0$. Let $c_0$ be the lowest such fixed point. Prove that sequence must converge to $c_0$.
 
 % TODO: Might want to just say "greater than", rather than "to the right of"
  

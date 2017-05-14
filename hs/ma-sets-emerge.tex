@@ -529,7 +529,25 @@ For our inductive step, we assume $x_0 \leq x_k < x_{k+1}$, and prove that $x_0 
 % TODO: Mention something like (We proved the increasing and lower boundedness statement together because they are intricately linked in our proof.)
 \end{proof}
 
-From Lemmas \ref{l:fp-iter-bound} and \ref{l:fp-iter-increasing-lower-bound}, we see that $\{x_n\}$ is an increasing and bounded sequence. Therefore, by Theorem \ref{th:monotone-seq}, $\{x_n\}$ converges (to its least upper bound, specifically). Therefore, by Part (c), it must converge to a fixed point.
+From Lemmas \ref{l:fp-iter-bound} and \ref{l:fp-iter-increasing-lower-bound}, we see that $\{x_n\}$ is an increasing and bounded sequence. Therefore, by Theorem \ref{th:monotone-seq}, $\{x_n\}$ converges to its least upper bound, which we'll call $b$. 
+
+We'll now show that $b = c_0$. 
+
+Suppose $b < c_0$. We know from Part (c) that $b$ has to be a fixed point of $f$. We know $c_0$ is a lower bound for the fixed points of $f$ to the right of $x_0$,\footnote{specifically the greatest lower bound, of course} and we know that $x_0$ is a not a fixed point, since we're given that $f(x_0) > x_0$.
+
+Therefore, if $b < c_0$, then we also know that $b < x_0$. 
+
+Then to show that $\lim_{n \rightarrow \infty} x_n \neq b$, consider $\epsilon = (x_0 - b)/2$. From Lemma \ref{l:fp-iter-increasing-lower-bound}, we know that for \emph{every} $n$, $x_n > x_0$ -- and as a consequence:
+
+\begin{align*}
+|x_n - b| &= x_n - b && \text{(since $x_n > b$, because $x_n > x_0$ and $x_0 > b$)} \\
+&> x_0 - b \\
+&> \frac{x_0 - b}{2} \\
+&= \epsilon
+\end{align*}
+
+
+
 
 We finally show that, therefore, $\{x_n\}$ must converge to $c_0$. As for the fixed points greater than $c_0$, clearly none of them can be a least upper bound by definition, so convergence to them is out of the question.
 

@@ -451,11 +451,12 @@ From Problem \ref{set-inf-inclusion-density}, we know that \textit{any} nonempty
 \item $A$ is "locally dense" near $a$. In other words, for all $\epsilon > 0$, there exists an $x$, where $a < x < a + \epsilon$, such that $x \in A$. 
 \end{enumerate}
 
-We'll actually do a little trick to make our later work easier. Let $g(x) = f(x) - x$, and let $B$ be the set of points $\{x : g(x) = 0\}$. Hopefully you agree that this is still the set of fixed points of $f$ (and, per the problem, we take it that $B$ is nonempty and bounded from below). Also, since $f$ is continuous and the function $h(x) = x$ is continuous, $g$ is continuous as well. 
-
 We want to show that, for \textit{this} particular set, (1) is always true. 
 
-We do this by contradiction. Suppose (1) were false, i.e. $g(a) = b$, where $b \neq 0$.
+We'll actually do a little trick to make our later work easier. Let $g(x) = f(x) - x$, and let $B$ be the set of points $\{x : g(x) = 0\}$. Hopefully you agree that the sets $A$ and $B$ are equivalent -- in other words, that this set is still the set of fixed points of $f$. Also, since $f$ is continuous and the function $h(x) = x$ is continuous, $g$ (which equals $f - h$) is continuous as well. 
+
+\vspace{10mm}
+We'll do this proof by contradiction. Suppose (1) were false, i.e. $g(a) = b$, where $b \neq 0$.
 
 Then to satisfy the conclusion of Problem \ref{set-inf-inclusion-density}, (2) would have to be true. In other words, for any $\delta > 0$, there would exist a point $x$, where $a < x < a + \delta$ and $g(x) = 0$. 
 
@@ -493,7 +494,7 @@ Let $g(x) = f(x) - x$. Our claim is equivalent to asserting that, over this regi
 
 We'll do a proof by contradiction. Suppose this weren't true, i.e. there existed at least one point $x_a$ in the region such that $f(x_a) < x_a$, i.e. $g(x_a) < 0$. We're given (in the problem) that $f(x_0) > x_0$, i.e. $g(x_0) > 0$. Therefore, by the intermediate value theorem, there exists a point $x_b$ in $(x_0, x_a)$ such that $g(x_b) = 0$, i.e. $f(x_b) = x_b$. 
 
-Then $x_b$ would be a fixed point. However, we're given that our leftmost fixed point to the right of $x_0$ is $c_0$, and here, $x_0 < x_b < c_0$. Contradiction.
+Then $x_b$ would be a fixed point. However, $c_0$ is a lower bound on the fixed points of $f$, and here, $x_b < c_0$. Contradiction.
 \end{proof}
 
 % TODO: Insert a figure representation of this proof?
@@ -510,7 +511,7 @@ We'll prove (using induction) that $x_k < c_0$ for all $k \geq 0$.
 
 Our base case is easy: we're simply given that $x_0 < c_0$.
 
-For the inductive step, we assume that $x_k < c_0$, and show that $x_{k+1} < c_0$. This is short as well -- since $f$ is increasing and $x_k < c_0$, we have $f(x_k) < f(c_0)$. By definition, $x_{k+1} = f(x_k)$, and since $c_0$ is a fixed point, $f(c_0) = c_0$. Therefore, $x_{k+1} < c_0$. 
+For the inductive step, we assume that $x_k < c_0$, and show that $x_{k+1} < c_0$. This is short as well -- since $f$ is increasing and $x_k < c_0$, we have $f(x_k) < f(c_0)$. By definition, $x_{k+1} = f(x_k)$, and since $c_0$ is a fixed point as discussed earlier, $f(c_0) = c_0$. Therefore, $x_{k+1} < c_0$. 
 \end{proof}
 
 % {l:fp-iter-prob-region}

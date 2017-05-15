@@ -398,7 +398,7 @@ This means that for every $x \in A$, either:
 \end{itemize}
 or
 \begin{itemize}
-\item $x > a + \epsilon$
+\item $x \geq a + \epsilon$
 \end{itemize}
 
 \vspace{5mm}
@@ -406,13 +406,13 @@ or
 
 We'll split up into two cases.
 
-\subsubsection{Case 1: There exist elements $x > a + \epsilon$}
+\subsubsection{Case 1: There exist elements $x \geq a + \epsilon$}
 
-Suppose (1) is false. Then $x$ cannot equal $a$, so for every $x \in A$, we have $x > a + \epsilon$. 
+Suppose (1) is false. Then $x$ cannot equal $a$, so every $x \in A$ satisfies $x \geq a + \epsilon$. 
 
 Therefore, $a + \epsilon$ is a lower bound for $A$. But $a + \epsilon > a$, so $a$ is then not the \textit{greatest} lower bound of $A$. Contradiction. $\square$
 
-\subsubsection{Case 1: There exist \textit{no} elements $x > a + \epsilon$}
+\subsubsection{Case 2: There exist \textit{no} elements $x \geq a + \epsilon$}
 
 This is our "trivial" case. Since we said $A$ is non-empty, it then has to contain $a$. (In fact, $A$ is then just the set $\{a\}$). 
 
@@ -433,8 +433,8 @@ In addition,
 
 \begin{align*}
 \lim_{n \rightarrow \infty} x_n &= \lim_{n \rightarrow \infty} f(x_{n-1}) \\
-&= f(\lim_{n \rightarrow \infty} x_{n-1}) && \text{(Since $f$ is continuous)} \\
-&= f(c) \\
+&= f(\lim_{n \rightarrow \infty} x_{n-1}) && \text{(From Problem \ref{pr:lim-cont-func-seq}, since $f$ is continuous)} \\
+&= f(c) && \text{Problem \ref{pr:lim-offset-seq}} \\
 \end{align*}
 
 % TODO: Probably have to prove continuity and moving limit through sequence (and then ref it here).
@@ -453,14 +453,15 @@ From Problem \ref{set-inf-inclusion-density}, we know that \textit{any} nonempty
 
 We want to show that, for \textit{this} particular set, (1) is always true. 
 
-We'll actually do a little trick to make our later work easier. Let $g(x) = f(x) - x$, and let $B$ be the set of points $\{x : g(x) = 0\}$. Hopefully you agree that the sets $A$ and $B$ are equivalent -- in other words, that this set is still the set of fixed points of $f$. Also, since $f$ is continuous and the function $h(x) = x$ is continuous, $g$ (which equals $f - h$) is continuous as well. 
+We'll actually do a little trick to make our later work easier. Let $g(x) = f(x) - x$, and let $B$ be the set of points $\{x : g(x) = 0\}$. Hopefully you agree that the sets $A$ and $B$ are equivalent -- in other words, that this set is still the set of fixed points of $f$. Also, since $f$ is continuous and the function $h(x) = x$ is continuous, $g$ (which equals $f - h$) is continuous as well, per Problem \ref{lim-sum-funcs}.
+% TODO: Above problem will only cover sums of limits, then mention something briefly again about definition of continuity 
 
 \vspace{10mm}
 We'll do this proof by contradiction. Suppose (1) were false, i.e. $g(a) = b$, where $b \neq 0$.
 
 Then to satisfy the conclusion of Problem \ref{set-inf-inclusion-density}, (2) would have to be true. In other words, for any $\delta > 0$, there would exist a point $x$, where $a < x < a + \delta$ and $g(x) = 0$. 
 
-Then there is no way that $\lim_{x \rightarrow a} g(x) = g(a)$, because for e.g. $\epsilon = b/2$, for any $\delta > 0$, I would have a point $x$ where $a < x < a + \delta$, but $|g(x) - g(a)| = |0 - b| = b > \epsilon$.\footnote{Note: This is a much more general statement than saying that $\lim_{x \rightarrow a} g(x) \neq g(a)$, because we don't know that any limit exists at all. But we can say that the the statement $\lim_{x \rightarrow a} g(x) = g(a)$ is false, and that is the key.}
+Then there is no way that $\lim_{x \rightarrow a} g(x) = g(a)$. To show this, take (for example) $\epsilon = b/2$. Then for any $\delta > 0$, I would have a point $x$ where $a < x < a + \delta$, but $|g(x) - g(a)| = |0 - b| = b > \epsilon$.\footnote{Note: This is a much more general statement than saying that $\lim_{x \rightarrow a} g(x) \neq g(a)$, because we don't know that any limit exists at all. But we can say that the the statement $\lim_{x \rightarrow a} g(x) = g(a)$ is false, and that is the key.}
 % TODO: Fill in the above limit statement in the footnote -- "the statement <limit>, i.e. <spell it out>"
 
 Then by definition, $g$ is not continuous at $a$. Contradiction. $\square$
@@ -492,7 +493,7 @@ $f(x) > x$ over the region $\left[x_0, c_0\right)$.
 \begin{proof}
 Let $g(x) = f(x) - x$. Our claim is equivalent to asserting that, over this region, $g(x) > 0$.
 
-We'll do a proof by contradiction. Suppose this weren't true, i.e. there existed at least one point $x_a$ in the region such that $f(x_a) < x_a$, i.e. $g(x_a) < 0$. We're given (in the problem) that $f(x_0) > x_0$, i.e. $g(x_0) > 0$. Therefore, by the intermediate value theorem, there exists a point $x_b$ in $(x_0, x_a)$ such that $g(x_b) = 0$, i.e. $f(x_b) = x_b$. 
+We'll do a proof by contradiction. Suppose this weren't true, i.e. there existed at least one point $x_a$ in the region $\left[x_0, c_0\right)$ such that $f(x_a) < x_a$, i.e. $g(x_a) < 0$. We're given (in the problem) that $f(x_0) > x_0$, i.e. $g(x_0) > 0$. Therefore, by the intermediate value theorem, there exists a point $x_b$ in $(x_0, x_a)$ such that $g(x_b) = 0$, i.e. $f(x_b) = x_b$. 
 
 Then $x_b$ would be a fixed point. However, $c_0$ is a lower bound on the fixed points of $f$, and here, $x_b < c_0$. Contradiction.
 \end{proof}
@@ -540,12 +541,12 @@ We know from Part (c) that $b$ has to be a fixed point of $f$. We also know that
 
 Therefore, if $b < c_0$, then we also know that $b < x_0$. 
 
-Then to show that $\lim_{n \rightarrow \infty} x_n \neq b$, consider $\epsilon = (x_0 - b)/2$. From Lemma \ref{l:fp-iter-increasing-lower-bound}, we know that for \emph{every} $n$, we have $x_n > x_0$, and therefore:
+% TODO: Figure would be helpful here (and in many other places around here)
+Then to show that $\lim_{n \rightarrow \infty} x_n \neq b$, consider $\epsilon = x_0 - b$. From Lemma \ref{l:fp-iter-increasing-lower-bound}, we know that for \emph{every} $n$, we have $x_n \geq x_0$, and therefore:
 
 \begin{align*}
-|x_n - b| &= x_n - b && \text{(since $x_n > b$, because $x_n > x_0$ and $x_0 > b$)} \\
-&> x_0 - b \\
-&> \frac{x_0 - b}{2} \\
+|x_n - b| &= x_n - b && \text{(since $x_n > b$, because $x_n \geq x_0$ and $x_0 > b$)} \\
+&\geq x_0 - b \\
 &= \epsilon
 \end{align*}
 

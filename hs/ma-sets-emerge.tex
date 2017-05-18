@@ -228,7 +228,7 @@ What is the intersection of...
 \label{set-inf-inclusion-density}
 Let $A$ be a nonempty set that's bounded below, and let $a = \inf A$.
 
-Then at least one of the following is true:
+Prove that at least one of the following will be true:
 \begin{enumerate}[(1)]
 \item $a \in A$
 \item $A$ is "locally dense" near $a$. In other words, for all $\epsilon > 0$, there exists an $x$, where $a < x < a + \epsilon$, such that $x \in A$. 
@@ -344,7 +344,7 @@ Let $P_d(n)$ be the probability that the family tree dies before the $n$-th gene
 \begin{enumerate}[(a)]
 \item What is $P_d(1)$?
 \item Find a recursive relation for $P_d(n)$, in terms of $P_d(n-1)$, for $n > 1$. 
-\item Suppose we instead had $m$ starting amoebas. What is the probability of dying before the $n$-th generation now? Answer in terms of our original $P_d(n)$.
+\item Suppose we instead had $m$ starting amoebas. What is the probability of dying before the $n$-th generation now, in terms of our "single amoeba generation death" probability $P_d(n)$?
 \item What is the probability that our amoeba family (with one starting amoeba) dies at some point in the future, period? (Alternatively, what is the probably that our family \emph{doesn't} die out at all -- and simply lives on forever?) %In particular, under what conditions (i.e. for what values of $p$) is the amoeba family certain to die at some point?
 \end{enumerate}
 \hfill
@@ -390,7 +390,7 @@ Suppose we have the situation described in Problem \ref{pr:amoeba-ngen}, but we 
 
 Let $a = \inf A$. By definition, $x \geq a$ for every $x \in A$.
 
-Suppose (2) is false -- in other words, there is some $\epsilon > 0$ such that $x \notin A$ for \textit{every} $x$ in the interval $a < x < a + \epsilon$. 
+Suppose (2) is false -- in other words, suppose there is some $\epsilon > 0$ such that $x \notin A$ for \textit{every} $x$ in the interval $a < x < a + \epsilon$. 
 
 This means that for every $x \in A$, either:
 \begin{itemize}
@@ -434,7 +434,7 @@ In addition,
 \begin{align*}
 \lim_{n \rightarrow \infty} x_n &= \lim_{n \rightarrow \infty} f(x_{n-1}) \\
 &= f(\lim_{n \rightarrow \infty} x_{n-1}) && \text{(From Problem \ref{pr:lim-cont-func-seq}, since $f$ is continuous)} \\
-&= f(c) && \text{Problem \ref{pr:lim-offset-seq}} \\
+&= f(c) && \text{(Problem \ref{pr:lim-offset-seq})} \\
 \end{align*}
 
 % TODO: Probably have to prove continuity and moving limit through sequence (and then ref it here).
